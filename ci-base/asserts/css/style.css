@@ -571,7 +571,7 @@ nav.top-nav a.page-title {
   display: inline-block;
 }
 .breadcrumb a {
-  color: #00bcd4;
+  color: #8c1919;
 }
 .breadcrumb .active {
   font-weight: normal;
@@ -765,7 +765,7 @@ h5.breadcrumbs-header {
   padding: 10px 14px;  
 }
 #line-updated {
-  /*background: #00bcd4;*/
+  /*background: #8c1919;*/
 }
 .sample-chart-wrapper {
   width: 100%;
@@ -894,10 +894,10 @@ th {
 
 /**/
 #ct2-chart .ct-series.ct-series-a .ct-area{
-  fill: #00BCD4;
+  fill: #8c1919;
 }
 #ct2-chart .ct-series.ct-series-a .ct-point{
-  stroke:#00BCD4;
+  stroke:#8c1919;
 }
 #ct2-chart .ct-series.ct-series-a .ct-line{
   stroke: #54E2F4;
