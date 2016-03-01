@@ -26,6 +26,12 @@
 			$this->load->view('admin', $data);
 		}
 
+		function addadvisor() {
+			$data = array('view'=> 'admin-template/add-advisor');
+
+			$this->load->view('admin', $data);
+		}
+
 	}
 
 ?>
