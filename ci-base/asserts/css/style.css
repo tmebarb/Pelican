@@ -448,7 +448,6 @@ ul.side-nav.fixed:hover {
 }
 ul.side-nav.fixed li.user-details {
   background-color: #8c1919;
-  background: url(../images/ulm_logo_a.png) no-repeat center top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
