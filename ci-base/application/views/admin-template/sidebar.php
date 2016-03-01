@@ -36,14 +36,31 @@
                     </li>
                     <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                        </ul>
+					<?php
+						if($this->session->userdata('usertype') =="admin") {
+					?>
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
+                    </li>
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
                     </li>
 
-                </ul>
+					<?php } ?>
+ 					<?php
+						if($this->session->userdata('usertype') =="advisor") {
+					?>
+
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Make Schedule</a>
+                    </li>
+					<?php } ?>
+ 					<?php
+						if($this->session->userdata('usertype') =="advisee") {
+					?>
+
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
+                    </li>
+					<?php } ?>					
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-settings-power"></i> Logout</a>
+                    </li>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
             </aside>
             <!-- END LEFT SIDEBAR NAV-->
