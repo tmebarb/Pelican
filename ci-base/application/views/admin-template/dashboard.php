@@ -83,27 +83,27 @@
                                         <p class="task-card-date">March 26, 2015</p>
                                     </li>
                                     <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task1" />
-                                        <label for="task1">Create Mobile App UI. <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
+                                        <input type="checkbox" id="task1" checked="checked" />
+                                        <label for="task1">Advise Student 1 <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
                                         </label>
-                                        <span class="task-cat teal">Mobile App</span>
+                                        <span class="task-cat teal">Sophomore - CSCI</span>
                                     </li>
                                     <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task2" />
-                                        <label for="task2">Check the new API standerds. <a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
+                                        <input type="checkbox" id="task2" checked="checked" />
+                                        <label for="task2">Advise Student 2<a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
                                         </label>
-                                        <span class="task-cat purple">Web API</span>
+                                        <span class="task-cat purple">Freshman - CSCI</span>
                                     </li>
                                     <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task3" checked="checked" />
-                                        <label for="task3">Check the new Mockup of ABC. <a href="#" class="secondary-content"><span class="ultra-small">Wednesday</span></a>
+                                        <input type="checkbox" id="task3" />
+                                        <label for="task3">Advise Student 3<a href="#" class="secondary-content"><span class="ultra-small">Wednesday</span></a>
                                         </label>
-                                        <span class="task-cat pink">Mockup</span>
+                                        <span class="task-cat pink">Freshman - CSCI</span>
                                     </li>
                                     <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task4" checked="checked" disabled="disabled" />
-                                        <label for="task4">I did it !</label>
-                                        <span class="task-cat cyan">Mobile App</span>
+                                        <input type="checkbox" id="task4" />
+                                        <label for="task4">Advise Student 4</label>
+                                        <span class="task-cat cyan">Senior - CSCI</span>
                                     </li>
                                 </ul>
                             </div>
