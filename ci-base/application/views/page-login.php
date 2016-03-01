@@ -55,8 +55,8 @@
       <form class="login-form" method="post" action="<?php echo base_url().'login/verify' ?>">
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="<?php echo base_url() ?>asserts/images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
-            <p class="center login-form-text">Material Design Admin Template</p>
+            <img src="<?php echo base_url() ?>asserts/images/Pelican Logo32x32.png" alt="" class="circle responsive-img valign profile-image-login">
+            <p class="center login-form-text">Pelican</p>
           </div>
         </div>
         <?php echo validation_errors(); ?>
