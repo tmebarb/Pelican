@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!--================================================================================
-    Item Name: Materialize - Material Design Admin Template
+    Item Name: Pelican
     Version: 1.0
     Author: GeeksLabs
     Author URL: http://www.themeforest.net/user/geekslabs
@@ -15,10 +15,10 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-    <title>Materialize - Material Design Admin Template</title>
+    <title>Pelican</title>
 
     <!-- Favicons-->
-    <link rel="icon" href="<?php echo base_url() ?>asserts/images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="<?php echo base_url() ?>asserts/images/Pelican Logo32x32.png" sizes="32x32">
     <!-- Favicons-->
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url() ?>asserts/images/favicon/apple-touch-icon-152x152.png">
     <!-- For iPhone -->
@@ -57,7 +57,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="<?php echo base_url() ?>asserts/images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
+                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="<?php echo base_url() ?>asserts/images/Pelican logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
