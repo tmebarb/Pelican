@@ -32,17 +32,34 @@
                     </li>
                     <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Home </a>
                     </li>
-                    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox <span class="new badge">4</span></a>
+                    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
                     </li>
                     <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
 					<?php
 						if($this->session->userdata('usertype') =="admin") {
 					?>
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
-                    </li>
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
-                    </li>
+					<li class="no-padding">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
+                          <div class="collapsible-body">
+                              <ul>
+                                  <li><a href="css-typography.html">List All</a>
+                                  </li>                                        
+                              </ul>
+                          </div>
+                      </li>
+
+                    <li class="no-padding">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
+                          <div class="collapsible-body">
+                              <ul>
+                                  <li><a href="css-typography.html">List All</a>
+                                  </li> 
+                              </ul>
+                          </div>
+                      </li>
 
 					<?php } ?>
  					<?php
@@ -58,7 +75,23 @@
 
 					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
                     </li>
-					<?php } ?>					
+					<?php } ?>		
+					
+					<?php
+						if($this->session->userdata('usertype') =="studentWorker") {
+					?>
+
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Do Something</a>
+                    </li>
+					<?php } ?>
+					
+					<?php
+						if($this->session->userdata('usertype') =="staffMember") {
+					?>
+
+					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
+                    </li>
+					<?php } ?>	
 					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-settings-power"></i> Logout</a>
                     </li>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
