@@ -5,11 +5,7 @@
                 <div class="container">
 
  <div class="divider"></div>
- <?php 
-      // foreach ($alladvisees as $row) {
-      //   echo $row->FirstName;
-      // }
-  ?>
+
             <div id="striped-table">
               
               <div class="row">
@@ -42,3 +38,9 @@
                 </div>
               </div>
             </div>
+
+
+                </div>
+                <!--end container-->
+            </section>
+            <!-- END CONTENT <-->

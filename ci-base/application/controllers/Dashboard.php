@@ -1,4 +1,4 @@
-<?php 
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Dashboard extends CI_Controller {
 
@@ -6,7 +6,6 @@
 			parent::__construct();
 			$this->load->model('Users_model');
 			$this->load->model('Advisees_model');
-			$this->load->model('Apts_model');
 			$this->load->helper('url');
 			
 			if(!$this->session->userdata('id')) {
@@ -22,27 +21,17 @@
 		}
 
 		function db() {
-			$data = array('students' => $this->Advisees_model->getAll(), 'view'=> 'admin-template/db');
+			$data = array('alladvisees' => $this->Advisees_model->getAll(), 'view'=> 'admin-template/db');
 
 			$this->load->view('admin', $data);
 		}
 
-		function calender()
-		{
-		    $result=$this->Apts_model->getAll();
-		    $data = array('info' => $result, );
-		    echo json_encode($data);
+		function addadvisor() {
+			$data = array('view'=> 'admin-template/add-advisor');
 
+			$this->load->view('admin', $data);
 		}
 
-		function testCall() {
-			$this->load->view('admin-template/test');
-		}
-
-		function savedate() {
-			$tst = $this->input->get('asdf');
-
-			$data = array('title' => $tst);
-			echo json_encode($data);
-		}
 	}
+
+?>
