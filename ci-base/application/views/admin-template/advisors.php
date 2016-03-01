@@ -1,12 +1,11 @@
-   <!-- START CONTENT -->
+ <!-- START CONTENT -->
             <section id="content">
 
                 <!--start container-->
                 <div class="container">
 
  <div class="divider"></div>
-
-            <div id="striped-table">
+      <div id="striped-table">
               
               <div class="row">
                 <div class="col s12 m4 l3">
