@@ -1,8 +1,8 @@
 
-
+    <div style="height: 100px;"></div>
    
     <!-- START FOOTER -->
-    <footer class="page-footer">
+    <footer class="page-footer" style="position: fixed;">
         <div class="container">
             <div class="row">
                

@@ -34,8 +34,24 @@
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>dashboard/email" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
                     </li>
-                    <li class="bold"><a href="<?php echo base_url() ?>dashoard/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+                    <li class="bold"><a href="mdi-action-account-child/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
+                    <li class="no-padding">
+                      <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i> Advisors</a>
+                              <div class="collapsible-body" style="">
+                                  <ul>
+                                      <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
+                                      </li>                                        
+                                      <li><a href="css-icons.html">Advisor Records</a>
+                                      </li>
+                                      <li><a href="css-shadow.html">Available Slots</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </li>
+                        </ul>
+                      </li>
 					<?php
 						if($this->session->userdata('usertype') =="admin") {
 					?>
