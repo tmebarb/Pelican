@@ -31,11 +31,11 @@
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
-      defaultDate: '2015-05-12',
+      defaultDate: '2016-02-29',
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
       eventLimit: true, // allow "more" link when too many events
-      events: [
+      events: /*[
         {
           title: 'All Day Event',
           start: '2015-05-01',
@@ -56,7 +56,7 @@
         {
           id: 999,
           title: 'Repeating Event',
-          start: '2015-05-16T16:00:00',
+          start: '2016-02-16T 16:00:00',
           color: '#aa00ff'
         },
         {
@@ -78,7 +78,7 @@
         },
         {
           title: 'Meeting',
-          start: '2015-05-12T14:30:00',
+          start: '2015-02-12T14:30:00',
           color: '#4caf50'
         },
         {
@@ -96,7 +96,7 @@
           start: '2015-05-13T07:00:00',
           color: '#00bcd4'
         }
-      ]
+      ]*/
     });
     
   });
