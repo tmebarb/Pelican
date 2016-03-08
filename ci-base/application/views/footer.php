@@ -31,6 +31,8 @@
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/prism.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
        
@@ -51,10 +53,21 @@
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/vectormap-script.js"></script>
     
-    
+     <!-- Calendar Script -->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/fullcalendar-script.js"></script>
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins.js"></script>
     
+
+
+
+
+
+
 </body>
 
 </html>

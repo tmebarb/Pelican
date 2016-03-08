@@ -66,6 +66,13 @@
 		   	}
 		}
 
+		function calender() {
+			$userType = $this->session->userdata('usertype');
+			$data = array('view'=> 'calender');
+
+			$this->load->view('admin', $data);
+		}
+
 	}
 
 ?>

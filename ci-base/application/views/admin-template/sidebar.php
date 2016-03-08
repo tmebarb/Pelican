@@ -34,7 +34,7 @@
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>dashboard/email" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
                     </li>
-                    <li class="bold"><a href="mdi-action-account-child/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+                    <li class="bold"><a href="<?php echo base_url() ?>dashboard/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
                     <li class="no-padding">
                       <ul class="collapsible collapsible-accordion">
