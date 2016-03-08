@@ -1,25 +1,16 @@
 
-      <!-- START CONTENT -->
-      <section id="content">
 
-        <!--breadcrumbs start-->
-        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
-          <div class="container">
-            <div class="row">
-              <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">New Advisors Details</h5>
-                <ol class="breadcrumb">
-                  <li><a href="<?php echo base_url() ?>">Dashboard</a>
-                  </li>
-                  <li><a href="<?php echo base_url() ?>/advisor">Advisors</a>
-                  </li>
-                  <li class="active">New Advisor</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--breadcrumbs end-->
+
+<?php 
+
+      //for bread crumb
+      $this->breadcrumbs->push('Section', '/section');
+      $this->breadcrumbs->push('Page', '/section/page');
+
+      // unshift crumb
+      $this->breadcrumbs->unshift('Home', '/');
+  $this->breadcrumbs->show();
+ ?>
 
 
         <!--start container-->

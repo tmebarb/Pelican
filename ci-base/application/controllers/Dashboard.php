@@ -10,7 +10,7 @@
 			$this->load->helper(array('form'));
 			$this->load->library('form_validation');
 			$this->load->helper('url');
-			
+			$this->load->library('breadcrumbs');
 			if(!$this->session->userdata('id')) {
 				$this->session->set_flashdata('error_msg', 'I can\'t remember u, Please login again! <br/><br/>');
 				redirect('login');
@@ -30,7 +30,13 @@
 		}
 
 		function addadvisor() {
-			$data = array('view'=> 'admin-template/add-advisor');
+	   	$this->breadcrumbs->push('Advisors', '/advisors');
+		$this->breadcrumbs->push('Add Advisors', 'addadvisor');
+		$this->breadcrumbs->unshift('Home', '/');
+
+
+
+			$data = array('view'=> 'admin-template/add-advisor', 'title' => "Add Adviser Details");
 
 			$this->load->view('admin', $data);
 		}
