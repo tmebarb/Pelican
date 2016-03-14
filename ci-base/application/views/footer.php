@@ -2,7 +2,7 @@
     <div style="height: 100px;"></div>
    
     <!-- START FOOTER -->
-    <footer class="page-footer" style="position: fixed;">
+    <footer class="page-footer" style="position: fixed; z-index: 999">
         <div class="container">
             <div class="row">
                
@@ -26,9 +26,7 @@
     <!-- ================================================
     Scripts
     ================================================ -->
-    
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery-1.11.2.min.js"></script>    
+      
     <!--materialize js-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/materialize.min.js"></script>
     <!--prism-->

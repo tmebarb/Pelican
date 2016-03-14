@@ -1,5 +1,15 @@
 
-        
+        <script>
+            $(document).ready(function(){
+              alert(1)
+               $('#calendar').fullCalendar( 'renderEvent', {
+                                            title: 'title',
+                                            start: '2015-05-01',
+                                            'color': '#9c27b0'
+                                          }, true
+                                        );
+            });
+        </script>
 
         <!--start container-->
         <div class="container">
