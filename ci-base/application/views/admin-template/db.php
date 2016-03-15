@@ -1,8 +1,3 @@
-   <!-- START CONTENT -->
-            <section id="content">
-
-                <!--start container-->
-                <div class="container">
 
  <div class="divider"></div>
 
@@ -38,3 +33,9 @@
                 </div>
               </div>
             </div>
+
+
+                </div>
+                <!--end container-->
+            </section>
+            <!-- END CONTENT <-->

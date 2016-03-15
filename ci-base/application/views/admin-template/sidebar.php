@@ -6,7 +6,7 @@
         <div class="wrapper">
 
             <!-- START LEFT SIDEBAR NAV-->
-            <aside id="left-sidebar-nav">
+            <aside id="left-sidebar-nav" style=" z-index: 9999">
                 <ul id="slide-out" class="side-nav fixed leftside-navigation" >
                     <li class="user-details cyan darken-2">
                         <div class="row">
@@ -26,16 +26,32 @@
                                     </li>
                                 </ul>
                                 <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"> <?php echo $this->session->userdata('user_fullname') ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
-                                <p class="user-roal"><?php echo $this->session->userdata('usertype') ?></p>
+                                <p class="user-roal"><?php echo strtoupper($this->session->userdata('usertype')) ?></p>
                             </div>
                         </div>
                     </li>
-                    <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Home </a>
+                    <li class="bold"><a href="<?php echo base_url() ?>" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Home </a>
                     </li>
-                    <li class="bold"><a href="app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
+                    <li class="bold"><a href="<?php echo base_url() ?>dashboard/email" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
                     </li>
-                    <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+                    <li class="bold"><a href="<?php echo base_url() ?>dashboard/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
+                    <li class="no-padding">
+                      <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i> Advisors</a>
+                              <div class="collapsible-body" style="">
+                                  <ul>
+                                      <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
+                                      </li>                                        
+                                      <li><a href="css-icons.html">Advisor Records</a>
+                                      </li>
+                                      <li><a href="css-shadow.html">Available Slots</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                          </li>
+                        </ul>
+                      </li>
 					<?php
 						if($this->session->userdata('usertype') =="admin") {
 					?>
@@ -62,13 +78,20 @@
                       </li>
 
 					<?php } ?>
- 					<?php
-						if($this->session->userdata('usertype') =="advisor") {
-					?>
+          <?php
+            if($this->session->userdata('usertype') =="advisor") {
+          ?>
 
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Make Schedule</a>
+          <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Make Schedule</a>
                     </li>
-					<?php } ?>
+          <?php } ?>
+          <?php
+            if($this->session->userdata('usertype') =="student") {
+          ?>
+
+          <li class="bold"><a href="<?php echo base_url() ?>student/selectappointment" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Select Appointment</a>
+                    </li>
+          <?php } ?>
  					<?php
 						if($this->session->userdata('usertype') =="advisee") {
 					?>

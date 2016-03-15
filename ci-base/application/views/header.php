@@ -38,6 +38,13 @@
     <link href="<?php echo base_url() ?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery-1.11.2.min.js"></script>  
+      <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+      <link href="<?php echo base_url() ?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+      <link href="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/css/fullcalendar.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    </head>
+
 </head>
 
 <body>
