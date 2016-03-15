@@ -69,8 +69,8 @@
                         <select name="major"  required="" aria-required="true">
                           <option value="" disabled selected>Choose Advisor's Major</option>
                           <option value="1">Computer Sciences</option>
-                          <option value="2">Bussiness</option>
-                          <option value="3">Pharmecy</option>
+                          <option value="2">Business</option>
+                          <option value="3">Pharmacy</option>
                         </select>
                         <label data-error="wrong" data-success="right">Major</label>
                       </div>                        
