@@ -35,6 +35,18 @@ class Users_model extends CI_Model
 			return null;
 	}
 
+	function checkemail($emaail) {
+		$this->db->limit(1);
+		$this->db->from('users');
+		$this->db->where('user_email', $emaail);
+
+		$query = $this->db->get();
+		if($query->num_rows() == 1) 
+			return $query->row();
+		else
+			return null;
+	}
+
 	function savesignup ($username, $password, $fullname) {
 		$data = array(
 			'user_name' => $username,

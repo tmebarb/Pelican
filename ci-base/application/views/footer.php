@@ -1,8 +1,8 @@
 
-
+    <div style="height: 100px;"></div>
    
     <!-- START FOOTER -->
-    <footer class="page-footer">
+    <footer class="page-footer" style="position: fixed; z-index: 999">
         <div class="container">
             <div class="row">
                
@@ -26,11 +26,11 @@
     <!-- ================================================
     Scripts
     ================================================ -->
-    
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery-1.11.2.min.js"></script>    
+      
     <!--materialize js-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/prism.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
        
@@ -51,10 +51,17 @@
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/vectormap-script.js"></script>
     
-    
+
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery.timepicker.min.js"></script>
     
+
+
+
+
+
+
 </body>
 
 </html>

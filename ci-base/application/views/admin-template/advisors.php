@@ -1,8 +1,3 @@
- <!-- START CONTENT -->
-            <section id="content">
-
-                <!--start container-->
-                <div class="container">
 
  <div class="divider"></div>
       <div id="striped-table">
