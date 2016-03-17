@@ -54,6 +54,7 @@
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery.timepicker.min.js"></script>
     
 
 

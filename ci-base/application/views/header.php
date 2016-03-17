@@ -30,6 +30,7 @@
     <!-- CORE CSS-->    
     <link href="<?php echo base_url() ?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="<?php echo base_url() ?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="<?php echo base_url() ?>asserts/css/jquery.timepicker.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->    
