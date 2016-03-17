@@ -1,22 +1,8 @@
-
-        <script>
-            $(document).ready(function(){
-              alert(1)
-               $('#calendar').fullCalendar( 'renderEvent', {
-                                            title: 'title',
-                                            start: '2015-05-01',
-                                            'color': '#9c27b0'
-                                          }, true
-                                        );
-            });
-        </script>
-
         <!--start container-->
         <div class="container">
           <div class="section">
-
-            <div id="full-calendar">              
-              <div class="row">
+              <div id="full-calendar">              
+                <div class="row">
                 <!-- <div class="col s12 m6 l3">
                   <div id='external-events'> 
 
@@ -29,8 +15,20 @@
                 </div>
               </div>
             </div>
-            </div>
-        </div>
-        <!--end container-->
+          </div>
+          <!--end container-->
+          <!-- Calendar Script -->
+          <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+          <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/moment.min.js"></script>
+          <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+          <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/full-wit-add.js"></script>
 
-      </section>
+        </section>
+        <script>
+          $(document).ready(function(){
+            $('#calendar').fullCalendar('today');
+               // var event={id:1 , title: 'New event', start:  new Date()};
+
+                // $('#calendar').fullCalendar( 'renderEvent', event, true);
+              });
+            </script>

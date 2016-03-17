@@ -100,13 +100,21 @@
                     </li>
 					<?php } ?>		
 					
-					<?php
-						if($this->session->userdata('usertype') =="studentWorker") {
-					?>
+          <?php
+            if($this->session->userdata('usertype') =="studentWorker") {
+          ?>
 
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Do Something</a>
+          <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Do Something</a>
                     </li>
-					<?php } ?>
+          <?php } ?>
+
+          <?php
+            if($this->session->userdata('usertype') =="advisor") {
+          ?>
+
+          <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i> Setup Timeslots</a>
+                    </li>
+          <?php } ?>
 					
 					<?php
 						if($this->session->userdata('usertype') =="staffMember") {

@@ -17,10 +17,24 @@
                 <div class="col s12 m12">
                   <div id='calendar'></div>
                 </div>
+     <!-- Calendar Script -->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/fullcalendar-script.js"></script>
               </div>
             </div>
             </div>
         </div>
         <!--end container-->
+        
+      <script>
+            $(document).ready(function(){
+              $('#calendar').fullCalendar('today');
+               // var event={id:1 , title: 'New event', start:  new Date()};
+
+                // $('#calendar').fullCalendar( 'renderEvent', event, true);
+            });
+        </script>
 
       </section>

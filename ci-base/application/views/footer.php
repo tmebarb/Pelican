@@ -51,11 +51,6 @@
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/jvectormap/vectormap-script.js"></script>
     
-     <!-- Calendar Script -->
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/lib/moment.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/js/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins/fullcalendar/fullcalendar-script.js"></script>
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/plugins.js"></script>
