@@ -16,7 +16,7 @@
 				alert("Enter Start time first")
 				$('#mondayEnd').val("")
 			} else if ($('#mondayStart').val() >= $('#mondayEnd').val()) {
-				alert("Start time should before than end time")
+				alert("Start time should be before than end time")
 				$('#mondayEnd').val("")
 			}
 		});
@@ -25,7 +25,7 @@
         		alert("Enter Start time first")
         		$('#tueEnd').val("")
         	} else if ($('#tueStart').val() >= $('#tueEnd').val()) {
-        		alert("Start time should before than end time")
+        		alert("Start time should be before than end time")
         		$('#tueEnd').val("")
         	}
         });
@@ -34,7 +34,7 @@
         		alert("Enter Start time first")
         		$('#WedEnd').val("")
         	} else if ($('#WedStart').val() >= $('#WedEnd').val()) {
-        		alert("Start time should before than end time")
+        		alert("Start time should be before than end time")
         		$('#WedEnd').val("")
         	}
         });
@@ -43,7 +43,7 @@
         		alert("Enter Start time first")
         		$('#ThrEnd').val("")
         	} else if ($('#ThrStart').val() >= $('#ThrEnd').val()) {
-        		alert("Start time should before than end time")
+        		alert("Start time should be before than end time")
         		$('#ThrEnd').val("")
         	}
         });
@@ -52,7 +52,7 @@
         		alert("Enter Start time first")
         		$('#FirEnd').val("")
         	} else if ($('#FirStart').val() >= $('#FirEnd').val()) {
-        		alert("Start time should before than end time")
+        		alert("Start time should be before than end time")
         		$('#FirEnd').val("")
         	}
         });
