@@ -77,7 +77,7 @@
 		}
 
 		function calender() {
-			$userType = $this->session->userdata('usertype');
+			$user_type = $this->session->userdata('user_type');
 			$data = array('view'=> 'calender');
 
 			$this->load->view('admin', $data);

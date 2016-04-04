@@ -26,7 +26,7 @@
                                     </li>
                                 </ul>
                                 <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"> <?php echo $this->session->userdata('user_fullname') ?><i class="mdi-navigation-arrow-drop-down right"></i></a>
-                                <p class="user-roal"><?php echo strtoupper($this->session->userdata('usertype')) ?></p>
+                                <p class="user-roal"><?php echo strtoupper($this->session->userdata('user_type')) ?></p>
                             </div>
                         </div>
                     </li>
@@ -38,7 +38,7 @@
                     </li>
             
 					<?php
-						if($this->session->userdata('usertype') =="admin") {
+						if($this->session->userdata('user_type') =="admin") {
 					?>
                   <li class="no-padding">
                       <ul class="collapsible collapsible-accordion">
@@ -73,7 +73,7 @@
 
 					<?php } ?>
           <?php
-            if($this->session->userdata('usertype') =="advisor") {
+            if($this->session->userdata('user_type') =="advisor") {
           ?>
 
           <li class="bold"><a href="<?php echo base_url() ?>advisor/calender"><i class="mdi-action-view-headline">
@@ -81,14 +81,14 @@
                     </li>
           <?php } ?>
           <?php
-            if($this->session->userdata('usertype') =="student") {
+            if($this->session->userdata('user_type') =="student") {
           ?>
 
           <li class="bold"><a href="<?php echo base_url() ?>student/selectappointment" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Select Appointment</a>
                     </li>
           <?php } ?>
  					<?php
-						if($this->session->userdata('usertype') =="advisee") {
+						if($this->session->userdata('user_type') =="advisee") {
 					?>
 
 					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
@@ -96,7 +96,7 @@
 					<?php } ?>		
 					
           <?php
-            if($this->session->userdata('usertype') =="studentWorker") {
+            if($this->session->userdata('user_type') =="studentWorker") {
           ?>
 
           <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Do Something</a>
@@ -104,7 +104,7 @@
           <?php } ?>
 
           <?php
-            if($this->session->userdata('usertype') =="advisor") {
+            if($this->session->userdata('user_type') =="advisor") {
           ?>
 
           <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i> Setup Timeslots</a>
@@ -112,7 +112,7 @@
           <?php } ?>
 					
 					<?php
-						if($this->session->userdata('usertype') =="staffMember") {
+						if($this->session->userdata('user_type') =="staffMember") {
 					?>
 
 					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>

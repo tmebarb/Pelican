@@ -17,6 +17,7 @@
 
 		function logout() {
 			$this->session->unset_userdata('id');
+			$this->session->unset_userdata('user_type');
    			$this->session->set_flashdata('success_msg', 'You Logged out. <br/>');
 	   		redirect('login');
 		}
@@ -38,7 +39,7 @@
 			   		$this->session->set_userdata('username', $username);
 			   		$this->session->set_userdata('id', $data->user_id);
 			   		$this->session->set_userdata('password', $password);
-			   		$this->session->set_userdata('usertype', $data->user_type);
+			   		$this->session->set_userdata('user_type', $data->user_type);
 			   		$this->session->set_userdata('user_fullname', $data->user_fullname);
 	   				
 	   				redirect('dashboard');
@@ -66,11 +67,12 @@
 		   		$username = $this->input->post('username');
 		   		$password = $this->input->post('password');
 		   		$fullname = $this->input->post('fullname');
+		   		$user_type = $this->input->post('user_type');
 		   		if ($this->Users_model->checkusername($username)) {
 		   			$this->session->set_flashdata('error_msg', 'Username Already Exists! <br/><br/>');
 		   			redirect('login/signup');
 		   		}
-		   		$this->Users_model->savesignup($username, md5($password), $fullname);
+		   		$this->Users_model->savesignup($username, md5($password), $fullname, $user_type);
 		   			$this->session->set_flashdata('success_msg', 'User created! You may login. <br/><br/>');
 		   			redirect('login');
 		   	}

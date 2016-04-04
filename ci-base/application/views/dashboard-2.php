@@ -20,7 +20,7 @@
 </style>
 <body>
 	<h2>Hi <?php echo $this->session->userdata('user_fullname') ?>,</h2>
-	<p>Welcome to test login and u are a <b>'<?php echo $this->session->userdata('usertype') ?>'</b><br></p>
+	<p>Welcome to test login and u are a <b>'<?php echo $this->session->userdata('user_type') ?>'</b><br></p>
 	<a href="<?php echo base_url(); ?>login/logout">Click here to logout</a>
 
 	<hr>
