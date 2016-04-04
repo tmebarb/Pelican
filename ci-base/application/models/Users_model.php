@@ -16,8 +16,7 @@ class Users_model extends CI_Model
 		$this->db->from('users');
 		$this->db->where('user_name', $username);
 		$this->db->where('user_password', MD5($password));
-		$query = $this->db->get(); 
-
+		$query = $this->db->get();
 		if($query->num_rows() == 1) 
 			return $query->row();
 		else
@@ -48,12 +47,12 @@ class Users_model extends CI_Model
 			return null;
 	}
 
-	function savesignup ($username, $password, $fullname, $user_type) {
+	function savesignup ($username, $password, $fullname) {
 		$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
 			'user_fullname' => $fullname,
-			'user_type'	=> $user_type
+			'user_type'	=> 'newbee'
 			);
 
 		$this->db->insert('users', $data); 

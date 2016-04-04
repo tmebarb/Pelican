@@ -20,7 +20,7 @@ class Advisors_model extends CI_Model
 			'dob' => $dob
 			);
 
-		$this->db->insert('advisor', $data); 
+		$this->db->insert('advisors', $data); 
 	}
 
 }

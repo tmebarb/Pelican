@@ -61,20 +61,6 @@
 
 
 		?>
-
-		<br>
-		<label for="user_type">
-			Type: 
-		</label>
-		<?php
-		$data = array(
-			'name'        => 'user_type',
-			'id'          => 'user_type',
-			'style'		=> 'margin-top: 10px; margin-left: 6px'
-			);
-		echo form_input($data);
-		?>
-		<br>
 	</div>
 </form>
 </body>
