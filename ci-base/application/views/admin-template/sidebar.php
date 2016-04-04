@@ -36,7 +36,11 @@
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>dashboard/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
-                    <li class="no-padding">
+            
+					<?php
+						if($this->session->userdata('usertype') =="admin") {
+					?>
+                  <li class="no-padding">
                       <ul class="collapsible collapsible-accordion">
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i> Advisors</a>
                               <div class="collapsible-body" style="">
@@ -47,24 +51,14 @@
                                       </li>
                                       <li><a href="css-shadow.html">Available Slots</a>
                                       </li>
+                                     <li><a href="css-typography.html">List All</a>
+                                  </li>   
                                   </ul>
                               </div>
                           </li>
                         </ul>
                       </li>
-					<?php
-						if($this->session->userdata('usertype') =="admin") {
-					?>
-					<li class="no-padding">
-                  <ul class="collapsible collapsible-accordion">
-                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
-                          <div class="collapsible-body">
-                              <ul>
-                                  <li><a href="css-typography.html">List All</a>
-                                  </li>                                        
-                              </ul>
-                          </div>
-                      </li>
+
 
                     <li class="no-padding">
                   <ul class="collapsible collapsible-accordion">
