@@ -24,9 +24,13 @@
 		}
 
 		function db() {
+			$this->breadcrumbs->push('Advisees', '/advisees');
+			$this->breadcrumbs->push('List Advisees', 'adviseelist');
+			$this->breadcrumbs->unshift('Home', '/');
 			$data = array('alladvisees' => $this->Advisees_model->getAll(), 'view'=> 'admin-template/db');
 
 			$this->load->view('admin', $data);
+
 		}
 
 		function addadvisor() {

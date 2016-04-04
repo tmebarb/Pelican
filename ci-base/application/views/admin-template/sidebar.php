@@ -34,7 +34,7 @@
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>dashboard/email" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
                     </li>
-                    <li class="bold"><a href="<?php echo base_url() ?>dashboard/calender" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+                    <li class="bold"><a href="<?php echo base_url() ?>" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
                     </li>
             
 					<?php
@@ -51,7 +51,7 @@
                                       </li>
                                       <li><a href="css-shadow.html">Available Slots</a>
                                       </li>
-                                     <li><a href="css-typography.html">List All</a>
+                                     <li><a href="<?php echo base_url()?>admin-template/db">List All</a>
                                   </li>   
                                   </ul>
                               </div>
@@ -65,7 +65,7 @@
                       <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
                           <div class="collapsible-body">
                               <ul>
-                                  <li><a href="css-typography.html">List All</a>
+                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
                                   </li> 
                               </ul>
                           </div>
@@ -76,7 +76,8 @@
             if($this->session->userdata('usertype') =="advisor") {
           ?>
 
-          <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Make Schedule</a>
+          <li class="bold"><a href="<?php echo base_url() ?>advisor/calender"><i class="mdi-action-view-headline">
+          </i> Make Schedule</a>
                     </li>
           <?php } ?>
           <?php
@@ -117,7 +118,7 @@
 					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
                     </li>
 					<?php } ?>	
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-settings-power"></i> Logout</a>
+					<li class="bold"><a href="<?php echo base_url() ?>login/logout"><i class="mdi-action-settings-power"></i> Logout</a>
                     </li>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
             </aside>
