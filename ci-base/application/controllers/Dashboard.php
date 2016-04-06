@@ -33,6 +33,16 @@
 
 		}
 
+		function advisors() {
+			$this->breadcrumbs->push('Advisors', '/advisors');
+			$this->breadcrumbs->push('List Advisors', 'advisorlist');
+			$this->breadcrumbs->unshift('Home', '/');
+			$data = array('alladvisors' => $this->Advisors_model->getAll(), 'view'=> 'admin-template/advisors');
+
+			$this->load->view('admin', $data);
+
+		}
+
 		function addadvisor() {
 	   	$this->breadcrumbs->push('Advisors', '/advisors');
 		$this->breadcrumbs->push('Add Advisors', 'addadvisor');

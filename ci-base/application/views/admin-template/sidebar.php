@@ -51,25 +51,17 @@
                                       </li>
                                       <li><a href="css-shadow.html">Available Slots</a>
                                       </li>
-                                     <li><a href="<?php echo base_url()?>admin-template/db">List All</a>
+                                     <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
                                   </li>   
                                   </ul>
+
                               </div>
                           </li>
                         </ul>
                       </li>
 
 
-                    <li class="no-padding">
-                  <ul class="collapsible collapsible-accordion">
-                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
-                          <div class="collapsible-body">
-                              <ul>
-                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
-                                  </li> 
-                              </ul>
-                          </div>
-                      </li>
+                  
 
 					<?php } ?>
           <?php
@@ -119,7 +111,21 @@
           <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i> Setup Timeslots</a>
                     </li>
           <?php } ?>
-					
+
+          <?php
+            if($this->session->userdata('user_type') =="admin") {
+             ?>
+               <li class="no-padding">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
+                          <div class="collapsible-body">
+                              <ul>
+                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
+                                  </li> 
+                              </ul>
+                          </div>
+                      </li> 
+           <?php } ?>					
 					<?php
 						if($this->session->userdata('user_type') =="staffMember") {
 					?>
