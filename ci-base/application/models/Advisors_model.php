@@ -20,7 +20,12 @@ class Advisors_model extends CI_Model
 			'dob' => $dob
 			);
 
-		$this->db->insert('advisor', $data); 
+		$this->advisors->insert('advisor', $data); 
+	}
+
+		function getAll() {
+		$query = $this->db->get('advisors');
+		return $query->result();
 	}
 
 }
