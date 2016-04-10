@@ -54,14 +54,38 @@ class Users_model extends CI_Model
 			'user_fullname' => $fullname,
 			'user_type'	=> $user_type
 			);
-
+		
 		$this->db->insert('users', $data); 
+		if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds th
+		{		 					//their user_id to the appropriate role table for use with linking and sorting
+			
+			$this->db->select('user_id');
+			$this->db->from('users');
+			$this->db->where('user_name', $username);
+			$adviseeUID=$this->db->get()->row()->user_id;
+			$advisee_Data= array(
+				'user_id'=>$adviseeUID);
+			$this->db->insert('advisee', $advisee_Data);
+			}
+
+		if($user_type=='advisor')
+		{		 
+			$this->db->select('user_id');
+			$this->db->from('users');
+			$this->db->where('user_name', $username);
+			$advisorUID=$this->db->get()->row()->user_id;
+			$advisor_Data= array(
+				'user_id'=>$advisorUID);
+			$this->db->insert('advisor', $advisor_Data);
+			}
+			unset($user_type,$username,$password,$fullname);
 	}
 
 	function getallusers () { 
 		$this->db->from('users');
 		$query = $this->db->get();
 		return $query->result();
+
 	}
 }
 ?>
