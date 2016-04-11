@@ -71,6 +71,35 @@
 	</div>
 </div>
 
+<html>
+<body>
+
+<form action="action_page.php">
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+        <div class="input-field col s2">
+        <p class="right label" style="text-align: right;color:#9e9e9e;">Start Date:</p>
+        </div>
+        <div class="input-field col s2">
+        <input type="date" name="startdate" autocomplete="off">
+        </div>
+        <div class="input-field col s3">
+        <p class="right label" style="text-align: right;color:#9e9e9e;">End Date:</p>
+        </div>
+        <div class="input-field col s3">
+        <input type="date" name="enddate" autocomplete="off">
+        </div>
+        </div>
+    <div id="datefields">
+</div>
+</form>
+
+</body>
+</html>
+
+
 <div class="container">
 	<div class="section">
 		<div class="row">
@@ -98,6 +127,7 @@
 <script>
 	$(document).ready(function() { //maximum input boxes allowed
     var wrapper         = $("#mondayfields"); //Fields wrapper
+    var wrapper         = $("#datefields");
     var add_button      = $("#mondayadd"); //Add button ID
     
     var x = 1; //initlal text box count
