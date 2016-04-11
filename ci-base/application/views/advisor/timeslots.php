@@ -127,7 +127,7 @@
 <script>
 	$(document).ready(function() { //maximum input boxes allowed
     var wrapper         = $("#mondayfields"); //Fields wrapper
-    var wrapper         = $("#datefields");
+    
     var add_button      = $("#mondayadd"); //Add button ID
     
     var x = 1; //initlal text box count
