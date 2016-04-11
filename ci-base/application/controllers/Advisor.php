@@ -28,6 +28,11 @@
 			$this->load->view('admin', $data);
 		}
 
+
+		function updatetimeslots() {
+			
+		}
+
 	}
 
 ?>
