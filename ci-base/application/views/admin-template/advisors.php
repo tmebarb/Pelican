@@ -23,14 +23,21 @@
                         <th data-field="price">Department</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <?php 
+                    $this->db->select('u.user_fullname, a.major, a.office_loc');
+                    $this->db->from('users u, advisor a');
+                    $this->db->where('a.user_id = u.user_id'); 
+                    $query = $this->db->get();
+                    ?>
 
-                      <?php foreach ($alladvisors as $currentRow): ?>
+                    <tbody>
+                      
+                      <?php foreach ($query->result() as $row): ?>
 
                       <tr>
-                        <td><?php echo $currentRow->FirstName ?></td>
-                        <td><?php echo $currentRow->LastName ?></td>
-                        <td><?php echo $currentRow->Department ?></td>
+                        <td><?php echo $row->user_fullname ?></td>
+                        <td><?php echo $row->major ?></td>
+                        <td><?php echo $row->office_loc ?></td>
                       </tr>
                         
                       <?php endforeach ?>

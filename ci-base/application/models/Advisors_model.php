@@ -24,7 +24,7 @@ class Advisors_model extends CI_Model
 	}
 
 		function getAll() {
-		$query = $this->db->get('advisors');
+		$query = $this->db->get('advisor');
 		return $query->result();
 	}
 
