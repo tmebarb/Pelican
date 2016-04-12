@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2016 at 04:54 PM
+-- Generation Time: Apr 12, 2016 at 05:26 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `advisee` (
   `student_id` int(11) NOT NULL,
   `major` varchar(255) DEFAULT NULL,
-  `class` varchar(255) DEFAULT NULL,
+  `classification` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,7 +37,7 @@ CREATE TABLE `advisee` (
 -- Dumping data for table `advisee`
 --
 
-INSERT INTO `advisee` (`student_id`, `major`, `class`, `user_id`) VALUES
+INSERT INTO `advisee` (`student_id`, `major`, `classification`, `user_id`) VALUES
 (1, NULL, NULL, 12346),
 (2, NULL, NULL, 12369),
 (999, NULL, NULL, 0);
@@ -58,6 +58,7 @@ CREATE TABLE `advises` (
 --
 
 INSERT INTO `advises` (`advisor_id`, `student_id`) VALUES
+(1, 12370),
 (100001, 1),
 (100001, 2);
 
@@ -83,7 +84,8 @@ INSERT INTO `advisor` (`advisor_id`, `major`, `office_loc`, `user_id`) VALUES
 (2, NULL, NULL, 12365),
 (3, NULL, NULL, 12366),
 (100001, 'hey', NULL, 12367),
-(100002, NULL, NULL, 12368);
+(100002, NULL, NULL, 12368),
+(100003, NULL, NULL, 12370);
 
 -- --------------------------------------------------------
 
@@ -156,7 +158,8 @@ INSERT INTO `users` (`user_id`, `user_fullname`, `user_name`, `user_password`, `
 (12366, 'fuck', 'fuck', '99754106633f94d350db34d548d6091a', NULL, 'advisor', ''),
 (12367, 'sammy', 'sammy', '4385695633f8c6c8ab52592092cecf04', NULL, 'advisor', ''),
 (12368, 'bam', 'bam', 'e5bea9a864d5b94d76ebdaaf43d66f4d', NULL, 'advisor', ''),
-(12369, 'new', 'new', '22af645d1859cb5ca6da0c484f1f37ea', NULL, 'advisee', '');
+(12369, 'new', 'new', '22af645d1859cb5ca6da0c484f1f37ea', NULL, 'advisee', ''),
+(12370, 'james', 'james', 'b4cc344d25a2efe540adbf2678e2304c', NULL, 'advisor', '');
 
 --
 -- Indexes for dumped tables
@@ -175,7 +178,9 @@ ALTER TABLE `advisee`
 ALTER TABLE `advises`
   ADD PRIMARY KEY (`advisor_id`,`student_id`),
   ADD UNIQUE KEY `student_id_2` (`student_id`),
-  ADD KEY `student_id` (`student_id`);
+  ADD UNIQUE KEY `student_id_4` (`student_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `student_id_3` (`student_id`);
 
 --
 -- Indexes for table `advisor`
@@ -211,7 +216,7 @@ ALTER TABLE `advisee`
 -- AUTO_INCREMENT for table `advisor`
 --
 ALTER TABLE `advisor`
-  MODIFY `advisor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100003;
+  MODIFY `advisor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100004;
 --
 -- AUTO_INCREMENT for table `timeslots`
 --
@@ -221,17 +226,10 @@ ALTER TABLE `timeslots`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12370;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12371;
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `advises`
---
-ALTER TABLE `advises`
-  ADD CONSTRAINT `advises_ibfk_1` FOREIGN KEY (`advisor_id`) REFERENCES `advisor` (`advisor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `advises_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `advisee` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `advisor`
