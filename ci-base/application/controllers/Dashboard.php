@@ -7,6 +7,7 @@
 			$this->load->model('Users_model');
 			$this->load->model('Advisees_model');
 			$this->load->model('Advisors_model');
+			$this->load->model('Staff_worker_model');
 			$this->load->helper(array('form'));
 			$this->load->library('form_validation');
 			$this->load->helper('url');
@@ -27,7 +28,7 @@
 			$this->breadcrumbs->push('Advisees', '/advisees');
 			$this->breadcrumbs->push('List Advisees', 'adviseelist');
 			$this->breadcrumbs->unshift('Home', '/');
-			$data = array('alladvisees' => $this->Advisees_model->getAll(), 'view'=> 'admin-template/db');
+			$data = array('alladvisees' => $this->Users_model->getallusers(), 'view'=> 'admin-template/db');
 
 			$this->load->view('admin', $data);
 
@@ -91,6 +92,25 @@
 			$data = array('view'=> 'calender');
 
 			$this->load->view('admin', $data);
+		}
+
+		function advisorToAdvisee(){ //pretty rough and doesn't follow standards, but allows linking of advisors to advisees
+			
+			$this->load->view('Advisor_to_advisee');
+
+		}
+
+		function advisorAdviseeMatch(){ 
+			$advisorID= $this->input->post('advisorID');
+			$adviseeID= $this->input->post('adviseeID');
+			$data=array(
+				'student_id'=>$adviseeID,
+				'advisor_id'=>$advisorID
+				);
+			$this->Staff_worker_model->assignTo($data);
+			
+			
+
 		}
 
 	}
