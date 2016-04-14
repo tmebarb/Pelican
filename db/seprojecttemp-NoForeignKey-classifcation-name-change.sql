@@ -107,6 +107,16 @@ CREATE TABLE `timeslots` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `calendar`
+--
+CREATE TABLE 'calendar'(
+  'date' date NOT NULL,
+  'event' text NOT NULL
+  )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
