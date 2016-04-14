@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <!--================================================================================
-  Item Name: Materialize - Material Design Admin Template
-  Version: 1.0
-  Author: GeeksLabs
-  Author URL: http://www.themeforest.net/user/geekslabs
+	Item Name: Materialize - Material Design Admin Template
+	Version: 1.0
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 
 <head>
@@ -16,7 +15,7 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
   <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-  <title>Forms Layouts | Pelican</title>
+  <title>Cards | Pelican</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -87,8 +86,7 @@
     <!-- START WRAPPER -->
     <div class="wrapper">
 
-      <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+    
       <!-- START CONTENT -->
       <section id="content">
 
@@ -97,13 +95,13 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Forms</h5>
+                <h5 class="breadcrumbs-title">Cards</h5>
                 <ol class="breadcrumb">
-                  <li><a href="index.html">Dashboard</a>
+                  <li><a href="dashboard">Dashboard</a>
                   </li>
-                  <li><a href="#">Forms</a>
+                  <li><a href="#">Staff_member</a>
                   </li>
-                  <li class="active">Forms Layouts</li>
+                  <li class="active">Success</li>
                 </ol>
               </div>
             </div>
@@ -114,74 +112,49 @@
 
         <!--start container-->
         <div class="container">
-          <div class="section">
-
-            <p class="caption">Includes predefined classes for easy layout options.</p>
-
-            <div class="divider"></div>
-            <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
-            <div id="basic-form" class="section">
-            	<?php echo form_open('Staff_member/advisorAdviseeMatch'); ?>
-              <div class="row">
-                <div class="col s12 m12 l6">
-                  <div class="card-panel">
-                    <h4 class="header2">Basic Form</h4>
-                    <div class="row">
-                      <form class="col s12" action="Staff_member/advisorAdviseeMatch/" method="post">
-                        <div class="row">
-                          <div class="input-field col s12">
-                            
-                            <label for="advisorID">Enter Target Advisor ID</label>
-                            <?php echo form_input('advisorID', ''); ?>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="input-field col s12">
-                           
-                            <label for="adviseeID">Enter ID of Advisee You would like assign to the advisor</label>
-                            <?php echo form_input('adviseeID', ''); ?>
-                            
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right"
-                              	<?php echo form_submit('submit' , 'submit'); ?>
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                              <?php echo form_close();?>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
+         
+          <div class="divider"></div>
+          <!--Basic Card-->
+          <div id="basic-card" class="section">
+          
+              <div class="col s12 m8 l9">
+                <div class="row">
+                  <div class="col s12 m8 l9">
+                    <div class="card  light-blue">
+                      <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <p> Success! Advisee with number <?php echo $student_id;?> Was assigned to advisor with number <?php echo $advisor_id;?></p>
+                      </div>
+                      <div class="card-action">
+                        <a href="#" class="lime-text text-accent-1">This is a link</a>
+                        <a href="#" class="lime-text text-accent-1">This is a link</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-            </div>
-        </div>
-    </div>
                 
-  <!-- END CONTENT -->
+                  
+                 
+            </div>
+          </div>
+
+         
+               
+              
+          
 </div>
-  <!-- END WRAPPER -->
+        </div>
+        <!--end container-->
+
+      </section>
+      <!-- END CONTENT -->
+
+      
+    </div>
+    <!-- END WRAPPER -->
 
   </div>
   <!-- END MAIN -->
 
-
-
-  <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-  <!-- START FOOTER -->
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-        <span>Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
-        </div>
-    </div>
-  </footer>
-  <!-- END FOOTER -->
 
 
 
@@ -203,3 +176,5 @@
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
     
+</body>
+

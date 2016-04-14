@@ -56,6 +56,7 @@
 				   		$this->session->set_userdata('user_type', element('user_type', $array));
 				   		$this->session->set_userdata('user_fullname', element('user_fullname', $array));
 				   		$this->session->set_userdata('student_id', element('student_id', $array));
+				   		$this->session->set_userdata('advisor_id'), element('advisor_id', $array));
 			   		}
 			   	}
 
