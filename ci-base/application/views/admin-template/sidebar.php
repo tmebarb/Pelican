@@ -132,7 +132,7 @@
 						if($this->session->userdata('user_type') =="staffMember") {
 					?>
 
-					<li class="bold"><a href="<?php echo base_url() ?>dashboard/db"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Assign Advisees</a>
+					<li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Assign Advisees</a>
                     </li>
 					<?php } ?>	
 					<li class="bold"><a href="<?php echo base_url() ?>login/logout"><i class="mdi-action-settings-power"></i> Logout</a>
