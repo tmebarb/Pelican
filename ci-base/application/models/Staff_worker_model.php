@@ -11,9 +11,10 @@ class Staff_worker_model extends CI_Model
 	}
 
 	function assignTo($advisor_id, $advisee_id) {
-		$OB=array('student_id'=>$advisee_id);
-		$this->db->Where('student_id', $advisee_id);
-		$this->db->update('Advisee', $OB); 
+		$OB=array('advisor_id'=>$advisor_id);
+		//$this->db->from('advisee');
+		$this->db->from('advisee')->Where('student_id', $advisee_id);
+		$this->db->update('advisee', $OB); 
 		
 	}
 }

@@ -32,7 +32,7 @@ function dashboard(){
 }
 
 function advisorAdviseeMatch(){
-
+//if($this->session->userdata->user)
 			$advisorID= $this->input->post('advisorID');
 			$adviseeID= $this->input->post('adviseeID');
 			$data = array('view' => 'advisor_Advisee_Match',

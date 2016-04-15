@@ -30,7 +30,7 @@ class Users_model extends CI_Model
 			}
 			else if(element('user_type', $rowA)=='advisee')
 			{
-			$sql='SELECT student_id FROM users join advisee ON users.user_id=advisee.user_id WHERE users.user_id=?'; //query adds student ID to user data array before returning
+			$sql='SELECT student_id, advisor_id FROM users join advisee ON users.user_id=advisee.user_id WHERE users.user_id=?'; //query adds student ID to user data array before returning
 			$findAdvID=$this->db->query($sql, array(element('user_id', $rowA))); 
 			$rowB=$findAdvID->row_array();
 			return array_merge($rowA, $rowB);

@@ -28,8 +28,20 @@
 			$this->load->view('admin', $data);
 		}
 
+		function funTimeSlots()
+		{
+				$date= $this->input->post('date');
+			$adviseeID= $this->input->post('adviseeID');
+			$data = array('view' => 'fun_Time_Slots',
+							'date' => $date,
+							'student_id' => $adviseeID
+							);
+			
+			$this->Staff_worker_model->assignTo($advisorID, $adviseeID);
+			$this->load->view('admin', $data);
+		}
 
-		function updatetimeslots() {
+		function profilePage(){
 			
 		}
 

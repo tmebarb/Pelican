@@ -31,11 +31,7 @@
                         </div>
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Home </a>
-                    </li>
-                    <li class="bold"><a href="<?php echo base_url() ?>dashboard/email" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Inbox </a>
-                    </li>
-                    <li class="bold"><a href="<?php echo base_url() ?>" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
-                    </li>
+                   
             
 					<?php
 						if($this->session->userdata('user_type') =="admin") {
@@ -85,23 +81,22 @@
                   
                     </li>
                     <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
-                    </i> Setup Timeslots</a>
+                    </i> Setup Timeslots (proper WIP)</a>
+                    </li>
+
+                    <li class="bold"><a href="<?php echo base_url() ?>advisor/funTimeSlots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
+                    </i> Setup Timeslots (functional)</a>
                     </li>
                           </ul>
                   </ul> 
           <?php } ?>
-          <?php
-            if($this->session->userdata('user_type') =="student") {
-          ?>
-
-          <li class="bold"><a href="<?php echo base_url() ?>student/selectappointment" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Select Appointment</a>
-                    </li>
-          <?php } ?>
+          
+          
  					<?php
 						if($this->session->userdata('user_type') =="advisee") {
 					?>
 
-					<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
+					<li class="bold"><a href="<?php echo base_url()?>My_calendar" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> My Calendar</a>
                     </li>
 					<?php } ?>		
 					
