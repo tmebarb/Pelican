@@ -52,7 +52,7 @@
                                       <li><a href="css-shadow.html">Available Slots</a>
                                       </li>
                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
-									 </li>   
+                                  </li>   
                                   </ul>
 
                               </div>
@@ -65,30 +65,39 @@
 
 					<?php } ?>
           <?php
-            if($this->session->userdata('user_type') =="advisor") {
+            if($this->session->userdata('user_type') =="advisor") { //contains the advisor sidebar information
           ?>
                     <li class="no-padding">
-					<ul class="collapsible collapsible-accordion">
-						<li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
-							<div class="collapsible-body">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
+                          <div class="collapsible-body">
                               <ul>
-									<li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
-									</li> 
-								</ul>
-							</div>
-						</li> 
-					  <li class="bold"><a href="<?php echo base_url() ?>advisor/calender"><i class="mdi-action-view-headline"></i> Make Schedule</a>
-					 </li>
-			<?php } ?>
-			
-			<?php
+                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
+                                  </li> 
+                              </ul>
+                          </div>
+                      </li> 
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Scheduling</a>
+                        <div class="collapsible-body">
+                          <ul>
+                            
+                    <li class="bold"><a href="<?php echo base_url() ?>advisor/calender"><i class="mdi-action-view-headline"></i> Make Schedule</a>
+                  
+                    </li>
+                    <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
+                    </i> Setup Timeslots</a>
+                    </li>
+                          </ul>
+                  </ul> 
+          <?php } ?>
+          <?php
             if($this->session->userdata('user_type') =="student") {
-			?>
-				<li class="bold"><a href="<?php echo base_url() ?>student/selectappointment" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Select Appointment</a>
-            </li>
-			<?php } ?>
-		  
-			<?php
+          ?>
+
+          <li class="bold"><a href="<?php echo base_url() ?>student/selectappointment" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Select Appointment</a>
+                    </li>
+          <?php } ?>
+ 					<?php
 						if($this->session->userdata('user_type') =="advisee") {
 					?>
 
@@ -104,14 +113,7 @@
                     </li>
           <?php } ?>
 
-          <?php
-            if($this->session->userdata('user_type') =="advisor") {
-          ?>
-
-				<li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i> Setup Timeslots</a>
-                </li>
-          <?php } ?>
-
+      
           <?php
             if($this->session->userdata('user_type') =="admin") {
              ?>
@@ -125,41 +127,16 @@
                               </ul>
                           </div>
                       </li> 
-        <?php } ?>	
-		
-		
-		<?php
-            if($this->session->userdata('user_type') =="staffWorker") {
-             ?>
-               <li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Advisee Assignments</a>
-              </li>
-              
-               <li class="no-padding">
-                  <ul class="collapsible collapsible-accordion">
-                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Reports</a>
-                          <div class="collapsible-body">
-                              <ul>
-                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan"  >List All Advisees</a>
-                                  </li> 
-                                  <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan"  >List All Advisors</a>
-                                  </li> 
-                              </ul>
-                          </div>
-                      </li> 
-        <?php } ?>
+           <?php } ?>					
+					<?php
+						if($this->session->userdata('user_type') =="staffMember") {
+					?>
 
-		   
-		<?php
-			if($this->session->userdata('user_type') =="staffMember") {
-		?>
-			<li class="bold"><a href="app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> Schedule Appointment</a>
-            </li>
-			
-		
-		
-		<?php } ?>	
-				<li class="bold"><a href="<?php echo base_url() ?>login/logout"><i class="mdi-action-settings-power"></i> Logout</a>
-                </li>
+					<li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Assign Advisees</a>
+                    </li>
+					<?php } ?>	
+					<li class="bold"><a href="<?php echo base_url() ?>login/logout"><i class="mdi-action-settings-power"></i> Logout</a>
+                    </li>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
             </aside>
             <!-- END LEFT SIDEBAR NAV-->
