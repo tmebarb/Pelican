@@ -8,6 +8,14 @@ class Advisors_model extends CI_Model
 		parent::__construct();
 	}
 
+	function change_Major($adviseeNewMajor, $advisee_id) {
+		$OB=array('major'=>$adviseeNewMajor);
+		$this->db->from('advisee')->where('student_id', $advisee_id);
+		$this->db->update('advisee', $OB); 
+		
+	}
+
+
 	function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
 	{
 		$data = array(
@@ -175,5 +183,7 @@ $this->db->insert('users', $data);
 		
 		$this->db->insert('users', $data); 
 	}
+
+	
 
 }}

@@ -18,8 +18,8 @@
                   <table class="striped">
                     <thead>
                       <tr>
-                        <th data-field="id">First Name</th>
-                        <th data-field="name">Last Name</th>
+                        <th data-field="id">Name</th>
+                        <th data-field="name">Major</th>
                         <th data-field="price">Department</th>
                       </tr>
                     </thead>

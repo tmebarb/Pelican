@@ -45,6 +45,28 @@
 			
 		}
 
+		function initChangeMajor()
+		{
+
+			$data = array('view' => 'ChangeMajorForm');
+			$this->load->view('admin', $data);
+		}
+
+		function changeMajor()
+		{
+			$newMajor= $this->input->post('adviseeNewMajor');
+			$adviseeID= $this->input->post('adviseeID');
+			$data = array('view' => 'changeMajorSuccess',
+							'adviseeNewMajor' => $newMajor,
+							'student_id' => $adviseeID
+							);
+			
+			$this->Advisors_model->change_Major($newMajor, $adviseeID);
+			$this->load->view('admin', $data);
+
+		}
+
+
 	}
 
 ?>
