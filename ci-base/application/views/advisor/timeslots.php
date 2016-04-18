@@ -109,14 +109,32 @@
 			<div class="input-field col s3">
 				<p class="right label" style="text-align: right;color:#9e9e9e;">Monday</p>
 			</div>
-			<div class="input-field col s3">
-				<input id="mondayStart" type="text" class="time input-field ui-timepicker-input" name="mondaystart[]" autocomplete="off">
-				<label for="mondayStart">Start Time</label>
-			</div>
-			<div class="input-field col s3">
-				<input id="mondayEnd" type="text" class="time input-field ui-timepicker-input" name="mondayend[]" autocomplete="off">
-				<label for="mondayEnd">End Time</label>
-			</div>
+                <?php if (empty($mondayStartSlots)) { ?> 
+    			<div class="input-field col s3">
+                    <input id="mondayStart" type="text" class="time input-field ui-timepicker-input" name="mondaystart[]" autocomplete="off">
+                    <label for="mondayStart">Start Time</label>
+    			</div>
+    			<div class="input-field col s3">
+    				<input id="mondayEnd" type="text" class="time input-field ui-timepicker-input" name="mondayend[]" autocomplete="off">
+    				<label for="mondayEnd">End Time</label>
+    			</div>
+                <?php } else { 
+                    foreach ($mondayStartSlots as $index => $startTime) {
+                           ?>
+                <div class="input-field col s3">
+                    <input id="mondayStart" type="text" class="time input-field ui-timepicker-input" name="mondaystart[]" autocomplete="off" value="<?php echo $startTime ?>">
+                    <label for="mondayStart">Start Time</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="mondayEnd" type="text" class="time input-field ui-timepicker-input" name="mondayend[]" autocomplete="off" value="<?php echo $mondayEndSlots[$index] ?>">
+                    <label for="mondayEnd">End Time</label>
+                </div>
+
+
+                           <?php
+                        }
+                    }
+                    ?>
 			<div class="input-field col s3">
 				<button class="btn waves-effect waves-light red darken-4" type="submit" id="mondayadd" name="action">Add</button>
 			</div>

@@ -31,7 +31,7 @@ class Advisors_model extends CI_Model
 		$this->advisors->insert('advisor', $data); 
 	}
 
-		function getAll() {
+	function getAll() {
 		$query = $this->db->get('advisor');
 		return $query->result();
 	}
@@ -70,8 +70,7 @@ class Advisors_model extends CI_Model
 	}
 	
 
-		function fillDatabase()
-		{
+	function fillDatabase() {
 		$x=0;
 		$username='90';
 		$password='0291301293';
@@ -89,7 +88,7 @@ class Advisors_model extends CI_Model
 			$password++;
 			$user_fullname++;
 			$x++;
-$this->db->insert('users', $data); 
+			$this->db->insert('users', $data); 
 			$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
@@ -216,6 +215,7 @@ $this->db->insert('users', $data);
 
 		
 		$this->db->insert('users', $data); 
-	}
+		}
 
+	}
 }

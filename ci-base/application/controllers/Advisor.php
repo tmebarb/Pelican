@@ -28,6 +28,38 @@
 			//$data = array('allusers' => $this->Users_model->getallusers(), 'view'=> 'student/selectappointment');
 			$advisor = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'));
 			$sessiondetails = $this->Advisors_model->getActiveAdvisingSessions($advisor->advisor_id);
+			$allSlots = $this->Slots_model->getslotsbyadvisor($advisor->advisor_id);
+			
+			$mondayStartSlots = array();
+			$mondayEndSlots = array();
+			$tuesdayStartSlots = array();
+			$tuesdayEndSlots = array();
+			$WednesdayStartSlots = array();
+			$WednesdayEndSlots = array();
+			$thrdayStartSlots = array();
+			$thrdayEndSlots = array();
+			$fridayStartSlots = array();
+			$fridayEndSlots = array();
+
+			foreach ($allSlots as $slot) {
+				if ($slot->day == 'monday') {
+					array_push($mondayStartSlots, $slot->start_time);
+					array_push($mondayEndSlots, $slot->end_time);
+				} else if ($slot->day == 'tuesday') {
+					array_push($tuesdayStartSlots, $slot->start_time);
+					array_push($tuesdayEndSlots, $slot->end_time);
+				} else if ($slot->day == 'wednesday') {
+					array_push($WednesdayStartSlots, $slot->start_time);
+					array_push($WednesdayEndSlots, $slot->end_time);
+				} else if ($slot->day == 'thrday') {
+					array_push($thrdayStartSlots, $slot->start_time);
+					array_push($thrdayStartSlots, $slot->end_time);
+				} else if ($slot->day == 'friday') {
+					array_push($fridayStartSlots, $slot->start_time);
+					array_push($fridayEndSlots, $slot->end_time);
+				}
+			}
+			
 			//echo ($advisor==null);
 			//if($sessiondetails!=null) {
 			//	$session_id = $sessiondetails->session_id;
@@ -35,8 +67,19 @@
 			//}
 			
 			$data = array('view' => 'advisor/timeslots',
-						  'sessiondetails' => $sessiondetails);
-
+						  'sessiondetails' => $sessiondetails,
+							'mondayStartSlots' => $mondayStartSlots,
+							'mondayEndSlots' => $mondayEndSlots,
+							'tuesdayStartSlots' => $tuesdayStartSlots,
+							'tuesdayEndSlots' => $tuesdayEndSlots,
+							'WednesdayStartSlots' => $WednesdayStartSlots,
+							'WednesdayEndSlots' => $WednesdayEndSlots,
+							'thrdayStartSlots' => $thrdayStartSlots,
+							'thrdayEndSlots' => $thrdayEndSlots,
+							'fridayStartSlots' => $fridayStartSlots,
+							'fridayEndSlots' => $fridayEndSlots,
+							);
+			
 
 			$this->load->view('admin', $data);
 		}
@@ -46,7 +89,7 @@
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
 			$session_id = $this->input->post('session_id');
-			$advisor_id = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id;
+			//$advisor_id = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id;
 			
 			$mondaystart = $this->input->post('mondaystart');
 			$mondayend = $this->input->post('mondayend');
@@ -72,9 +115,9 @@
 
 
 			if(!$session_id)
-				$this->Advisors_model->startSession($startdate, $enddate, $advisor_id);
+				$this->Advisors_model->startSession($startdate, $enddate, $advisor);
 			else
-				$this->Advisors_model->udpateSession($session_id, $startdate, $enddate, $advisor_id);
+				$this->Advisors_model->udpateSession($session_id, $startdate, $enddate, $advisor);
 
 			$this->session->set_flashdata('success_msg', 'Timeslot details have been updated!<br/><br/>');
 //		   	redirect('advisor/timeslots');
