@@ -37,7 +37,50 @@
 			);
 		echo form_input($data);
 		?>
+
+
 		<br>
+		<label for="CWID">
+			CWID: 
+		</label>
+		<?php
+		$data = array(
+			'name'        => 'CWID',
+			'id'          => 'CWID',
+			'style'		=> 'margin-top: 10px; margin-left: 6px'
+			);
+		echo form_input($data);
+		?>
+		<br>
+
+		<br>
+		<label for="email">
+			CWID: 
+		</label>
+		<?php
+		$data = array(
+			'name'        => 'email',
+			'id'          => 'email',
+			'style'		=> 'margin-top: 10px; margin-left: 6px'
+			);
+		echo form_input($data);
+		?>
+		<br>
+
+		<label for="user_type">
+			Type: 
+		</label>
+		<?php
+		$data = array(
+			'name'        => 'user_type',
+			'id'          => 'user_type',
+			'style'		=> 'margin-top: 10px; margin-left: 6px'
+			);
+		echo form_input($data);
+		?>
+		<br>
+
+
 		<label for="password">
 			Password: 
 		</label>
@@ -62,18 +105,6 @@
 
 		?>
 		
-		<br>
-		<label for="user_type">
-			Type: 
-		</label>
-		<?php
-		$data = array(
-			'name'        => 'user_type',
-			'id'          => 'user_type',
-			'style'		=> 'margin-top: 10px; margin-left: 6px'
-			);
-		echo form_input($data);
-		?>
 		<br>
 	</div>
 </form>
