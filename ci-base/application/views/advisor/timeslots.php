@@ -1,4 +1,4 @@
-<form action="">
+<form action="<?php echo base_url() ?>advisor/updatetimeslots" method="post">
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -78,18 +78,21 @@
 
 <div class="container">
     <div class="section">
+        <?php if ($sessiondetails!=null): ?>
+            <input type="hidden" name="session_id" value="<?php echo $sessiondetails->session_id ?>">
+        <?php endif ?>
         <div class="row">
         <div class="input-field col s2">
         <p class="right label" style="text-align: right;color:#9e9e9e;">Start Date:</p>
         </div>
         <div class="input-field col s2">
-        <input type="date" name="startdate" autocomplete="off">
+        <input type="date" name="startdate" autocomplete="off" value='<?php echo ($sessiondetails) ?  $sessiondetails->startdate: "" ; ?>'>
         </div>
         <div class="input-field col s3">
         <p class="right label" style="text-align: right;color:#9e9e9e;">End Date:</p>
         </div>
         <div class="input-field col s3">
-        <input type="date" name="enddate" autocomplete="off">
+        <input type="date" name="enddate" autocomplete="off" value='<?php echo ($sessiondetails) ?  $sessiondetails->enddate: "" ; ?>'>
         </div>
         </div>
     <div id="datefields">
@@ -271,31 +274,31 @@
 
 
 <div class="container">
-	<div class="section">
-		<div class="row">
-			<div class="input-field col s3">
-				<p class="right label" style="text-align: right;color:#9e9e9e;">Thursday</p>
-			</div>
-			<div class="input-field col s3">
-				<input id="ThrStart" type="text" class="time input-field ui-timepicker-input" name="thrstart[]" autocomplete="off">
-				<label for="ThrStart">Start Time</label>
-			</div>
-			<div class="input-field col s3">
-				<input id="ThrEnd" type="text" class="time input-field ui-timepicker-input" name="thrend[]" autocomplete="off">
-				<label for="ThrEnd">End Time</label>
-			</div>
-			<div class="input-field col s3">
-				<button class="btn waves-effect waves-light red darken-4" type="submit" name="action" id="thradd">Add</button>
-			</div>
-		</div>
-		<div id="thrfields">
-		</div>
+    <div class="section">
+        <div class="row">
+            <div class="input-field col s3">
+                <p class="right label" style="text-align: right;color:#9e9e9e;">Thursday</p>
+            </div>
+            <div class="input-field col s3">
+                <input id="ThrStart" type="text" class="time input-field ui-timepicker-input" name="thrstart[]" autocomplete="off">
+                <label for="ThrStart">Start Time</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="ThrEnd" type="text" class="time input-field ui-timepicker-input" name="thrend[]" autocomplete="off">
+                <label for="ThrEnd">End Time</label>
+            </div>
+            <div class="input-field col s3">
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" id="thradd">Add</button>
+            </div>
+        </div>
+        <div id="thrfields">
+        </div>
 
-	</div>
+    </div>
 </div>
 
 <script>
-	$(document).ready(function() { //maximum input boxes allowed
+    $(document).ready(function() { //maximum input boxes allowed
     var wrapper         = $("#thrfields"); //Fields wrapper
     var add_button      = $("#thradd"); //Add button ID
     
@@ -307,72 +310,74 @@
             $('#ThrStart'+x+'').timepicker({  });
             $('#ThrEnd'+x+'').timepicker({  });
             $('#ThrEnd'+x+'').focusout(function() {
-            	if (!$('#ThrStart'+x+'').val()) {
-            		alert("Enter Start time first")
-            		$('#ThrEnd'+x+'').val("")
-            	} else if ($('#ThrStart'+x+'').val() >= $('#ThrEnd'+x+'').val()) {
-            		alert("Start time should before than end time")
-            		$('#ThrEnd'+x+'').val("")
-            	}
+                if (!$('#ThrStart'+x+'').val()) {
+                    alert("Enter Start time first")
+                    $('#ThrEnd'+x+'').val("")
+                } else if ($('#ThrStart'+x+'').val() >= $('#ThrEnd'+x+'').val()) {
+                    alert("Start time should before than end time")
+                    $('#ThrEnd'+x+'').val("")
+                }
             });
         });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-    	e.preventDefault(); $(this).parent('div').remove();
-    	x--;
+        e.preventDefault(); $(this).parent('div').remove();
+        x--;
     })
 });
 </script>
-<div class="container">
-	<div class="section">
-		<div class="row">
-			<div class="input-field col s3">
-				<p class="right label" style="text-align: right;color:#9e9e9e;">Friday</p>
-			</div>
-			<div class="input-field col s3">
-				<input id="FirStart" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off">
-				<label for="FirStart">Start Time</label>
-			</div>
-			<div class="input-field col s3">
-				<input id="FirEnd" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off">
-				<label for="FirEnd">End Time</label>
-			</div>
-			<div class="input-field col s3">
-				<button class="btn waves-effect waves-light red darken-4" type="submit" name="action" add="friAdd">Add</button>
-			</div> name="friend[]"
-		</div>
-		<div id="frifields">
-		</div>
 
-	</div>
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="input-field col s3">
+                <p class="right label" style="text-align: right;color:#9e9e9e;">Friday</p>
+            </div>
+            <div class="input-field col s3">
+                <input id="FriStart" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off">
+                <label for="FriStart">Start Time</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="FriEnd" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off">
+                <label for="FriEnd">End Time</label>
+            </div>
+            <div class="input-field col s3">
+                <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" id="friadd">Add</button>
+            </div>
+        </div>
+        <div id="frifields">
+        </div>
+
+    </div>
 </div>
 
 <script>
-	$(document).ready(function() { //maximum input boxes allowed
+    $(document).ready(function() { //maximum input boxes allowed
     var wrapper         = $("#frifields"); //Fields wrapper
-    var add_button      = $("#friAdd"); //Add button ID
+    var add_button      = $("#friadd"); //Add button ID
     
     var x = 1; //initlal text box count
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault(); //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="row"><div class="col s3"><p style="display:hidden"></p></div><div class="input-field col s3"><input id="FirStart'+x+'" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off"><label for="FirStart'+x+'">Start Time</label></div><div class="input-field col s3"><input id="FirEnd'+x+'" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off"><label for="FirEnd'+x+'">End Time</label></div><button class="btn waves-effect waves-light red darken-4 remove_field" style="maring-top: 30px;">Remove</button></div>'); //add input box
-            $('#FirStart'+x+'').timepicker({  });
-            $('#FirEnd'+x+'').timepicker({  });
-            $('#FirEnd'+x+'').focusout(function() {
-            	if (!$('#FirStart'+x+'').val()) {
-            		alert("Enter Start time first")
-            		$('#FirEnd'+x+'').val("")
-            	} else if ($('#FirStart'+x+'').val() >= $('#FirEnd'+x+'').val()) {
-            		alert("Start time should before than end time")
-            		$('#FirEnd'+x+'').val("")
-            	}
+            $(wrapper).append('<div class="row"><div class="col s3"><p style="display:hidden"></p></div><div class="input-field col s3"><input id="FriStart'+x+'" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off"><label for="ThrStFriStartart'+x+'">Start Time</label></div><div class="input-field col s3"><input id="FriEnd'+x+'" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off"><label for="FriEnd'+x+'">End Time</label></div><button class="btn waves-effect waves-light red darken-4 remove_field" style="maring-top: 30px;">Remove</button></div>'); //add input box
+            $('#FriStart'+x+'').timepicker({  });
+            $('#FriEnd'+x+'').timepicker({  });
+            $('#FriEnd'+x+'').focusout(function() {
+                if (!$('#FriStart'+x+'').val()) {
+                    alert("Enter Start time first")
+                    $('#FriEnd'+x+'').val("")
+                } else if ($('#FriStart'+x+'').val() >= $('#FriEnd'+x+'').val()) {
+                    alert("Start time should before than end time")
+                    $('#FriEnd'+x+'').val("")
+                }
             });
         });
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-    	e.preventDefault(); $(this).parent('div').remove();
-    	x--;
+        e.preventDefault(); $(this).parent('div').remove();
+        x--;
     })
 });
 </script>

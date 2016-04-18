@@ -32,9 +32,43 @@ class Advisors_model extends CI_Model
 	}
 
 		function getAll() {
-		$query = $this->db->get('advisors');
+		$query = $this->db->get('advisor');
 		return $query->result();
 	}
+
+	function getAdvisorByUserId($user_id) {
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get('advisor');
+		if($query->num_rows() > 0)
+			return $query->row();
+		else
+			return null;
+	}
+
+	function startSession($startdate, $enddate, $advisor_id) {
+		$data = array('startdate' => $startdate,
+						'enddate' => $enddate,
+						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id,
+						'type'=>'1'  );
+		$this->db->insert('active_advising_sessions', $data);
+	}
+
+	function udpateSession($session_id, $startdate, $enddate, $advisor_id) {
+		$data = array('startdate' => $startdate,
+						'enddate' => $enddate,
+						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id,
+						'type'=>'1'  );
+		$this->db->where('session_id', $session_id);
+		$this->db->update('active_advising_sessions', $data);
+	}
+
+	function getActiveAdvisingSessions($advisor_id) {
+		$this->db->where('advisor_id', $advisor_id);
+		$this->db->where('type', '1');
+		$query = $this->db->get('active_advising_sessions');
+		return $query->row();
+	}
+	
 
 		function fillDatabase()
 		{
@@ -184,6 +218,4 @@ $this->db->insert('users', $data);
 		$this->db->insert('users', $data); 
 	}
 
-	
-
-}}
+}

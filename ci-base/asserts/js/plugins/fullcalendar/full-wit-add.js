@@ -40,7 +40,7 @@
     b.setMinutes(tok[1]);
     //b.setTime(b.getTime() + (6*60*60*1000));
     b.setDate(b.getDate() + 1);
-    alert(b);
+    
     //start.setHours(10);
     //alert(start);
     if (title) {

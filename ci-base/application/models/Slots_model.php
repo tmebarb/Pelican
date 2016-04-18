@@ -8,25 +8,25 @@ class Slots_model extends CI_Model
 		parent::__construct();
 	}
 
-	function addtimeslot($title, $start, $end, $advisor_id, $student_id, $day, $is_repeating, $type)
+	function addtimeslot($start, $end, $advisor_id, $student_id, $day, $is_repeating, $open)
 	{
 		$data = array(
-			'title' => $title,
-			'start' => $start,
-			'end' => $end,
+			'start_time' => $start,
+			'end_time' => $end,
 			'advisor_id'	=> $advisor_id,
 			'student_id' => $student_id,
 			'day' => $day,
 			'is_repeating' => $is_repeating,
-			'type' => $type
+			'open' => $open
 			);
 
-		$this->db->insert('slots', $data); 
+		$this->db->insert('timeslots', $data); 
 	}
 	function getslotsbyadvisor($advisor_id) {
 		$this->db->where('advisor_id', $advisor_id);
-		$query = $this->db->get();
+		$query = $this->db->get('timeslots');
 		return $query->result();
 	}
+
 
 }

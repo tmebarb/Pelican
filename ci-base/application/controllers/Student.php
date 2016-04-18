@@ -28,6 +28,19 @@
 			$this->load->view('admin', $data);
 		}
 
+		function addappointment() {
+		   	$this->breadcrumbs->push('Student', '/student');
+			$this->breadcrumbs->push('Add New Appointment', 'addappointment');
+			$this->breadcrumbs->unshift('Home', '/');
+
+			$data = array('view'=> 'student/addappointment');
+
+		}
+
+		function saveappointment ($title, $start, $end, $advisor_id, $student_id) {
+			
+		}
+
 	}
 
 ?>
