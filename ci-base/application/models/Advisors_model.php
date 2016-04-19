@@ -15,6 +15,16 @@ class Advisors_model extends CI_Model
 		
 	}
 
+	function list_Advisees($advisorID)
+	{
+		$this->db->select('u.user_fullname, a.classification, a.major, u.CWID');
+		$this->db->from('users u, advisee a');
+		$this->db->where('a.user_id = u.user_id');
+ 		$this->db->where('a.advisor_id', $advisorID);
+        $query = $this->db->get();
+        return $query->result();
+	}
+
 
 	function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
 	{
