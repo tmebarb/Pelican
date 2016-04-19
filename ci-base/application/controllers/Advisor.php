@@ -232,6 +232,15 @@
 
 		}
 
+		function listAdvisees()
+		{
+
+				$advisorID = $this->session->userdata('advisor_id');
+				$data = array('view' => 'listAdvisorsAdvisees',
+								'advisor_ID' => $this->Advisors_model->list_Advisees($advisorID));
+				$this->load->view('admin', $data);
+		}
+
 	}
 
 ?>

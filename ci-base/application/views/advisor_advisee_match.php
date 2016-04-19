@@ -126,8 +126,8 @@
                         <p> Success! Advisee with number <?php echo $student_id;?> Was assigned to advisor with number <?php echo $advisor_id;?></p>
                       </div>
                       <div class="card-action">
-                        <a href="#" class="lime-text text-accent-1">This is a link</a>
-                        <a href="#" class="lime-text text-accent-1">This is a link</a>
+                        <a href="advisorToAdvisee" class="lime-text text-accent-1">Assign Another Advisee</a>
+                        <a href="dashboard" class="lime-text text-accent-1">Home</a>
                       </div>
                     </div>
                   </div>

@@ -65,12 +65,14 @@ class Users_model extends CI_Model
 			return null;
 	}
 
-	function savesignup ($username, $password, $fullname, $user_type) {
+	function savesignup ($username, $password, $fullname, $user_type, $CWID, $email) {
 		$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
 			'user_fullname' => $fullname,
-			'user_type'	=> $user_type
+			'user_type'	=> $user_type,
+			'CWID' => $CWID,
+			'user_email' => $email
 			);
 		
 		$this->db->insert('users', $data); 

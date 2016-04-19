@@ -86,12 +86,15 @@
 		   		$username = $this->input->post('username');
 		   		$password = $this->input->post('password');
 		   		$fullname = $this->input->post('fullname');
+		   		$CWID = $this->input->post('CWID');
+		   		$email = $this->input->post('email');
+
 		   		$user_type = $this->input->post('user_type');
 		   		if ($this->Users_model->checkusername($username)) {
 		   			$this->session->set_flashdata('error_msg', 'Username Already Exists! <br/><br/>');
 		   			redirect('login/signup');
 		   		}
-		   		$this->Users_model->savesignup($username, md5($password), $fullname, $user_type);
+		   		$this->Users_model->savesignup($username, md5($password), $fullname, $user_type, $CWID, $email);
 		   			$this->session->set_flashdata('success_msg', 'User created! You may login. <br/><br/>');
 		   			redirect('login');
 		   	}
