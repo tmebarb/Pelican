@@ -1,0 +1,27 @@
+
+        <script>
+            $(docucment).ready(function() { 
+
+                $('<?php echo "#WedStartwith".$index?>').timepicker({  });
+                $('<?php echo "#WedEndwith".$index?>').timepicker({  });
+                
+                $('<?php echo "#WedEndwith".$index?>').focusout(function() {
+                    if (!$('<?php echo "#WedStartwith".$index?>').val()) {
+                        alert("Enter Start time first")
+                        $('<?php echo "#WedEndwith".$index?>').val("")
+                    } else if ($('<?php echo "#WedStartwith".$index?>').val() >= $('<?php echo "#WedEndwith".$index?>').val()) {
+                        alert("Start time should before than end time")
+                        $('<?php echo "#WedEndwith".$index?>').val("")
+                    }
+                });
+                $('<?php echo "#WedStartwith".$index?>').focusout(function() {
+                    if ($('<?php echo "#WedEndwith".$index?>').val()) {
+                        if ($('<?php echo "#WedStartwith".$index?>').val() >= $('<?php echo "#WedEndwith".$index?>').val()) {
+                            alert("Start time should before than end time")
+                            $('<?php echo "#WedStartwith".$index?>').val("")
+                        }
+                    }
+                });
+
+            });
+        </script>
