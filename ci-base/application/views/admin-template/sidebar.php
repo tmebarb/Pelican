@@ -83,9 +83,11 @@
                       
                         <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
                            </i> Setup Timeslots (proper WIP)</a>
+                        <!--
                         </li>
-
+                        
                         <li class="bold"><a href="<?php echo base_url() ?>advisor/funTimeSlots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
+                          -->
                         </i> Setup Timeslots (functional)</a>
                         </li>
                       </ul>
