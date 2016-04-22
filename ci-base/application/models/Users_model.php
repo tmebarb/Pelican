@@ -141,7 +141,6 @@ class Users_model extends CI_Model
 		}
 
 		
-
 		else
 		{
 			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone');
