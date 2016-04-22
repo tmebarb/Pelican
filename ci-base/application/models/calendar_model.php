@@ -9,7 +9,7 @@ class Calendar_model extends CI_Model
 		
 		$prefs = array (
                'show_next_prev' => TRUE ,
-               'next_prev_url' => 	'http://localhost:8181/Pelican/ci-base/My_calendar/showcal'
+               'next_prev_url' => 	'http://localhost:80/Pelican/ci-base/My_calendar/showcal'
              );
 		$events = $this->get_events($year, $month);
 		$this->load->library('calendar', $prefs);

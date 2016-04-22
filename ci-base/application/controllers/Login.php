@@ -105,7 +105,7 @@
 		    $this->form_validation->set_rules('fullname', '<i>fullname</i>', 'required');
 			
 			if($this->form_validation->run() == FALSE) {
-		    	$this->load->view('signupTest');
+		    	$this->load->view('signup');
 		   	}
 		   	else {
 
@@ -118,7 +118,7 @@
 		  		$user_phone = $this->input->post('user_phone');
 		  		
 		  		
-		   		if($this->Users_model->savesignup($fullname, $username, $CWID, md5($password), $email, $user_type, $user_phone))
+		   		if($this->Users_model->savesignup($username, md5($password), $fullname, $user_type, $email,$CWID, $user_phone))
 		   		{
 		   			$this->session->set_flashdata('success_msg', 'User created! You may login. <br/><br/>');
 		   			redirect('login');
