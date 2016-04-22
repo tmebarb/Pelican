@@ -44,8 +44,12 @@ function __construct() {
 		$data=array(
 			'view' => 'my_calender_view',
 			'title'=>'My Calendar',
-			'calendar'=> $this->calendar_model->generate_calendar($year, $month));
+			'calendar'=> $this->calendar_model->generate_calendar($year, $month),
+			'show_next_prev'=>'TRUE',
+			'next_prev_url'=>base_url().'My_calendar/showcal'
+			);
 			$this->load->view('admin',$data);
+
 
 		/*$this->load->helper('url');
 		

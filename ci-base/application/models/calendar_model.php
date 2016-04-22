@@ -9,7 +9,7 @@ class Calendar_model extends CI_Model
 		
 		$prefs = array (
                'show_next_prev' => TRUE ,
-               'next_prev_url' => 	'http://localhost/Pelican/ci-base/my_calendar/showcal'
+               'next_prev_url' => 	'http://localhost:8181/Pelican/ci-base/My_calendar/showcal'
              );
 		$events = $this->get_events($year, $month);
 		$this->load->library('calendar', $prefs);
@@ -18,7 +18,7 @@ class Calendar_model extends CI_Model
 
 	function get_Events($year, $month){
 		$events = array();
-		$query = $this->db->select('date, event')->from ('calendar') -> where('advisor_id', $this->session->userdata('advisor_id'))-> get();
+		$query = $this->db->select('date, event')->from ('calendar') ->like('date', "$year-$month") -> where('advisor_id', $this->session->userdata('advisor_id'))-> get();
 		$query=$query->result();
 		foreach ($query as $row) {
 			
