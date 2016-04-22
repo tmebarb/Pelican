@@ -107,10 +107,16 @@
 				'student_id'=>$adviseeID,
 				'advisor_id'=>$advisorID
 				);
-			$this->Staff_worker_model->assignTo($data);
-			
-			
+			$this->Staff_worker_model->assignTo($data);		
+		}
 
+		//Function to view the profile page of a user - different for each user type (logic in Users_model)
+		function profilePage()
+		{
+			$userID = $this->session->userdata('user_id');
+			$userType = $this->session->userdata('user_type');
+			$data = array('view' => 'viewProfile', 'user_info' => $this->Users_model->profileInfo($userID, $userType));
+			$this->load->view('admin', $data);
 		}
 
 	}
