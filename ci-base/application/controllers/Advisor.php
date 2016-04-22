@@ -211,18 +211,20 @@
 			
 		}
 
+		//Opens the form for an Advisor to change a student's major
 		function initChangeMajor()
 		{
 
-			$data = array('view' => 'ChangeMajorForm');
+			$data = array('view' => 'advisor/ChangeMajorForm');
 			$this->load->view('admin', $data);
 		}
 
+		//Function that takes input specifying an Advisee's new major and the Advisee's id and sends it to the change_major function
 		function changeMajor()
 		{
 			$newMajor= $this->input->post('adviseeNewMajor');
 			$adviseeID= $this->input->post('adviseeID');
-			$data = array('view' => 'changeMajorSuccess',
+			$data = array('view' => 'advisor/changeMajorSuccess',
 							'adviseeNewMajor' => $newMajor,
 							'student_id' => $adviseeID
 							);

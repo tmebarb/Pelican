@@ -68,7 +68,7 @@
                       <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
                           <div class="collapsible-body">
                               <ul>
-                                  <li><a href="<?php echo base_url() ?>dashboard/db" class="waves-effect waves-cyan">List All</a>
+                                  <li><a href="<?php echo base_url() ?>Advisor/listAdvisees" class="waves-effect waves-cyan">List All</a>
                                   </li> 
                                   <li><a href="<?php echo base_url() ?>Advisor/initChangeMajor" class="waves-effect waves-cyan">Change Major</a>
                                   </li> 
