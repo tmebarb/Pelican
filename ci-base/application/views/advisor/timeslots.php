@@ -111,7 +111,63 @@
         </div>
     </div>
 
+<!--NEW START DATE/END DATE INPUT-->
+<html>
+<body>
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $("#datepicker2").datepicker({
+        dateFormat: "yy-mm-dd" 
+    });
+    $("#datepicker1").datepicker({
+        dateFormat: "yy-mm-dd", 
+        minDate:  0,
+        onSelect: function(date){            
+        var date1 = $('#datepicker1').datepicker('getDate');           
+        var date = new Date( Date.parse( date1 ) );
+        date.setDate( date.getDate());        
+        var newDate = date.toDateString(); 
+        newDate = new Date( Date.parse( newDate ) );                      
+        $('#datepicker2').datepicker("option","minDate",newDate);            
+    }
+    });
+  });
+  </script>
+</head>
+<body>
+
+<!--
+<?php echo form_open('Advisor/timeslotAddConfirm'); ?>
+-->
+<form action="Staff_member/advisorAdviseeMatch/" method="post">
+<div class="container">
+    <div class="section">
+        <div class="row">
+        <div class="input-field col s3">
+        <p class="right label" style="text-align: right;color:#9e9e9e;">Start Date: <input type="text" id="datepicker1" name="datepicker1"></p>
+        <!--<?php echo form_input('start_date', ''); ?>-->
+        </div>
+        <div class="input-field col s3">
+        <p class="right label" style="text-align: right;color:#9e9e9e;">End Date: <input type="text" id="datepicker2" name="datepicker2"></p>
+        <!--<?php echo form_input('end_date', ''); ?>-->
+        </div>
+        </div>
+        <div id="datefields">
+    </div>
+    </form>
+</body>
+</html>
+
+            <!--This is the old section for the date fields
             <div class="container">
                 <div class="section">
                     <?php if ($sessiondetails!=null): ?>
@@ -132,10 +188,11 @@
                         </div>
                     </div>
                     <div id="datefields">
-                    </div>
+                    </div> -->
 
 
-            <!-- <div class="container">
+            <!-- Not related to start date and end date fields
+            <div class="container">
                <div class="section">
                   <div class="row">
                      <div class="input-field col s3">
