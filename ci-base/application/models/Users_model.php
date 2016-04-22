@@ -10,7 +10,7 @@ class Users_model extends CI_Model
 
 	function login($username, $password)
 	{
-		$this->db->select('user_name, user_password, user_id, user_type, user_id, user_fullname');
+		$this->db->select('user_name, user_password, user_type, user_fullname, CWID, user_id');
 		$this->db->limit(1);
 
 		$this->db->from('users');
@@ -19,23 +19,18 @@ class Users_model extends CI_Model
 				
 		$query = $this->db->get();
 		$rowA=$query->row_array();
+
 		if($query->num_rows() == 1) //verifies only 1 user has the corresponding username + password pair
 		{
-			if(element('user_type', $rowA)=='advisor')
+			if(element('user_type', $rowA)=='advisee' || element('user_type', $rowA)=='student_worker')
 			{
-			$sql='SELECT advisor_id FROM users join advisor ON users.user_id=advisor.user_id WHERE users.user_id=?'; //query adds advisor ID to user data array before returning
-			$findAdvID=$this->db->query($sql, array(element('user_id', $rowA))); 
-			$rowB=$findAdvID->row_array();
+				$rowB= $this->db->select('advised_by')->from('users')->where('user_id',element('user_id', $rowA))->get()->row_array(); //query adds advisor's ID to user data array before returning
+			
 			return array_merge($rowA, $rowB);
 			}
-			else if(element('user_type', $rowA)=='advisee')
-			{
-			$sql='SELECT student_id, advisor_id FROM users join advisee ON users.user_id=advisee.user_id WHERE users.user_id=?'; //query adds student ID to user data array before returning
-			$findAdvID=$this->db->query($sql, array(element('user_id', $rowA))); 
-			$rowB=$findAdvID->row_array();
-			return array_merge($rowA, $rowB);
-			}
-			return($rowA);
+
+		return $rowA;
+				
 		}
 		else
 			return null;
@@ -48,7 +43,7 @@ class Users_model extends CI_Model
 
 		$query = $this->db->get();
 		if($query->num_rows() == 1) 
-			return $query->row();
+			return False;
 		else
 			return null;
 	}
@@ -60,46 +55,57 @@ class Users_model extends CI_Model
 
 		$query = $this->db->get();
 		if($query->num_rows() == 1) 
-			return $query->row();
+			return False;
 		else
 			return null;
 	}
 
-	function savesignup ($username, $password, $fullname, $user_type, $CWID, $email) {
+	function checkCWID($emaail) {
+		$this->db->limit(1);
+		$this->db->from('users');
+		$this->db->where('CWID', $CWID);
+
+		$query = $this->db->get();
+		if($query->num_rows() == 1) 
+			return False;
+		else
+			return null;
+	}
+
+	function savesignup ($username, $password, $fullname, $user_type, $email,$CWID, $user_phone) {
 		$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
 			'user_fullname' => $fullname,
 			'user_type'	=> $user_type,
-			'CWID' => $CWID,
-			'user_email' => $email
+			'user_email' => $email,
+			'user_phone' => $user_phone,
+			'CWID' => $CWID
 			);
 		
 		$this->db->insert('users', $data); 
-		if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds th
-		{		 					//their user_id to the appropriate role table for use with linking and sorting
-			
-			$this->db->select('user_id');
-			$this->db->from('users');
-			$this->db->where('user_name', $username);
-			$adviseeUID=$this->db->get()->row()->user_id;
-			$advisee_Data= array(
-				'user_id'=>$adviseeUID);
-			$this->db->insert('advisee', $advisee_Data);
-			}
+
+		//for development only, ideally the "roles" would mostly be defined by an admin or match up with a CWID in the database
+		if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds
+		{		 					//their CWID to the appropriate role table for use with linking and sorting
+			$data= array(
+				'CWID'=>$CWID);
+			$this->db->insert('advisee', $data);
+			return true;
+
+		}
 
 		if($user_type=='advisor')
 		{		 
+			$data= array(
+				'CWID'=>$CWID);
+			$this->db->insert('advisor', $data);
+			return true;
 
-			$this->db->select('user_id');
-			$this->db->from('users');
-			$this->db->where('user_name', $username);
-			$advisorUID=$this->db->get()->row()->user_id;
-			$advisor_Data= array(
-				'user_id'=>$advisorUID);
-			$this->db->insert('advisor', $advisor_Data);
-			}
-			unset($user_type,$username,$password,$fullname,$user_id);
+		}
+		return true;
+			//unset($user_type,$username,$password,$fullname,$user_id);
+		
 	}
 
 	function getallusers () { 
