@@ -19,49 +19,70 @@
 		function logout() {
 			$this->session->unset_userdata('id');
 			$this->session->unset_userdata('user_type');
+			$this->session->unset_userdata('password');
+			$this->session->unset_userdata('user_fullname');
+			$this->session->unset_userdata('');
    			$this->session->set_flashdata('success_msg', 'You Logged out. <br/>');
 	   		redirect('login');
 		}
 
-
+		public function password_con($str)
+			{
+				if ($str == 'test')
+				{
+					$this->form_validation->set_message('username_check', 'The %s field can not be the word "test"');
+					return FALSE;
+				}
+				else
+				{
+					return TRUE;
+				}
+			}
 		public function verify()
 		{
 
 		    $this->form_validation->set_rules('username', '<i>Username</i>', 'trim|required');
 		    $this->form_validation->set_rules('password', '<i>Password</i>', 'trim|required');
+		    
+
 			$array=array();
 		 	if($this->form_validation->run() == FALSE) {
 		    	$this->load->view('page-login');
-		   	} else {
+		   	} 
+
+		   	else {
 		   		$username = $this->input->post('username');
 		   		$password = $this->input->post('password');
 
 		   		if ($array = $this->Users_model->login($username, $password)) { //verifies the user is already registered
 		   		{
 		   			$role=element('user_type', $array);
-			   		if($role = 'advisor')  //if regiestered user is labeled as advisor, gets userdata based on advisor
+			   		
+			   		if($role = 'advisee' || $role = 'student_worker')// works like the above if, but with advisee instead
 			   		{
 				   		$this->session->set_userdata('username', $username);
-				   		$this->session->set_userdata('id', element('user_id', $array));
+				   		$this->session->set_userdata('id', element('CWID', $array));
 				   		$this->session->set_userdata('password', $password);
 				   		$this->session->set_userdata('user_type', element('user_type', $array));
 				   		$this->session->set_userdata('user_fullname', element('user_fullname', $array));
-				   		$this->session->set_userdata('advisor_id', element('advisor_id', $array));
+				   		$this->session->set_userdata('advisor_id', element('advised_by', $array));
+				   		
 			   		}
-			   		else if($role = 'advisee')// works like the above if, but with advisee instead
+			   		else
 			   		{
-				   		$this->session->set_userdata('username', $username);
-				   		$this->session->set_userdata('id', element('user_id', $array));
+			   			$this->session->set_userdata('username', $username);
+				   		$this->session->set_userdata('id', element('CWID', $array));
 				   		$this->session->set_userdata('password', $password);
 				   		$this->session->set_userdata('user_type', element('user_type', $array));
 				   		$this->session->set_userdata('user_fullname', element('user_fullname', $array));
-				   		$this->session->set_userdata('student_id', element('student_id', $array));
-				   		$this->session->set_userdata('advisor_id', element('advisor_id', $array));
+				   	}
+			   		
 			   		}
+			   		redirect('dashboard');
 			   	}
 
-	   				redirect('dashboard');
-		   		} else { //if username/password combo not in database, login fails
+	   				
+		   		 else { //if username/password combo not in database, login fails
 		   			$this->session->set_flashdata('error_msg', 'Invalid Username/Password! <br/><br/>');
 		   			redirect('login');
 		   		}
@@ -76,30 +97,51 @@
 		}
 
 		public function savesignup() {
-		    $this->form_validation->set_rules('username', '<i>Username</i>', 'trim|required');
+			$this->form_validation->set_rules('username', '<i>Username</i>', 'trim|required');
 		    $this->form_validation->set_rules('password', '<i>Password</i>', 'trim|required');
+		    $this->form_validation->set_rules('user_email', '<i>user_email</i>', 'trim|required');
+		    $this->form_validation->set_rules('con_password', '<i>con_pass</i>', 'trim|required|matches[password]');
+		    $this->form_validation->set_rules('CWID', '<i>CWID</i>', 'trim|required');
+		    $this->form_validation->set_rules('fullname', '<i>fullname</i>', 'required');
 			
 			if($this->form_validation->run() == FALSE) {
-		    	$this->load->view('signup');
+		    	$this->load->view('signupTest');
 		   	}
 		   	else {
+
 		   		$username = $this->input->post('username');
 		   		$password = $this->input->post('password');
 		   		$fullname = $this->input->post('fullname');
-		   		$CWID = $this->input->post('CWID');
-		   		$email = $this->input->post('email');
-
 		   		$user_type = $this->input->post('user_type');
-		   		if ($this->Users_model->checkusername($username)) {
-		   			$this->session->set_flashdata('error_msg', 'Username Already Exists! <br/><br/>');
-		   			redirect('login/signup');
-		   		}
-		   		$this->Users_model->savesignup($username, md5($password), $fullname, $user_type, $CWID, $email);
+		   		$email=$this->input->post('user_email');
+		  		$CWID = $this->input->post('CWID');
+		  		$user_phone = $this->input->post('user_phone');
+		  		
+		  		
+		   		if($this->Users_model->savesignup($fullname, $username, $CWID, md5($password), $email, $user_type, $user_phone))
+		   		{
 		   			$this->session->set_flashdata('success_msg', 'User created! You may login. <br/><br/>');
 		   			redirect('login');
+		   		}
+		  		}
+		   		/*if ($this->Users_model->checkusername($username)) {
+		   					$this->session->set_flashdata('error_msg', 'Username Already Exists! <br/><br/>');
+		   			redirect('login/signup');
+		   		}
+
+		   		if ($this->Users_model->checkemail($email)) {
+		   			$this->session->set_flashdata('error_msg', 'A user with that email Already Exists! Please try again <br/><br/>');
+		   			redirect('login/signup');
+
+		   		if ($this->Users_model->checkCWID($CWID)) {
+		   			$this->session->set_flashdata('error_msg', 'A user with that CWID Already Exists! Please try again <br/><br/>');
+		   			redirect('login/signup');
+		   		}*/
+		   		
 		   	}
 
 		}
-	}
+	
+	?>
+	
 
-?>
