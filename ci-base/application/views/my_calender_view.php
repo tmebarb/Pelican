@@ -3,7 +3,7 @@
 <head>
 <title>Calendar Example</title>
 <style type="text/css">
-.calendar {
+.calendar  a {
 	font-family: Arial, Verdana, Sans-serif;
 	width: 100%;
 	min-width: 960px;
@@ -31,8 +31,9 @@
 	padding: 0;
 }
 
-.calendar td:hover {
-	background: #F3F3F3;
+.calendar a:hover {
+	text-decoration: underline;
+	background: #73B9D1;
 }
 
 .day_listing {
