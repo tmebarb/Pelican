@@ -128,9 +128,14 @@
                       <form class="col s12" action="Staff_member/advisorAdviseeMatch/" method="post">
                         <div class="row">
                           <div class="input-field col s12">
+                            <?php $options =  array(
+                                'null' => 'Please Select Major',
+                                'CINS'    => 'Computer Science',
+                                'CSCI'  => 'Computer Information Systems',
+                                'BUSN'   => 'Business'
+                              );?>
                             
-                            <label for="advisorID">Enter Major</label>
-                            <?php echo form_input('adviseeNewMajor', ''); ?>
+                            <?php echo form_dropdown('adviseeNewMajor', $options, 'null'); ?>
                           </div>
                         </div>
                         <div class="row">
