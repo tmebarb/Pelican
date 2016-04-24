@@ -17,7 +17,12 @@
 			}
 		}
 
-
+function ListAdvisees(){
+	$advisees=$this->Staff_worker_model->showAllAdvisees();
+	$data = array('view' => 'listAdvisorsAdvisees',
+					'advisees' => $advisees);
+			$this->load->view('admin', $data);
+}
 
 function advisorToAdvisee(){
 			
@@ -44,4 +49,4 @@ function advisorAdviseeMatch(){
 			$this->load->view('admin', $data);
 
 		}
-}
+}	

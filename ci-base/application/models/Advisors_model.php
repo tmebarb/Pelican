@@ -25,6 +25,24 @@ class Advisors_model extends CI_Model
         return $query->result();
 	}
 
+	function get_Advisee_Name($adviseeID)
+	{
+		$this->db->select('u.user_fullname');
+		$this->db->from('users u, advisee a');
+		$this->db->where('u.user_id = a.user_id');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	function change_Office($office, $advisorID)
+	{
+		$newOffice=array('office_loc'=>$office);
+		$this->db->from('advisor')->where('advisor_id', $advisorID);
+		$this->db->update('advisor', $newOffice);
+
+	}
+
 
 	function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
 	{

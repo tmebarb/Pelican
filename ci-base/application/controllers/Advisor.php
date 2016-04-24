@@ -243,6 +243,19 @@
 				$this->load->view('admin', $data);
 		}
 
+		function initChangeOffice()
+		{
+			$date = array('view' => 'advisor/ChangeOfficeForm');
+			$this->load->view('admin', $data);
+		}
+		function changeOffice()
+		{
+			$office = $this->input->post('advisorOffice');
+			$advisorID = $this->session->usserdata('advisor_id');
+			$data = array('view' => 'advisor/changeOfficeSuccess', 'officeInfo' => $this->Advisors_model->change_Office($office, $advisorID));
+			$this->load->view('admin', $data);
+		}
+
 	}
 
 ?>
