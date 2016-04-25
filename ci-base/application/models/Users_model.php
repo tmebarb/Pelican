@@ -115,41 +115,43 @@ class Users_model extends CI_Model
 	}
 
 	//Model to return the profile page for a user based on their type
-	function profileInfo($user_id, $user_type)
+	function profileInfo($CWID, $user_type)
 	{
 		if($user_type == 'advisor')
 		{
 			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, office_loc');
 			$this->db->from('users, advisor');
-			$this->db->where('users.user_id', $user_id);
-			$this->db->where('users.user_id = advisor.user_id');
+			$this->db->where('users.CWID', $CWID);
+			$this->db->where('users.CWID = advisor.CWID');
 
 			$query = $this->db->get();
 			return $query->result();
 		}
 
 
-		if($user_type == 'advisee')
+		elseif($user_type == 'advisee')
 		{
 			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, classification');
 			$this->db->from('users, advisee');
-			$this->db->where('users.user_id', $user_id);
-			$this->db->where('users.user_id = advisee.user_id');
+			$this->db->where('users.CWID', $CWID);
+			$this->db->where('users.CWID = advisee.CWID');
 
 			$query = $this->db->get();
 			return $query->result();
 		}
 
 		
+
 		else
 		{
 			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone');
 			$this->db->from('users');
-			$this->db->where('user_id', $user_id);
+			$this->db->where('CWID', $CWID);
 
 			$query = $this->db->get();
 			return $query->result();
 		}
+		
 	}
 }
 ?>

@@ -19,7 +19,7 @@ class Advisors_model extends CI_Model
 	{
 		$this->db->select('u.user_fullname, a.classification, a.major, u.CWID');
 		$this->db->from('users u, advisee a');
-		$this->db->where('a.user_id = u.user_id');
+		$this->db->where('a.CWID = u.CWID');
  		$this->db->where('a.advisor_id', $advisorID);
         $query = $this->db->get();
         return $query->result();
@@ -64,8 +64,8 @@ class Advisors_model extends CI_Model
 		return $query->result();
 	}
 
-	function getAdvisorByUserId($user_id) {
-		$this->db->where('user_id', $user_id);
+	function getAdvisorByUserId($CWID) {
+		$this->db->where('CWID', $CWID);
 		$query = $this->db->get('advisor');
 		if($query->num_rows() > 0)
 			return $query->row();

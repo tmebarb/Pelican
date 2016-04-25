@@ -111,68 +111,7 @@
         </div>
     </div>
 
-<!--NEW START DATE/END DATE INPUT-->
-<html>
-<body>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script>
-  $(function() {
-    $("#datepicker2").datepicker({
-        dateFormat: "yy-mm-dd" 
-    });
-    $("#datepicker1").datepicker({
-        dateFormat: "yy-mm-dd", 
-        minDate:  0,
-        onSelect: function(date){            
-        var date1 = $('#datepicker1').datepicker('getDate');           
-        var date = new Date( Date.parse( date1 ) );
-        date.setDate( date.getDate());        
-        var newDate = date.toDateString(); 
-        newDate = new Date( Date.parse( newDate ) );                      
-        $('#datepicker2').datepicker("option","minDate",newDate);            
-    }
-    });
-  });
-  </script>
-</head>
-<body>
-
-<!--
-<?php echo form_open('Advisor/timeslotAddConfirm'); ?>
--->
-<div class="container">
-    <div class="section">
-        <div class="row">
-        <?php if ($sessiondetails!=null): ?>
-            <input type="hidden" name="session_id" value="<?php echo $sessiondetails->session_id ?>">
-        <?php endif ?>
-        <div class="input-field col s3">
-            <p class="right label" style="text-align: right;color:#9e9e9e;">Start Date:</p>
-        </div>
-        <div class="input-field col s3">
-        <input type="text" id="datepicker1" name="startdate" value='<?php echo ($sessiondetails) ?  $sessiondetails->startdate: "" ; ?>'>
-        <!--<?php echo form_input('start_date', ''); ?>-->
-        </div>
-        <div class="input-field col s2">
-            <p class="right label" style="text-align: right;color:#9e9e9e;">End Date:</p>
-        </div>
-        <div class="input-field col s3">
-        <input type="text" id="datepicker2" name="enddate" value='<?php echo ($sessiondetails) ?  $sessiondetails->enddate: "" ; ?>'>
-        <!--<?php echo form_input('end_date', ''); ?>-->
-        </div>
-        </div>
-        <div id="datefields">
-    </div>
-
-            <!--This is the old section for the date fields
             <div class="container">
                 <div class="section">
                     <?php if ($sessiondetails!=null): ?>
@@ -193,10 +132,9 @@
                         </div>
                     </div>
                     <div id="datefields">
-                    </div> -->
+                    </div>
 
 
-            <!-- Not related to start date and end date fields
             <div class="container">
                <div class="section">
                   <div class="row">
@@ -231,103 +169,18 @@
                 <div class="input-field col s3">
                     <button class="btn waves-effect waves-light red darken-4" type="submit" id="mondayadd" name="action">Add</button>
                 </div>
-            </div> -->
-            <!-- <div id="mondayfields">
-            </div> -->
-   
-    <div class="container">
-       <div class="section">
-          <div class="row">
-             <div class="input-field col s3">
-                <p class="right label" style="text-align: right;color:#9e9e9e;">Monday</p>
             </div>
-            <?php if (empty($mondayStartSlots)) { ?>
-            <div class="input-field col s3">
-                <input id="mondayStart" type="text" class="time input-field ui-timepicker-input" name="mondaystart[]" autocomplete="off">
-                <label for="mondayStart">Start Time</label>
+            <div id="mondayfields">
             </div>
-            <div class="input-field col s3">
-                <input id="mondayEnd" type="text" class="time input-field ui-timepicker-input tueEnd" name="mondayend[]" autocomplete="off">
-                <label for="mondayEnd">End Time</label>
-            </div>
-            <div class="input-field col s3">
-                <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="monadd">Add</button>
-            </div>
-            <?php } else { 
-                $first = true;
-                foreach ($mondayStartSlots as $index => $startTime) {
-                 ?>
-                 <?php if (!$first): ?>
-                    <div class="row" id="<?php echo 'bc'.$index ?>">
-                        <div class="col s3"><p style="display:hidden"></p></div>
-                    <?php endif ?>
 
-                    <input type="hidden" name="mondayUpdateID[]" value="<?php echo $mondayUpdateID[$index] ?>">
-
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'MonStartWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="mondaystart[]" autocomplete="off" value="<?php echo $startTime ?>">
-                        <label for="<?php echo 'MonStartWith'.$index ?>">Start Time</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'MonEndWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="mondayend[]" autocomplete="off" value="<?php echo $mondayEndSlots[$index] ?>">
-                        <label for="<?php echo 'MonEndWith'.$index ?>">End Time</label>
-                    </div>
-
-                    <script>
-                        $(document).ready(function(){
-                            $("<?php echo '#MonStartWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#MonEndWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#MonEndWith'.$index ?>").focusout(function() {
-                            if (!$("<?php echo '#MonEndWith'.$index ?>").val()) {
-                                    alert("Enter Start time first")
-                                    $("<?php echo '#MonEndWith'.$index ?>").val("")
-                                } else if ($("<?php echo '#MonStartWith'.$index ?>").val() >= $("<?php echo '#MonEndWith'.$index ?>").val()) {
-                                    alert("Start time should before than end time")
-                                    $("<?php echo '#MonEndWith'.$index ?>").val("")
-                                }
-                            });
-                            $("<?php echo '#MonStartWith'.$index ?>").focusout(function() {
-                                if ($("<?php echo '#MonEndWith'.$index ?>").val()) {
-                                    if ($("<?php echo '#MonStartWith'.$index ?>").val() >= $("<?php echo '#MonEndWith'.$index ?>").val()) {
-                                        alert("Start time should before than end time")
-                                        $("<?php echo '#MonStartWith'.$index ?>").val("")
-                                    }
-                                }
-                            });    
-                        });
-                    </script>
-
-                    <?php if ($first){ ?>
-                    <div class="input-field col s3">
-                        <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="monadd">Add</button>
-                    </div>
-                    <?php } else {
-                        ?>
-                        <button class="btn waves-effect waves-light red darken-4 remove_field" type="button" style="maring-top: 30px;">Remove</button>
-                        <script>
-                            $(document).ready(function() {
-                                        $("#<?php echo 'bc'.$index ?>").on("click",".remove_field", function(e){ //user click on remove text
-                                            e.preventDefault(); $(this).parent('div').remove();
-                                        })
-                                    });
-                        </script>
-                        <?php
-                    } ?>
-                    </div>
-                    <?php  
-                    $first = false;
-                }
-            }
-            ?>
         </div>
-        <div id="monfields">
-        </div>
-      </div>
     </div>
+
     <script>
-          $(document).ready(function() { //maximum input boxes allowed
-            var wrapper         = $("#monfields"); //Fields wrapper
-            var add_button      = $("#monadd"); //Add button ID
+        	$(document).ready(function() { //maximum input boxes allowed
+            var wrapper         = $("#mondayfields"); //Fields wrapper
+            
+            var add_button      = $("#mondayadd"); //Add button ID
             
             var x = 1; //initlal text box count
             $(add_button).click(function(e){ //on add input button click
@@ -337,13 +190,13 @@
                     $('#mondayStart'+x+'').timepicker({  });
                     $('#mondayEnd'+x+'').timepicker({  });
                     $('#mondayEnd'+x+'').focusout(function() {
-                      if (!$('#mondayStart'+x+'').val()) {
-                        alert("Enter Start time first")
-                        $('#mondayEnd'+x+'').val("")
-                      } else if ($('#mondayStart'+x+'').val() >= $('#mondayEnd'+x+'').val()) {
-                        alert("Start time should before than end time")
-                        $('#mondayEnd'+x+'').val("")
-                      }
+                    	if (!$('#mondayStart'+x+'').val()) {
+                    		alert("Enter Start time first")
+                    		$('#mondayEnd'+x+'').val("")
+                    	} else if ($('#mondayStart'+x+'').val() >= $('#mondayEnd'+x+'').val()) {
+                    		alert("Start time should before than end time")
+                    		$('#mondayEnd'+x+'').val("")
+                    	}
                     });
                     $('#mondayStart'+x+'').focusout(function() {
                         if ($('#mondayEnd'+x+'').val()) {
@@ -356,10 +209,55 @@
                 });
             
             $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-              e.preventDefault(); $(this).parent('div').remove();
-              x--;
-            })});
+            	e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
     </script>
+
+
+    <!-- <div class="container">
+       <div class="section">
+          <div class="row">
+             <div class="input-field col s3">
+                <p class="right label" style="text-align: right;color:#9e9e9e;">Tuesday</p>
+            </div>
+
+
+            <?php if (empty($tuesdayStartSlots)) { ?>
+            <div class="input-field col s3">
+                <input id="tueStart" type="text" class="time input-field ui-timepicker-input" name="tuestart[]" autocomplete="off">
+                <label for="tueStart">Start Time</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="tueEnd" type="text" class="time input-field ui-timepicker-input" name="tueend[]" autocomplete="off">
+                <label for="tueEnd">End Time</label>
+            </div>
+
+            <?php } else { 
+                foreach ($tuesdayStartSlots as $index => $startTime) {
+                 ?>
+                 <input type="hidden" name="tuesdayUpdateID[]" value="<?php echo $tuesdayUpdateID[$index] ?>">
+                 <div class="input-field col s3">
+                    <input id="tueStart" type="text" class="time input-field ui-timepicker-input" name="tuestart[]" autocomplete="off" value="<?php echo $startTime ?>">
+                    <label for="tueStart">Start Time</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="tueEnd" type="text" class="time input-field ui-timepicker-input" name="tueend[]" autocomplete="off" value="<?php echo $tuesdayEndSlots[$index] ?>">
+                    <label for="tueEnd">End Time</label>
+                </div>
+                <?php
+            }
+        }
+        ?>
+
+
+
+
+
+        <div class="input-field col s3">
+            <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" id="tueadd">Add</button>
+        </div>
+    </div> -->
 
     <div class="container">
        <div class="section">
@@ -376,9 +274,9 @@
                 <input id="tueEnd" type="text" class="time input-field ui-timepicker-input tueEnd" name="tueend[]" autocomplete="off">
                 <label for="tueEnd">End Time</label>
             </div>
-            <div class="input-field col s3">
-                <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="tueadd">Add</button>
-            </div>
+<div class="input-field col s3">
+                        <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="tueadd">Add</button>
+                    </div>
             <?php } else { 
                 $first = true;
                 foreach ($tuesdayStartSlots as $index => $startTime) {
@@ -395,7 +293,7 @@
                         <label for="<?php echo 'TueStartWith'.$index ?>">Start Time</label>
                     </div>
                     <div class="input-field col s3">
-                        <input id="<?php echo 'TueEndWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="tueend[]" autocomplete="off" value="<?php echo $tuesdayEndSlots[$index] ?>">
+                        <input id="<?php echo 'TueEndWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="tueend[]" autocomplete="off" value="<?php echo $tuesdayStartSlots[$index] ?>">
                         <label for="<?php echo 'TueEndWith'.$index ?>">End Time</label>
                     </div>
 
@@ -445,12 +343,18 @@
                 }
             }
             ?>
+            </div>
         </div>
-        <div id="tuefields">
-        </div>
-      </div>
     </div>
-    <script>
+
+
+    <div id="tuefields">
+    </div>
+
+</div>
+</div>
+
+<script>
         	$(document).ready(function() { //maximum input boxes allowed
             var wrapper         = $("#tuefields"); //Fields wrapper
             var add_button      = $("#tueadd"); //Add button ID
@@ -484,7 +388,8 @@
             $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             	e.preventDefault(); $(this).parent('div').remove();
             	x--;
-            })});
+            })
+        });
     </script>
 
 
@@ -562,7 +467,7 @@
                         <button class="btn waves-effect waves-light red darken-4 remove_field" type="button" style="maring-top: 30px;">Remove</button>
                         <script>
                             $(document).ready(function() {
-                                        $("#<?php echo 'bc'.$index ?>").on("click",".remove_field", function(e){
+                                        $("#<?php echo 'bc'.$index ?>").on("click",".remove_field", function(e){ //user click on remove text
                                             e.preventDefault(); $(this).parent('div').remove();
                                         })
                                     });
@@ -575,13 +480,16 @@
                 }
             }
             ?>
-        </div>
-        <div id="wedfields">
+            </div>
         </div>
     </div>
+    <div id="wedfields">
     </div>
 
-    <script>
+</div>
+</div>
+
+<script>
         	$(document).ready(function() { //maximum input boxes allowed
             var wrapper         = $("#wedfields"); //Fields wrapper
             var add_button      = $("#webadd"); //Add button ID
@@ -622,95 +530,28 @@
 
 
 
-
     <div class="container">
-       <div class="section">
-          <div class="row">
-             <div class="input-field col s3">
-                <p class="right label" style="text-align: right;color:#9e9e9e;">Thursday</p>
+        <div class="section">
+            <div class="row">
+                <div class="input-field col s3">
+                    <p class="right label" style="text-align: right;color:#9e9e9e;">Thursday</p>
+                </div>
+                <div class="input-field col s3">
+                    <input id="ThrStart" type="text" class="time input-field ui-timepicker-input" name="thrstart[]" autocomplete="off">
+                    <label for="ThrStart">Start Time</label>
+                </div>
+                <div class="input-field col s3">
+                    <input id="ThrEnd" type="text" class="time input-field ui-timepicker-input" name="thrend[]" autocomplete="off">
+                    <label for="ThrEnd">End Time</label>
+                </div>
+                <div class="input-field col s3">
+                    <button class="btn waves-effect waves-light red darken-4" type="submit" name="action" id="thradd">Add</button>
+                </div>
             </div>
-            <?php if (empty($thrdayStartSlots)) { ?>
-            <div class="input-field col s3">
-                <input id="ThrStart" type="text" class="time input-field ui-timepicker-input" name="thrstart[]" autocomplete="off">
-                <label for="ThrStart">Start Time</label>
+            <div id="thrfields">
             </div>
-            <div class="input-field col s3">
-                <input id="ThrEnd" type="text" class="time input-field ui-timepicker-input" name="thrend[]" autocomplete="off">
-                <label for="ThrEnd">End Time</label>
-            </div>
-            <div class="input-field col s3">
-                <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="thradd">Add</button>
-            </div>
-            <?php } else { 
-                $first = true;
-                foreach ($thrdayStartSlots as $index => $startTime) {
-                 ?>
-                 <?php if (!$first): ?>
-                    <div class="row" id="<?php echo 'bc'.$index ?>">
-                        <div class="col s3"><p style="display:hidden"></p></div>
-                    <?php endif ?>
 
-                    <input type="hidden" name="thrdayUpdateID[]" value="<?php echo $thrdayUpdateID[$index] ?>">
-
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'ThrStartWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="thrstart[]" autocomplete="off" value="<?php echo $startTime ?>">
-                        <label for="<?php echo 'ThrStartWith'.$index ?>">Start Time</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'ThrEndWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="thrend[]" autocomplete="off" value="<?php echo $thrdayEndSlots[$index] ?>">
-                        <label for="<?php echo 'ThrEndWith'.$index ?>">End Time</label>
-                    </div>
-
-                    <script>
-                        $(document).ready(function(){
-                            $("<?php echo '#ThrStartWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#ThrEndWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#ThrEndWith'.$index ?>").focusout(function() {
-                            if (!$("<?php echo '#ThrEndWith'.$index ?>").val()) {
-                                    alert("Enter Start time first")
-                                    $("<?php echo '#ThrEndWith'.$index ?>").val("")
-                                } else if ($("<?php echo '#ThrStartWith'.$index ?>").val() >= $("<?php echo '#ThrEndWith'.$index ?>").val()) {
-                                    alert("Start time should before than end time")
-                                    $("<?php echo '#ThrEndWith'.$index ?>").val("")
-                                }
-                            });
-                            $("<?php echo '#ThrStartWith'.$index ?>").focusout(function() {
-                                if ($("<?php echo '#ThrEndWith'.$index ?>").val()) {
-                                    if ($("<?php echo '#ThrStartWith'.$index ?>").val() >= $("<?php echo '#ThrEndWith'.$index ?>").val()) {
-                                        alert("Start time should before than end time")
-                                        $("<?php echo '#ThrStartWith'.$index ?>").val("")
-                                    }
-                                }
-                            });    
-                        });
-                    </script>
-
-                    <?php if ($first){ ?>
-                    <div class="input-field col s3">
-                        <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="thradd">Add</button>
-                    </div>
-                    <?php } else {
-                        ?>
-                        <button class="btn waves-effect waves-light red darken-4 remove_field" type="button" style="maring-top: 30px;">Remove</button>
-                        <script>
-                            $(document).ready(function() {
-                                        $("#<?php echo 'bc'.$index ?>").on("click",".remove_field", function(e){ //user click on remove text
-                                            e.preventDefault(); $(this).parent('div').remove();
-                                        })
-                                    });
-                        </script>
-                        <?php
-                    } ?>
-                    </div>
-                    <?php  
-                    $first = false;
-                }
-            }
-            ?>
         </div>
-        <div id="thrfields">
-        </div>
-    </div>
     </div>
 
     <script>
@@ -752,7 +593,7 @@
     </script>
 
 
-    <!-- <div class="container">
+    <div class="container">
         <div class="section">
             <div class="row">
                 <div class="input-field col s3">
@@ -774,95 +615,6 @@
             </div>
 
         </div>
-    </div> -->
-    <div class="container">
-       <div class="section">
-          <div class="row">
-             <div class="input-field col s3">
-                <p class="right label" style="text-align: right;color:#9e9e9e;">Friday</p>
-            </div>
-            <?php if (empty($fridayStartSlots)) { ?>
-            <div class="input-field col s3">
-                    <input id="FriStart" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off">
-                    <label for="FriStart">Start Time</label>
-                </div>
-                <div class="input-field col s3">
-                    <input id="FriEnd" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off">
-                    <label for="FriEnd">End Time</label>
-                </div>
-            <div class="input-field col s3">
-                <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="friadd">Add</button>
-            </div>
-            <?php } else { 
-                $first = true;
-                foreach ($fridayStartSlots as $index => $startTime) {
-                 ?>
-                 <?php if (!$first): ?>
-                    <div class="row" id="<?php echo 'bc'.$index ?>">
-                        <div class="col s3"><p style="display:hidden"></p></div>
-                    <?php endif ?>
-
-                    <input type="hidden" name="firdayUpdateID[]" value="<?php echo $firdayUpdateID[$index] ?>">
-
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'FriStartWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="fristart[]" autocomplete="off" value="<?php echo $startTime ?>">
-                        <label for="<?php echo 'FriStartWith'.$index ?>">Start Time</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="<?php echo 'FriEndWith'.$index ?>" type="text" class="time input-field ui-timepicker-input" name="friend[]" autocomplete="off" value="<?php echo $fridayEndSlots[$index] ?>">
-                        <label for="<?php echo 'FriEndWith'.$index ?>">End Time</label>
-                    </div>
-
-                    <script>
-                        $(document).ready(function(){
-                            $("<?php echo '#FriStartWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#FriEndWith'.$index ?>").timepicker({  });
-                            $("<?php echo '#FriEndWith'.$index ?>").focusout(function() {
-                            if (!$("<?php echo '#FriEndWith'.$index ?>").val()) {
-                                    alert("Enter Start time first")
-                                    $("<?php echo '#FriEndWith'.$index ?>").val("")
-                                } else if ($("<?php echo '#FriStartWith'.$index ?>").val() >= $("<?php echo '#FriEndWith'.$index ?>").val()) {
-                                    alert("Start time should before than end time")
-                                    $("<?php echo '#FriEndWith'.$index ?>").val("")
-                                }
-                            });
-                            $("<?php echo '#FriStartWith'.$index ?>").focusout(function() {
-                                if ($("<?php echo '#FriEndWith'.$index ?>").val()) {
-                                    if ($("<?php echo '#FriStartWith'.$index ?>").val() >= $("<?php echo '#FriEndWith'.$index ?>").val()) {
-                                        alert("Start time should before than end time")
-                                        $("<?php echo '#FriStartWith'.$index ?>").val("")
-                                    }
-                                }
-                            });    
-                        });
-                    </script>
-
-                    <?php if ($first){ ?>
-                    <div class="input-field col s3">
-                        <button class="btn waves-effect waves-light red darken-4" type="button" name="action" id="friadd">Add</button>
-                    </div>
-                    <?php } else {
-                        ?>
-                        <button class="btn waves-effect waves-light red darken-4 remove_field" type="button" style="maring-top: 30px;">Remove</button>
-                        <script>
-                            $(document).ready(function() {
-                                        $("#<?php echo 'bc'.$index ?>").on("click",".remove_field", function(e){ //user click on remove text
-                                            e.preventDefault(); $(this).parent('div').remove();
-                                        })
-                                    });
-                        </script>
-                        <?php
-                    } ?>
-                    </div>
-                    <?php  
-                    $first = false;
-                }
-            }
-            ?>
-        </div>
-        <div id="frifields">
-        </div>
-    </div>
     </div>
 
     <script>

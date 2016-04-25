@@ -1,0 +1,5 @@
+ALTER TABLE `active_advising_sessions` DROP `session_id`;
+
+ALTER TABLE `active_advising_sessions` ADD `session_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+
+ALTER TABLE `timeslots` ADD `student_id` INT NULL AFTER `day`;

@@ -2,23 +2,26 @@
 
 	<!--Creates a table that is grey-striped on the even rows-->
 	<style>
-		table {
+		table 
+		{
 		  border-collapse: separate;
 		  border-spacing: 0;
 		}
-		th,
-		td {
-			font-size: 2em;
+		th, td 
+		{
+		  font-size: 2em;
 		  padding: 10px 15px;
 		}
 		tbody tr:nth-child(odd) {
 		  background: #f0f0f2;
 		}
-		td {
+		td 
+		{
 		  border-bottom: 1px solid #cecfd5;
 		  border-right: 1px solid #cecfd5;
 		}
-		td:first-child {
+		td:first-child 
+		{
 		  border-left: 1px solid #cecfd5;
 		}
 	</style>
@@ -28,10 +31,10 @@
 
 <div id = 'main'>
 	<!--Provides view for a user that is an advisor-->
-	<?php if($usertype =="advisor"): ?>
+	<?php if($usertype =='advisor'): ?>
 		<table>
 			<?php foreach ($user_info as $row): ?>
-			<tr>
+			<tr>	
 				<th>Name:  </th>
 				<td><?php echo $row->user_fullname ?></td>
 			</tr>		
@@ -63,9 +66,8 @@
 		</table>	
 
 	<!--Provides view for a user that is an advisee-->
-	<?php elseif($usertype =="advisee"): ?>
+	<?php elseif($usertype =='advisee'): ?>
 		<table> 
-		<tbody>
 		<?php foreach ($user_info as $row): ?>
 			<tr>
 				<th>Name: </th>
@@ -96,12 +98,10 @@
 				<td><?php echo $row->classification ?></td>
 			</tr>
 			<?php endforeach ?>
-		</tbody>
 		</table>
 <!--Provides view for all other user types-->
 	<?php else: ?>
 		<table> 
-		<tbody>
 		<?php foreach ($user_info as $row): ?>
 			<tr>
 				<th>Name: </th>
@@ -124,7 +124,6 @@
 				<td><?php echo $row->user_phone ?></td>
 			</tr>
 			<?php endforeach ?>
-		</tbody>
 		</table>
 	<?php endif ?>	
 </div>

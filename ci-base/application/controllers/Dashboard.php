@@ -115,7 +115,7 @@
 		{
 			$CWID = $this->session->userdata('id');
 			$userType = $this->session->userdata('user_type');
-			$data = array('view' => 'viewProfile', 'CWID' => $CWID, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($CWID, $userType));
+			$data = array('view' => 'viewProfile', 'userid' => $CWID, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($CWID, $userType));
 			$this->load->view('admin', $data);
 		}
 
