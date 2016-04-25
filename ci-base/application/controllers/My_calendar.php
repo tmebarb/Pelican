@@ -45,8 +45,8 @@ function __construct() {
 			'view' => 'my_calender_view',
 			'title'=>'My Calendar',
 			'calendar'=> $this->calendar_model->generate_calendar($year, $month),
-			//'show_next_prev'=>'TRUE',
-			//'next_prev_url'=>base_url().'My_calendar/showcal'
+			'show_next_prev'=>'TRUE',
+			'next_prev_url'=>base_url().'My_calendar/showcal'
 			);
 			$this->load->view('admin',$data);
 
