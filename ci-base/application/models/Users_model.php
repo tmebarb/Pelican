@@ -129,7 +129,7 @@ class Users_model extends CI_Model
 		}
 
 
-		if($user_type == 'advisee')
+		elseif($user_type == 'advisee')
 		{
 			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, classification');
 			$this->db->from('users, advisee');
@@ -150,6 +150,7 @@ class Users_model extends CI_Model
 			$query = $this->db->get();
 			return $query->result();
 		}
+		
 	}
 }
 ?>
