@@ -19,7 +19,7 @@
                     <?php 
                     $this->db->select('u.user_fullname, a.major, a.classification');
                     $this->db->from('users u, advisee a');
-                    $this->db->where('a.user_id = u.user_id'); 
+                    $this->db->where('a.CWID = u.CWID');
                     $query = $this->db->get();
                     ?>
 
