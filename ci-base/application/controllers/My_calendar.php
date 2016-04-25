@@ -31,7 +31,7 @@ function __construct() {
 			if(!$this->session->userdata('id')) {
 				$this->session->set_flashdata('error_msg', 'I can\'t remember u, Please login again! <br/><br/>');
 				redirect('login');
-			$this->jquery->script(base_url().'js/jquery/jquery.js', TRUE);
+			
 			}
 		}
 
@@ -52,7 +52,7 @@ function __construct() {
 
 		if($this->input->post('day')){
 			$day = $this->input->post('day');
-			$event=trim($tis->input->post('event'));
+			$event=trim($this->input->post('event'));
 			$date = "$year-$month-$day";
 			$this-> calendar_model -> add_events($date, $event);
 		}

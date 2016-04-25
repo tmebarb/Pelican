@@ -9,9 +9,10 @@ class Calendar_model extends CI_Model
 		
 		$prefs = array (
                'show_next_prev' => TRUE ,
-               'next_prev_url' => 	'http://localhost:80/Pelican/ci-base/My_calendar/showcal'
+               'next_prev_url' => 	'http://localhost:8181/Pelican/ci-base/My_calendar/showcal'
              );
 		$events = $this->get_events($year, $month);
+    
 		$this->load->library('calendar', $prefs);
 		
 		return $this->calendar->generate($year, $month, $events);
@@ -32,15 +33,18 @@ class Calendar_model extends CI_Model
 
 	function add_events($date, $event){
 
-	
+	 $events = array(
+        'date' => '2016-04-12',
+        'event'=>'appt'
+        );
 			$query = $this->db->get_where('calendar', array('date'=>$date));
 			if($query->num_rows() > 0){
 				$this->db->where('date',$date);
 				$this->db->update('calendar',array('event'=>$event));
 			}else {
-				$this->db->insert('calendar', array('date' => $date, 'event' => $event));
+			 $this->db->insert('calendar', array('date' => $date, 'event' => $event));
 			}
-			
+			$this->db->insert('calendar', $events);
 	}
 
 	function delete_event($date){
