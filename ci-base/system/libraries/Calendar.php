@@ -104,7 +104,7 @@ class CI_Calendar {
 	 *
 	 * @var bool
 	 */
-	public $show_other_days = TRUE;
+	public $show_other_days = FALSE;
 
 	// --------------------------------------------------------------------
 
