@@ -127,8 +127,9 @@
                 
                 $options = array(
                             'null'  => 'Select Major',
-                            'computerscience'  => 'Computer Science',
-                            'business'    => 'Business',
+                            'CINS'    => 'Computer Science',
+                            'CSCI'  => 'Computer Information Systems',
+                            'BUSN'   => 'Business'
                           );
                 echo form_dropdown('major', $options, 'null');
                 ?>
