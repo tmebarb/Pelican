@@ -26,7 +26,7 @@
                     <?php 
                     $this->db->select('user_fullname');
                     $this->db->from('users');
-                    $this->db->where('user_type','staffworker'); 
+                    $this->db->where('user_type','student_worker'); 
                     $query = $this->db->get();
                     ?>
 

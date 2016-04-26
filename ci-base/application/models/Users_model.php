@@ -148,7 +148,7 @@ class Users_model extends CI_Model
 
 		else
 		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone');
+			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone');
 			$this->db->from('users');
 			$this->db->where('user_id', $user_id);
 

@@ -39,9 +39,8 @@ class Advisors_model extends CI_Model
 	function change_Office($office, $advisorID)
 	{
 		$newOffice=array('office_loc'=>$office);
-		$this->db->from('advisor')->where('advisor_id', $advisorID);
+		$this->db->from('advisor')->where('user_id', $advisorID);
 		$this->db->update('advisor', $newOffice);
-
 	}
 
 

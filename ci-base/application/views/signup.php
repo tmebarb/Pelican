@@ -221,8 +221,8 @@
                   'advisor' => 'Advisor',
                   'advisee' => 'Advisee', 
                   'admin' => 'Administrator', 
-                  'staffWorker' => 'Student Worker', 
-                  'staffMember' => 'Staff Member'
+                  'student_worker' => 'Student Worker', 
+                  'staff_member' => 'Staff Member'
                   );
                 $data = array(
                       'name'    => 'user_type',
