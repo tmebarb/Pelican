@@ -131,14 +131,14 @@
                         <div class="row">
                           <div class="input-field col s12">
                             
-                            <label for="advisorID">Enter Target Advisor ID</label>
+                            <label for="advisorID">Enter Advisor CWID</label>
                             <?php echo form_input('advisorID', ''); ?>
                           </div>
                         </div>
                         <div class="row">
                           <div class="input-field col s12">
                            
-                            <label for="adviseeID">Enter ID of Advisee You would like assign to the advisor</label>
+                            <label for="adviseeID">Enter Advisee CWID</label>
                             <?php echo form_input('adviseeID', ''); ?>
                             
                           </div>

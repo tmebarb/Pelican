@@ -27,6 +27,23 @@
 	</style>
 </head>
 
+ <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Profile</h5>
+                <ol class="breadcrumb">
+                    <li><a href="dashboard">Dashboard</a></li>
+                    
+                    <li class="active">Profile Page</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
 
 
 <div id = 'main'>

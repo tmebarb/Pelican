@@ -234,11 +234,12 @@
 
 		}
 
+		//Function that lists all the advisees of an advisor based on the advisor's CWID
 		function listAdvisees()
 		{
 
-				$advisorID = $this->session->userdata('advisor_id');
-				// print_r($advisorID==null);
+				$advisorID = $this->session->userdata('id');
+				//print_r($advisorID==null);
 				// return;
 				$data = array('view' => 'listAdvisorsAdvisees',
 								'advisees' => $this->Advisors_model->list_Advisees($advisorID));

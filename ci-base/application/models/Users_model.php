@@ -123,7 +123,7 @@ class Users_model extends CI_Model
 	{
 		if($user_type == 'advisor')
 		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone, major, office_loc');
+			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, office_loc');
 			$this->db->from('users, advisor');
 			$this->db->where('users.user_id', $user_id);
 			$this->db->where('users.user_id = advisor.user_id');
@@ -135,7 +135,7 @@ class Users_model extends CI_Model
 
 		if($user_type == 'advisee')
 		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone, major, classification');
+			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, classification');
 			$this->db->from('users, advisee');
 			$this->db->where('users.user_id', $user_id);
 			$this->db->where('users.user_id = advisee.user_id');

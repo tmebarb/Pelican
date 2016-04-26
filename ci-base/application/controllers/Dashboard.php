@@ -156,9 +156,14 @@
 		//Function to view the profile page of a user - different for each user type (logic in Users_model)
 		function profilePage()
 		{
-			$CWID = $this->session->userdata('id');
+			$user_id = $this->session->userdata('user_id');
+			//print_r($CWID);
+			//return;
 			$userType = $this->session->userdata('user_type');
-			$data = array('view' => 'viewProfile', 'CWID' => $CWID, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($CWID, $userType));
+			$data = array('view' => 'viewProfile', 'userID' => $user_id, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($user_id, $userType));
+
+			//print_r($data['user_info']);
+			//return;
 			$this->load->view('admin', $data);
 		}
 

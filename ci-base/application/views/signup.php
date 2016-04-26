@@ -140,7 +140,7 @@
                   <div class="input-field col s12">
                 <?php
                   $options = array(
-                            'null' => 'Select Classification',
+                            'null' => 'Select Classification (Students Only)',
                             'freshman'  => 'Freshman',
                             'sophomore'    => 'Sophomore',
                             'junior'    => 'Junior',
@@ -221,7 +221,8 @@
                   'advisor' => 'Advisor',
                   'advisee' => 'Advisee', 
                   'admin' => 'Administrator', 
-                  'staffWorker' => 'Staff Worker', 
+                  'staffWorker' => 'Student Worker', 
+                  'staffMember' => 'Staff Member'
                   );
                 $data = array(
                       'name'    => 'user_type',
