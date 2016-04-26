@@ -121,42 +121,31 @@
                 ?>
           </div>
         </div>
-
-        
-
         <div class="row margin">
-          <p for="major" class="col s4">
-            Enter Major 
-          </p>
-          <div class="input-field col s8">
+          <div class="input-field col s12">
                 <?php
                 
                 $options = array(
+                            'null'  => 'Select Major',
                             'computerscience'  => 'Computer Science',
-                            'bussiness'    => 'Bussiness',
+                            'business'    => 'Business',
                           );
-                echo form_dropdown('major', $options, 'computerscience');
+                echo form_dropdown('major', $options, 'null');
                 ?>
           </div>
         </div>
 
         <div class="row margin">
-        <p class="col s4 label">
-          Select Classification 
-        </p>
-          <div class="input-field col s8">
-            
-                
+                  <div class="input-field col s12">
                 <?php
-                
-               
                   $options = array(
+                            'null' => 'Select Classification',
                             'freshman'  => 'Freshman',
                             'sophomore'    => 'Sophomore',
                             'junior'    => 'Junior',
                             'senior'    => 'Senior',
                           );
-                echo form_dropdown('classification', $options, 'computerscience');
+                echo form_dropdown('classification', $options, 'null');
                 ?>
           </div>
         </div>
@@ -221,7 +210,7 @@
 
         <div class="row margin">
           <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
+            <!--<i class="mdi-action-lock-outline prefix"></i>-->
               <label for="user_type">
                                 
                 </label>
