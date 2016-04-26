@@ -90,7 +90,7 @@ class CI_Calendar {
 	 *
 	 * @var bool
 	 */
-	public $show_next_prev = FALSE;
+	public $show_next_prev = TRUE;
 
 	/**
 	 * Url base to use for next/prev month links

@@ -2,10 +2,10 @@
 <html lang="en">
 
 <!--================================================================================
-	Item Name: Materialize - Material Design Admin Template
-	Version: 1.0
-	Author: GeeksLabs
-	Author URL: http://www.themeforest.net/user/geekslabs
+  Item Name: Materialize - Material Design Admin Template
+  Version: 1.0
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 
 <head>
@@ -52,7 +52,7 @@
 
   <div id="login-page" class="row">
     <?php echo validation_errors(); ?>
-    <?php echo form_open('login/savesignup'); ?>
+    <?php echo form_open('login/forgot'); ?>
 
     <?php echo $this->session->flashdata('error_msg') ?>
     <?php echo $this->session->flashdata('success_msg') ?>
@@ -60,49 +60,10 @@
       <form class="login-form">
         <div class="row">
           <div class="input-field col s12 center">
-            <h4>New Pelican Advising User</h4>
-            <p class="center">Register for your account below</p>
+            <h4>Forgot your password?</h4>
+            <p class="center">Please enter your CWID and your new password.</p>
           </div>
         </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
-            <label for="fullname">
-                  Full Name: 
-                </label>
-                <?php 
-                
-                $data = array(
-                  'name'        => 'fullname',
-                  'id'          => 'fullname',
-                  'style'   => 'margin-left: 30px',
-                  'value'   => set_value('fullname'),
-                  );
-                echo form_input($data);
-                ?>
-                <br>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
-                <label for="username">
-                  Desired username: 
-                </label>
-                <?php
-                
-                $data = array(
-                  'name'        => 'username',
-                  'id'          => 'username',
-                  'style'   => 'margin-top: 10px; margin-left: 30px',
-                  'value'   => set_value('username'),
-                  );
-                echo form_input($data);
-                ?>
-            <br>
-          </div>
-        </div>
-
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
@@ -121,12 +82,11 @@
                 ?>
           </div>
         </div>
-
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
               <label for="password">
-                Enter desired Password: 
+                New Password: 
               </label>
               <?php
               $data = array(
@@ -144,7 +104,7 @@
             <i class="mdi-action-lock-outline prefix"></i>
 
               <label for="conpassword">
-                Confirm Password: 
+                Confirm New Password: 
               </label>
               <?php
               $data = array(
@@ -158,7 +118,7 @@
           </div>
         </div>
         
-
+        <!--
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
@@ -178,43 +138,17 @@
               <br>
           </div>
         </div>
-
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-              <label for="user_type">
-                                
-                </label>
-                <?php
-                $options = array(
-                  'null' => 'Role in system (development option only)',
-                  'advisor' => 'Advisor',
-                  'advisee' => 'Advisee', 
-                  'admin' => 'Administrator', 
-                  'staffWorker' => 'Staff Worker', 
-                  );
-                $data = array(
-                      'name'    => 'user_type',
-                      'id'      => 'user_type',
-                      'value'   => set_value('user_type'),
-                      'style'   => 'margin-top: 10px; margin-left: 20px' 
-                  );
-                echo form_dropdown('user_type', $options, 'null');
-
-                ?>
-              <br>
-          </div>
-        </div>
+        -->
 
         <div class="row">
           <div class="input-field col s12">
            
-            <button type="submit" class="btn waves-effect waves-light col s12" name="submit" value="formSave">Register Now</button>
+            <button type="submit" class="btn waves-effect waves-light col s12" name="submit" value="formSave">Submit</button>
           </div>
         
 
           <div class="input-field col s12">
-            <p class="margin center medium-small sign-up">Already have an account? <a href="<?php echo base_url()?>login">Login</a></p>
+            <p class="margin center medium-small sign-up">Return to <a href="<?php echo base_url()?>login">Login</a> page </p>
           </div>
         </div>
       </form>

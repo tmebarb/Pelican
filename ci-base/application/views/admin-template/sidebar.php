@@ -38,17 +38,60 @@
 					?>
                   <li class="no-padding">
                       <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i> Advisors</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>All Users</a>
                               <div class="collapsible-body" style="">
                                   <ul>
                                       <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
-                                      </li>                                        
-                                      <li><a href="css-icons.html">Advisor Records</a>
                                       </li>
-                                      <li><a href="css-shadow.html">Available Slots</a>
+                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
+                                      </li>                                    
+                                      <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
                                       </li>
-                                     <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
-                                  </li>   
+                                      <!--<li><a href="css-shadow.html">????</a>
+                                      </li>--> 
+                                  </ul>
+
+                              </div>
+                          </li>
+                          <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Staff Workers</a>
+                              <div class="collapsible-body" style="">
+                                  <ul>
+                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
+                                      </li>                                     
+                                      <!--<li><a href="css-icons.html">??????</a>
+                                      </li>
+                                      <li><a href="css-shadow.html">?????</a>
+                                      </li>-->
+                                  </ul>
+
+                              </div>
+                          </li>
+                          <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisors</a>
+                              <div class="collapsible-body" style="">
+                                  <ul>
+                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
+                                      </li>                                     
+                                      <li><a href="css-icons.html">View Appointments</a>
+                                      </li>
+                                      <li><a href="css-shadow.html">Advisee Reassignment</a>
+                                      </li>
+                                  </ul>
+
+                              </div>
+                          </li>
+                          <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisees</a>
+                              <div class="collapsible-body" style="">
+                                  <ul>
+                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Advisees</a>
+                                      </li>
+                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Student Workers</a>
+                                      </li>                                     
+                                      <li><a href="css-icons.html">Student Worker Status</a>
+                                      </li>
+                                       <li><a href="css-shadow.html">Add/Remove Holds</a>
+                                      </li>
+                                       <li><a href="css-shadow.html">Advisor Reassignment</a>
+                                      </li>
                                   </ul>
 
                               </div>
@@ -116,7 +159,7 @@
           <?php } ?>
 
       
-          <?php
+          <!--<?php
             if($this->session->userdata('user_type') =="admin") {
              ?>
                <li class="no-padding">
@@ -129,7 +172,7 @@
                               </ul>
                           </div>
                       </li> 
-           <?php } ?>					
+           <?php } ?>	-->				
 					<?php
 						if($this->session->userdata('user_type') =="staffMember") {
 					?>
