@@ -183,17 +183,23 @@
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
               <label for="user_type">
-                  Role in system (development option only):                
+                                
                 </label>
                 <?php
-
+                $options = array(
+                  'null' => 'Role in system (development option only)',
+                  'advisor' => 'Advisor',
+                  'advisee' => 'Advisee', 
+                  'admin' => 'Administrator', 
+                  'staffWorker' => 'Staff Worker', 
+                  );
                 $data = array(
                       'name'    => 'user_type',
                       'id'      => 'user_type',
                       'value'   => set_value('user_type'),
-                      'style'   => 'margin-top: 10px; margin-left: 6px' 
+                      'style'   => 'margin-top: 10px; margin-left: 20px' 
                   );
-                echo form_input($data);
+                echo form_dropdown('user_type', $options, 'null');
 
                 ?>
               <br>
