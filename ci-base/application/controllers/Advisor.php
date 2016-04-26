@@ -26,7 +26,7 @@
 			//$sessiondetails = -1;
 
 			//$data = array('allusers' => $this->Users_model->getallusers(), 'view'=> 'student/selectappointment');
-			$advisor = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'));
+			$advisor = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'));
 			$sessiondetails = $this->Advisors_model->getActiveAdvisingSessions($advisor->advisor_id);
 			$allSlots = $this->Slots_model->getslotsbyadvisor($advisor->advisor_id);
 			
@@ -108,7 +108,7 @@
 			$startdate = $this->input->post('startdate');
 			$enddate = $this->input->post('enddate');
 			$session_id = $this->input->post('session_id');
-			$advisor = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'));
+			$advisor = $this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'));
 			$advisor_id = $advisor->advisor_id;
 			$mondayUpdateID = $this->input->post('mondayUpdateID');
 			$tuesdayUpdateID = $this->input->post('tuesdayUpdateID');
@@ -238,8 +238,13 @@
 		{
 
 				$advisorID = $this->session->userdata('advisor_id');
+				// print_r($advisorID==null);
+				// return;
 				$data = array('view' => 'listAdvisorsAdvisees',
-								'advisor_ID' => $this->Advisors_model->list_Advisees($advisorID));
+								'advisees' => $this->Advisors_model->list_Advisees($advisorID));
+				// print_r($data);
+				// return;
+
 				$this->load->view('admin', $data);
 		}
 

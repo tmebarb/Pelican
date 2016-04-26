@@ -158,14 +158,14 @@
             <p class="right label" style="text-align: right;color:#9e9e9e;">Start Date:</p>
         </div>
         <div class="input-field col s3">
-        <input type="text" id="datepicker1" name="startdate" value='<?php echo ($sessiondetails) ?  $sessiondetails->startdate: "" ; ?>'>
+        <input type="text" id="datepicker1" name="startdate" value='<?php echo ($sessiondetails) ?  $sessiondetails->startDate: "" ; ?>'>
         <!--<?php echo form_input('start_date', ''); ?>-->
         </div>
         <div class="input-field col s2">
             <p class="right label" style="text-align: right;color:#9e9e9e;">End Date:</p>
         </div>
         <div class="input-field col s3">
-        <input type="text" id="datepicker2" name="enddate" value='<?php echo ($sessiondetails) ?  $sessiondetails->enddate: "" ; ?>'>
+        <input type="text" id="datepicker2" name="enddate" value='<?php echo ($sessiondetails) ?  $sessiondetails->endDate: "" ; ?>'>
         <!--<?php echo form_input('end_date', ''); ?>-->
         </div>
         </div>

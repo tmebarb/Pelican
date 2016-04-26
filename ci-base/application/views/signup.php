@@ -122,6 +122,46 @@
           </div>
         </div>
 
+        
+
+        <div class="row margin">
+          <p for="major" class="col s4">
+            Enter Major 
+          </p>
+          <div class="input-field col s8">
+                <?php
+                
+                $options = array(
+                            'computerscience'  => 'Computer Science',
+                            'bussiness'    => 'Bussiness',
+                          );
+                echo form_dropdown('major', $options, 'computerscience');
+                ?>
+          </div>
+        </div>
+
+        <div class="row margin">
+        <p class="col s4 label">
+          Select Classification 
+        </p>
+          <div class="input-field col s8">
+            
+                
+                <?php
+                
+               
+                  $options = array(
+                            'freshman'  => 'Freshman',
+                            'sophomore'    => 'Sophomore',
+                            'junior'    => 'Junior',
+                            'senior'    => 'Senior',
+                          );
+                echo form_dropdown('classification', $options, 'computerscience');
+                ?>
+          </div>
+        </div>
+
+
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>

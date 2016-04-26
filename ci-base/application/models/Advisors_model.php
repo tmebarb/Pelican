@@ -19,8 +19,8 @@ class Advisors_model extends CI_Model
 	{
 		$this->db->select('u.user_fullname, a.classification, a.major, u.CWID');
 		$this->db->from('users u, advisee a');
-		$this->db->where('a.CWID = u.CWID');
- 		$this->db->where('a.advisor_id', $advisorID);
+		$this->db->where('a.user_id = u.user_id');
+ 		$this->db->where('u.advised_by', $advisorID);
         $query = $this->db->get();
         return $query->result();
 	}
@@ -64,8 +64,8 @@ class Advisors_model extends CI_Model
 		return $query->result();
 	}
 
-	function getAdvisorByUserId($CWID) {
-		$this->db->where('user_id', $CWID);
+	function getAdvisorByUserId($user_id) {
+		$this->db->where('user_id', $user_id);
 		$query = $this->db->get('advisor');
 		if($query->num_rows() > 0)
 			return $query->row();
@@ -76,7 +76,7 @@ class Advisors_model extends CI_Model
 	function startSession($startdate, $enddate, $advisor_id) {
 		$data = array('startdate' => $startdate,
 						'enddate' => $enddate,
-						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id,
+						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
 						'type'=>'1'  );
 		$this->db->insert('active_advising_sessions', $data);
 	}
@@ -84,7 +84,7 @@ class Advisors_model extends CI_Model
 	function udpateSession($session_id, $startdate, $enddate, $advisor_id) {
 		$data = array('startdate' => $startdate,
 						'enddate' => $enddate,
-						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('id'))->advisor_id,
+						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
 						'type'=>'1'  );
 		$this->db->where('session_id', $session_id);
 		$this->db->update('active_advising_sessions', $data);

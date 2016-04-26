@@ -1,5 +1,13 @@
-ALTER TABLE `active_advising_sessions` DROP `session_id`;
+ALTER TABLE `timeslots` CHANGE `advisee_id` `advisee_id` INT(11) NULL;
 
-ALTER TABLE `active_advising_sessions` ADD `session_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+ALTER TABLE `timeslots` CHANGE `date` `date` DATE NULL;
 
-ALTER TABLE `timeslots` ADD `student_id` INT NULL AFTER `day`;
+ALTER TABLE `timeslots` CHANGE `event` `event` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
+
+ALTER TABLE `timeslots` CHANGE `startTime` `start_time` TIME NOT NULL;
+
+ALTER TABLE `timeslots` CHANGE `endTime` `end_time` TIME NOT NULL;
+
+ALTER TABLE `timeslots` CHANGE `stu` `student_id` INT(11) NULL DEFAULT NULL;
+
+ALTER TABLE `timeslots` CHANGE `date` `day` VARCHAR(255) NULL DEFAULT NULL;

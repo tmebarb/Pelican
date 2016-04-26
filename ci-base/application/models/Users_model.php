@@ -72,7 +72,7 @@ class Users_model extends CI_Model
 			return null;
 	}
 
-	function savesignup ($username, $password, $fullname, $user_type, $email, $CWID, $user_phone) {
+	function savesignup($username, $password, $fullname, $user_type, $email,$CWID, $user_phone, $major, $classification) {
 		$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
@@ -84,29 +84,30 @@ class Users_model extends CI_Model
 			);
 		
 		$this->db->insert('users', $data); 
-
+		$insert_id = $this->db->insert_id();
 		//for development only, ideally the "roles" would mostly be defined by an admin or match up with a CWID in the database
+		if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds
+		{		 					//their CWID to the appropriate role table for use with linking and sorting
+			$data= array(
+				'major'=>$major,
+				'classification' => $classification,
+				'hold'=>1,
+				'student_worker' => 1,
+				'user_id' => $insert_id);
+			$this->db->insert('advisee', $data);
+			return true;
 
-		$user_id = $this->db->select('user_id')->from('users')->where('CWID',$CWID);
+		}
 
-		//for development only, ideally the "roles" would mostly be defined by an admin or match up with a CWID in the database
-		//if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds
-		//{		 					//their CWID to the appropriate role table for use with linking and sorting
-			//$data= array(
-				//'CWID'=>$CWID);
-			//$this->db->insert('advisee', $data);
-			//return true;
+		if($user_type=='advisor')
+		{		 
+			$data= array(
+				'major'=>$major,
+				'user_id' => $insert_id);
+			$this->db->insert('advisor', $data);
+			return true;
 
-		//}
-
-		//if($user_type=='advisor')
-		//{		 
-			//$data= array(
-				//'CWID'=>$CWID);
-			//$this->db->insert('advisor', $data);
-			//return true;
-
-		//}
+		}
 		return true;
 			unset($user_type,$username,$password,$fullname,$CWID);
 	}

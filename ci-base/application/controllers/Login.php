@@ -109,6 +109,7 @@
 		}
 
 		public function savesignup() {
+			
 			$this->form_validation->set_rules('username', '<i>Username</i>', 'trim|required');
 		    $this->form_validation->set_rules('password', '<i>Password</i>', 'trim|required');
 		    $this->form_validation->set_rules('user_email', '<i>user_email</i>', 'trim|required');
@@ -127,10 +128,12 @@
 		   		$user_type = $this->input->post('user_type');
 		   		$email=$this->input->post('user_email');
 		  		$CWID = $this->input->post('CWID');
+		  		$major = $this->input->post('major');
+		  		$classification = $this->input->post('classification');
 		  		$user_phone = $this->input->post('user_phone');
 		  		
 		  		
-		   		if($this->Users_model->savesignup($username, md5($password), $fullname, $user_type, $email,$CWID, $user_phone))
+		   		if($this->Users_model->savesignup($username, md5($password), $fullname, $user_type, $email,$CWID, $user_phone, $major, $classification))
 		   		{
 		   			$this->session->set_flashdata('success_msg', 'User created! You may login. <br/><br/>');
 		   			redirect('login');
