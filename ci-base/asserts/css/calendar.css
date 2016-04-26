@@ -1,0 +1,41 @@
+table{
+border: 20px solid #ffffff;
+border-collapse:collapse;
+margin-top: 10px;
+}
+td{
+width: 100px;
+height: 75px;
+text-align: center;
+border: 1px solid #000000;
+font-size: 18px;
+font-weight: bold;
+}
+th{
+height: 80px;
+padding-bottom: 8px;
+background:#8c1919;
+font-size: 30px;
+font-family: "Times New Roman";
+text-align: center;
+color:white;
+
+}
+.prev_sign a, .next_sign a{
+color:white;
+text-decoration: none;
+}
+tr.week_name{
+font-size: 16px;
+font-weight:400;
+color:maroon;
+width: 20px;
+background-color: #efe8e8;
+}
+.highlight{
+background-color:#8c1919;
+color:white;
+height: 50px;
+padding-top: 13px;
+padding-bottom: 7px;
+}

@@ -7,6 +7,7 @@
 			$this->load->helper(array('form'));
 			$this->load->library('form_validation');
 			$this->load->model('Users_model');
+			$this->load->model('Advisors_model');
 			$this->load->helper('array');
 		}
 
@@ -69,7 +70,8 @@
 				   		
 			   		}
 			   		else
-			   		{
+			   		{	
+			   			//}
 			   			$this->session->set_userdata('username', $username);
 				   		$this->session->set_userdata('id', element('CWID', $array));
 				   		$this->session->set_userdata('password', $password);
@@ -77,6 +79,12 @@
 				   		$this->session->set_userdata('user_fullname', element('user_fullname', $array));
 				   	}
 			   		
+				   		$this->session->set_userdata('user_id', element('user_id', $array));
+			   			$advisor = $this->Advisors_model->getAdvisorByUserId(element('user_id', $array));
+			   			if($advisor)
+				   			$this->session->set_userdata('advisor_id', $advisor->advisor_id);
+			   				//echo "here";
+			   				//return;
 			   		}
 			   		redirect('dashboard');
 			   	}

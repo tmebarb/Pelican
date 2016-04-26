@@ -65,7 +65,7 @@ class Advisors_model extends CI_Model
 	}
 
 	function getAdvisorByUserId($CWID) {
-		$this->db->where('CWID', $CWID);
+		$this->db->where('user_id', $CWID);
 		$query = $this->db->get('advisor');
 		if($query->num_rows() > 0)
 			return $query->row();
