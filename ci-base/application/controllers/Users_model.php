@@ -72,88 +72,46 @@ class Users_model extends CI_Model
 			return null;
 	}
 
-	function savesignup ($username, $password, $fullname, $user_type, $email, $CWID, $user_phone) {
+	function savesignup ($fullname, $username, $CWID, $password, $email, $user_type) {
 		$data = array(
 			'user_name' => $username,
 			'user_password' => $password,
 			'user_fullname' => $fullname,
 			'user_type'	=> $user_type,
 			'user_email' => $email,
-			'user_phone' => $user_phone,
 			'CWID' => $CWID
 			);
 		
 		$this->db->insert('users', $data); 
 
 		//for development only, ideally the "roles" would mostly be defined by an admin or match up with a CWID in the database
+		if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds
+		{		 					//their CWID to the appropriate role table for use with linking and sorting
+			$data= array(
+				'CWID'=>$CWID);
+			$this->db->insert('advisee', $data);
+			return true;
 
-		$user_id = $this->db->select('user_id')->from('users')->where('CWID',$CWID);
+		}
 
-		//for development only, ideally the "roles" would mostly be defined by an admin or match up with a CWID in the database
-		//if($user_type=='advisee')  //these if block checks the role assigned to the current user and adds
-		//{		 					//their CWID to the appropriate role table for use with linking and sorting
-			//$data= array(
-				//'CWID'=>$CWID);
-			//$this->db->insert('advisee', $data);
-			//return true;
+		if($user_type=='advisor')
+		{		 
+			$data= array(
+				'CWID'=>$CWID);
+			$this->db->insert('advisor', $data);
+			return true;
 
-		//}
-
-		//if($user_type=='advisor')
-		//{		 
-			//$data= array(
-				//'CWID'=>$CWID);
-			//$this->db->insert('advisor', $data);
-			//return true;
-
-		//}
+		}
 		return true;
-			unset($user_type,$username,$password,$fullname,$CWID);
+			//unset($user_type,$username,$password,$fullname,$user_id);
+		
 	}
 
 	function getallusers () { 
 		$this->db->from('users');
 		$query = $this->db->get();
 		return $query->result();
-	}
 
-	//Model to return the profile page for a user based on their type
-	function profileInfo($user_id, $user_type)
-	{
-		if($user_type == 'advisor')
-		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone, major, office_loc');
-			$this->db->from('users, advisor');
-			$this->db->where('users.user_id', $user_id);
-			$this->db->where('users.user_id = advisor.user_id');
-
-			$query = $this->db->get();
-			return $query->result();
-		}
-
-
-		if($user_type == 'advisee')
-		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone, major, classification');
-			$this->db->from('users, advisee');
-			$this->db->where('users.user_id', $user_id);
-			$this->db->where('users.user_id = advisee.user_id');
-
-			$query = $this->db->get();
-			return $query->result();
-		}
-
-		
-
-		else
-		{
-			$this->db->select('user_fullname, user_id, user_name, user_email, user_phone');
-			$this->db->from('users');
-			$this->db->where('user_id', $user_id);
-
-			$query = $this->db->get();
-			return $query->result();
-		}
 	}
 }
 ?>
