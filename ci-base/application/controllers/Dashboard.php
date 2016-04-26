@@ -5,7 +5,6 @@
 		function __construct() {
 			parent::__construct();
 			$this->load->model('Users_model');
-			$this->load->model('admin');
 			$this->load->model('Advisees_model');
 			$this->load->model('Advisors_model');
 			$this->load->model('Staff_worker_model');
@@ -40,26 +39,6 @@
 			$this->breadcrumbs->push('List Advisors', 'advisorlist');
 			$this->breadcrumbs->unshift('Home', '/');
 			$data = array('alladvisors' => $this->Advisors_model->getAll(), 'view'=> 'admin-template/advisors');
-
-			$this->load->view('admin', $data);
-
-		}
-
-		function staffWorkers() {
-			$this->breadcrumbs->push('Staff Workers', '/staffWorkers');
-			$this->breadcrumbs->push('List Staff Workers', 'staffWorkerlist');
-			$this->breadcrumbs->unshift('Home', '/');
-			$data = array('allstaffworkers' => $this->Staff_worker_model->getAll(), 'view'=> 'admin-template/staffWorkers');
-
-			$this->load->view('admin', $data);
-
-		}
-
-		function advisees() {
-			$this->breadcrumbs->push('Advisees', '/advisees');
-			$this->breadcrumbs->push('List Advisees', 'adviseelist');
-			$this->breadcrumbs->unshift('Home', '/');
-			$data = array('alladvisees' => $this->Advisees_model->getAll(), 'view'=> 'admin-template/advisees');
 
 			$this->load->view('admin', $data);
 
@@ -131,34 +110,12 @@
 			$this->Staff_worker_model->assignTo($data);		
 		}
 
-		function changeUserRole(){
-			
-			$data = array('view' => 'change_user_role');
-			$this->load->view('admin', $data);
-			
-
-		}
-
-		function changeRoleConfirm(){
-		//if($this->session->userdata->user)
-				$userID= $this->input->post('userID');
-				$userRole= $this->input->post('userRole');
-				$data = array('view' => 'change_role_confirm',
-								'user_id' => $userID,
-								'user_type' => $userRole
-								);
-				
-				$this->admin->assignTo($userID, $userRole);
-				$this->load->view('admin', $data);
-
-			}
-
 		//Function to view the profile page of a user - different for each user type (logic in Users_model)
 		function profilePage()
 		{
 			$CWID = $this->session->userdata('id');
 			$userType = $this->session->userdata('user_type');
-			$data = array('view' => 'viewProfile', 'CWID' => $CWID, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($CWID, $userType));
+			$data = array('view' => 'viewProfile', 'userid' => $CWID, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($CWID, $userType));
 			$this->load->view('admin', $data);
 		}
 

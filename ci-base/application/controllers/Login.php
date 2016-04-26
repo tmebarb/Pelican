@@ -96,10 +96,6 @@
 			$this->load->view('signup');
 		}
 
-		public function forgot() {
-			$this->load->view('forgot');
-		}
-
 		public function savesignup() {
 			$this->form_validation->set_rules('username', '<i>Username</i>', 'trim|required');
 		    $this->form_validation->set_rules('password', '<i>Password</i>', 'trim|required');

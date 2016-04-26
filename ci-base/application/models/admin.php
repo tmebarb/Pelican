@@ -12,15 +12,5 @@ class admin extends CI_Model
 		$query = $this->db->get('admin');
 		return $query->result();
 	}
-
-	function assignTo($user_id, $user_type) //updates a user role based on their user ID
-	{
-		$OB=array('user_type'=>$user_type);
-		//$this->db->from('advisee');
-		$this->db->from('users')->Where('user_id', $user_id);
-		$this->db->update('users', $OB);
-		
-	}
-
-	}
+}
 ?>

@@ -19,11 +19,6 @@ class Staff_worker_model extends CI_Model
 		
 	}
 
-	function getAll() {
-		$query = $this->db->get('users');
-		return $query->result();
-	}
-
 	function showAllAdvisees() //calls database to get selected info from users table about all advisees that have currently been advised
 	{
 		$result= $this->db->query('SELECT a.user_fullname AS advisee_name, a.CWID, a.user_email, a.user_phone, c.major, c.classification, b.user_fullname AS advisor_name

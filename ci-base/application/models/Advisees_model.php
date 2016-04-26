@@ -9,7 +9,7 @@ class Advisees_model extends CI_Model
 	}
 
 	function getAll() {
-		$query = $this->db->get('advisees');
+		$query = $this->db->get('advisses');
 		return $query->result();
 	}
 }
