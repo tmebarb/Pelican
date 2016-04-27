@@ -120,7 +120,7 @@
 			$allSlots = $this->Slots_model->getslotsbyadvisor($advisor->advisor_id);
 
 			foreach ($allSlots as $slot) {
-				if (!in_array($slot->slot_id, $mondayUpdateID) && !in_array($slot->slot_id, $tuesdayUpdateID) && !in_array($slot->slot_id, $WednesdayUpdateID) && !in_array($slot->slot_id, $thrdayUpdateID) && !in_array($slot->slot_id, $firdayUpdateID)) {
+				if ((($mondayUpdateID) ? !in_array($slot->slot_id, $mondayUpdateID) : true)  && (($tuesdayUpdateID) ? !in_array($slot->slot_id, $tuesdayUpdateID) : true) && (($WednesdayUpdateID) ? !in_array($slot->slot_id, $WednesdayUpdateID) : true)   && (($thrdayUpdateID) ? !in_array($slot->slot_id, $thrdayUpdateID) : true)  &&  (($firdayUpdateID) ? !in_array($slot->slot_id, $firdayUpdateID) : true)      ) {
 					$this->Slots_model->removeTimeSlot($slot->slot_id);
 				} 
 			}	
