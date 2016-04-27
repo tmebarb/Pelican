@@ -97,13 +97,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Change Office</h5>
+                <h5 class="breadcrumbs-title">Change Phone Number</h5>
                 <ol class="breadcrumb">
                   <li><a href="index.html">Dashboard</a>
                   </li>
-                  <li><a href="#">Forms</a>
-                  </li>
-                  <li class="active">Change Office</li>
+                  <li class="active">Change Phone Number</li>
                 </ol>
               </div>
             </div>
@@ -117,20 +115,20 @@
           <div class="section">
 
             <div class="divider"></div>
-            <!--Basic Form, accepts the location for an Advisor's office-->
+            <!--Basic Form, accepts the user's new phone number-->
             <div id="basic-form" class="section">
-            	<?php echo form_open('Advisor/changeOffice'); ?>
+            	<?php echo form_open('Users/changePhone'); ?>
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
-                    <h4 class="header2">Change Your Office</h4>
+                    <h4 class="header2">Change Your Phone Number</h4>
                     <div class="row">
-                      <form class="col s12" action="Advisor/changeOffice/" method="post">
+                      <form class="col s12" action="Users_model/change_Number" method="post">
                         <div class="row">
                           <div class="input-field col s12">
                             
-                            <label for="newOffice">Enter New Office Location</label>
-                            <?php echo form_input('advisorOffice', ''); ?>
+                            <label for="newNumber">Enter New Phone Number</label>
+                            <?php echo form_input('new_number', ''); ?>
                           </div>
                         </div>
                         <div class="row">

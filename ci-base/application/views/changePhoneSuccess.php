@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <!--================================================================================
-  Item Name: Materialize - Material Design Admin Template
-  Version: 1.0
-  Author: GeeksLabs
-  Author URL: http://www.themeforest.net/user/geekslabs
+	Item Name: Materialize - Material Design Admin Template
+	Version: 1.0
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 
 <head>
@@ -16,7 +15,7 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
   <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-  <title>Change Office | Pelican</title>
+  <title>Cards | Pelican</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -54,10 +53,10 @@
   <!-- START HEADER -->
   <header id="header" class="page-topbar">
         <!-- start header nav-->
-        <div class="navbar-fixed"> 
+        <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"></h1>
+                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -87,8 +86,7 @@
     <!-- START WRAPPER -->
     <div class="wrapper">
 
-      <!-- //////////////////////////////////////////////////////////////////////////// -->
-
+    
       <!-- START CONTENT -->
       <section id="content">
 
@@ -97,13 +95,13 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Change Office</h5>
+                <h5 class="breadcrumbs-title">Cards</h5>
                 <ol class="breadcrumb">
-                  <li><a href="index.html">Dashboard</a>
+                  <li><a href="dashboard">Dashboard</a>
                   </li>
-                  <li><a href="#">Forms</a>
+                  <li><a href="#">Advisor</a>
                   </li>
-                  <li class="active">Change Office</li>
+                  <li class="active">Success</li>
                 </ol>
               </div>
             </div>
@@ -114,53 +112,51 @@
 
         <!--start container-->
         <div class="container">
-          <div class="section">
-
-            <div class="divider"></div>
-            <!--Basic Form, accepts the location for an Advisor's office-->
-            <div id="basic-form" class="section">
-            	<?php echo form_open('Advisor/changeOffice'); ?>
-              <div class="row">
-                <div class="col s12 m12 l6">
-                  <div class="card-panel">
-                    <h4 class="header2">Change Your Office</h4>
-                    <div class="row">
-                      <form class="col s12" action="Advisor/changeOffice/" method="post">
-                        <div class="row">
-                          <div class="input-field col s12">
-                            
-                            <label for="newOffice">Enter New Office Location</label>
-                            <?php echo form_input('advisorOffice', ''); ?>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right"
-                              	<?php echo form_submit('submit' , 'submit'); ?>
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                              <?php echo form_close();?>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
+         
+          <div class="divider"></div>
+          <!--Basic Card-->
+          <div id="basic-card" class="section">
+          
+              <div class="col s12 m8 l9">
+                <div class="row">
+                  <div class="col s12 m8 l9">
+                    <div class="card  light-blue">
+                      <div class="card-content white-text">
+                        <span class="card-title">Card Title</span>
+                        <p> Success! Your phone number has been set to <?php echo $new_phone;?>!</p>
+                      </div>
+                      <div class="card-action">
+                        <a href="<?php echo base_url() ?>Dashboard/profilePage" class="lime-text text-accent-1">View Profile</a>
+                        <a href="<?php echo base_url() ?>dashboard" class="lime-text text-accent-1">Return Home</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-            </div>
-        </div>
-    </div>
                 
-  <!-- END CONTENT -->
+                  
+                 
+            </div>
+          </div>
+
+         
+               
+              
+          
 </div>
-  <!-- END WRAPPER -->
+        </div>
+        <!--end container-->
+
+      </section>
+      <!-- END CONTENT -->
+
+      
+    </div>
+    <!-- END WRAPPER -->
 
   </div>
   <!-- END MAIN -->
 
 
 
-  <!-- //////////////////////////////////////////////////////////////////////////// -->
 
     <!-- ================================================
     Scripts
@@ -180,3 +176,5 @@
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
     
+</body>
+

@@ -156,5 +156,12 @@ class Users_model extends CI_Model
 			return $query->result();
 		}
 	}
+
+	function change_Number($user_id, $phone)
+	{
+		$newPhone=array('user_phone'=>$phone);
+		$this->db->from('users')->where('user_id', $user_id);
+		$this->db->update('users', $newPhone);
+	}
 }
 ?>

@@ -68,7 +68,7 @@
 				<td><?php echo $row->user_email ?></td>
 			</tr>
 			<tr>
-				<th>Phone: </th>
+				<th><a href="<?php echo base_url() ?>Users/initChangePhone" class="cyan-text">Phone: </a> </th>
 				<td><?php echo $row->user_phone ?></td>
 			</tr>
 			<tr>
@@ -76,7 +76,7 @@
 				<td><?php echo $row->major ?></td>
 			</tr>
 			<tr>
-				<th>Office Location: </th>
+				<th><a href="<?php echo base_url() ?>Advisor/initChangeOffice" class="cyan-text">Office Location: </a></th>
 				<td><?php echo $row->office_loc ?></td>
 			</tr>
 			<?php endforeach ?>
@@ -103,7 +103,7 @@
 				<td><?php echo $row->user_email ?></td>
 			</tr>
 			<tr>
-				<th>Phone: </th>
+				<th><a href="<?php echo base_url() ?>Users/initChangePhone" class="cyan-text">Phone: </a> </th>
 				<td><?php echo $row->user_phone ?></td>
 			</tr>
 			<tr>
@@ -137,7 +137,7 @@
 				<td><?php echo $row->user_email ?></td>
 			</tr>
 			<tr>
-				<th>Phone: </th>
+				<th><a href="<?php echo base_url() ?>Users/initChangePhone" class="cyan-text">Phone: </a> </th>
 				<td><?php echo $row->user_phone ?></td>
 			</tr>
 			<?php endforeach ?>

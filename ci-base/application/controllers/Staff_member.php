@@ -17,36 +17,34 @@
 			}
 		}
 
-function ListAdvisees(){
-	$advisees=$this->Staff_worker_model->showAllAdvisees();
-	$data = array('view' => 'listAdvisorsAdvisees',
-					'advisees' => $advisees);
-			$this->load->view('admin', $data);
-}
+	function ListAdvisees(){
+		$advisees=$this->Staff_worker_model->showAllAdvisees();
+		$data = array('view' => 'listAdvisorsAdvisees',
+						'advisees' => $advisees);
+		$this->load->view('admin', $data);
+	}
 
-function advisorToAdvisee(){
-			
-			$data = array('view' => 'advisor_To_Advisee');
-			$this->load->view('admin', $data);
-			
-
+	function advisorToAdvisee(){				
+		$data = array('view' => 'advisor_To_Advisee');
+		$this->load->view('admin', $data);
 		}
-function dashboard(){
-	redirect('dashboard');
+
+	function dashboard(){
+		redirect('dashboard');
    
 }
 
-function advisorAdviseeMatch(){
-//if($this->session->userdata->user)
-			$advisorID= $this->input->post('advisorID');
-			$adviseeID= $this->input->post('adviseeID');
-			$data = array('view' => 'advisor_Advisee_Match',
-							'advisor_id' => $advisorID,
-							'student_id' => $adviseeID
-							);
-			
-			$this->Staff_worker_model->assignTo($advisorID, $adviseeID);
-			$this->load->view('admin', $data);
+	function advisorAdviseeMatch(){
+	//if($this->session->userdata->user)
+		$advisorID= $this->input->post('advisorID');
+		$adviseeID= $this->input->post('adviseeID');
+		$data = array('view' => 'advisor_Advisee_Match',
+						'advisor_id' => $advisorID,
+						'student_id' => $adviseeID
+						);
+		
+		$this->Staff_worker_model->assignTo($advisorID, $adviseeID);
+		$this->load->view('admin', $data);
 
-		}
+	}
 }	
