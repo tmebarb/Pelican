@@ -234,11 +234,12 @@
 
 		}
 
+		//Function that lists all the advisees of an advisor based on the advisor's CWID
 		function listAdvisees()
 		{
 
-				$advisorID = $this->session->userdata('advisor_id');
-				// print_r($advisorID==null);
+				$advisorID = $this->session->userdata('id');
+				//print_r($advisorID==null);
 				// return;
 				$data = array('view' => 'listAdvisorsAdvisees',
 								'advisees' => $this->Advisors_model->list_Advisees($advisorID));
@@ -253,11 +254,13 @@
 			$data = array('view' => 'advisor/ChangeOfficeForm');
 			$this->load->view('admin', $data);
 		}
+
+		//Uses an advisor's user_id to link to advisor table and change the advisor's office location
 		function changeOffice()
 		{
-			$office = $this->input->post('advisorOffice');
-			$advisorID = $this->session->userdata('advisor_id');
-			$data = array('view' => 'advisor/changeOfficeSuccess', 'officeInfo' => $this->Advisors_model->change_Office($office, $advisorID));
+			$office = $this->input->post('advisorOffice');			
+			$advisorID = $this->session->userdata('user_id');
+			$data = array('view' => 'advisor/changeOfficeSuccess', 'newOffice' => $office, 'officeInfo' => $this->Advisors_model->change_Office($office, $advisorID));			
 			$this->load->view('admin', $data);
 		}
 

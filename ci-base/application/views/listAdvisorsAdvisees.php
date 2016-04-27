@@ -64,7 +64,7 @@
                  
                     <tfoot>
                         <tr>
-                             <th>Name</th>
+                            <th>Name</th>
                             <th>Classification</th>
                             <th>Major</th>
                             <th>CWID</th>

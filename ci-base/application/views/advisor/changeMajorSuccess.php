@@ -126,8 +126,8 @@
                         <p> Success! Advisee with number <?php echo $student_id;?> is now a <?php echo $adviseeNewMajor;?> major!</p>
                       </div>
                       <div class="card-action">
-                        <a href="initChangeMajor" class="lime-text text-accent-1">Change another student's major</a>
-                        <a href="dashboard" class="lime-text text-accent-1">Return Home</a>
+                        <a href="<?php echo base_url() ?>Advisor/initChangeMajor" class="lime-text text-accent-1">Change another student's major</a>
+                        <a href="<?php echo base_url() ?>dashboard" class="lime-text text-accent-1">Return Home</a>
                       </div>
                     </div>
                   </div>

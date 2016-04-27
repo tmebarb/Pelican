@@ -17,10 +17,11 @@ class Advisors_model extends CI_Model
 
 	function list_Advisees($advisorID)
 	{
-		$this->db->select('u.user_fullname, a.classification, a.major, u.CWID');
-		$this->db->from('users u, advisee a');
-		$this->db->where('a.user_id = u.user_id');
+		$this->db->select('u.user_fullname, u.CWID, a.classification, a.major');
+		$this->db->from('users u');
+		$this->db->join('advisee a', 'u.user_id = a.user_id', 'inner');
  		$this->db->where('u.advised_by', $advisorID);
+ 		
         $query = $this->db->get();
         return $query->result();
 	}
@@ -38,9 +39,8 @@ class Advisors_model extends CI_Model
 	function change_Office($office, $advisorID)
 	{
 		$newOffice=array('office_loc'=>$office);
-		$this->db->from('advisor')->where('advisor_id', $advisorID);
+		$this->db->from('advisor')->where('user_id', $advisorID);
 		$this->db->update('advisor', $newOffice);
-
 	}
 
 

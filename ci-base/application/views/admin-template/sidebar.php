@@ -15,7 +15,7 @@
                             </div>
                             <div class="col col s8 m8 l8">
                                 <ul id="profile-dropdown" class="dropdown-content">
-                                    <li><a href="Dashboard/profilePage" style="color:white"><i class="mdi-action-face-unlock"></i> Profile</a>
+                                    <li><a href="<?php echo base_url() ?>Dashboard/profilePage" style="color:white"><i class="mdi-action-face-unlock"></i> Profile</a>
                                     </li>
                                     <li><a href="#" style="color:white"><i class="mdi-action-settings"></i> Settings</a>
                                     </li>

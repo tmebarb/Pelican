@@ -123,11 +123,11 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Card Title</span>
-                        <p> Success! Your office has been set to <?php echo $officeInfo;?>!</p>
+                        <p> Success! Your office has been set to <?php echo $newOffice;?>!</p>
                       </div>
                       <div class="card-action">
-                        <a href="viewProfile" class="lime-text text-accent-1">View Profile</a>
-                        <a href="dashboard" class="lime-text text-accent-1">Return Home</a>
+                        <a href="<?php echo base_url() ?>Dashboard/profilePage" class="lime-text text-accent-1">View Profile</a>
+                        <a href="<?php echo base_url() ?>dashboard" class="lime-text text-accent-1">Return Home</a>
                       </div>
                     </div>
                   </div>
