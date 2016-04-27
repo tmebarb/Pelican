@@ -174,7 +174,7 @@
                       </li> 
            <?php } ?>	-->				
 					<?php
-						if($this->session->userdata('user_type') =="staff_member") {
+						if($this->session->userdata('user_type') =="Staff_member") {
 					?>
 
 					<li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Assign Advisees</a>

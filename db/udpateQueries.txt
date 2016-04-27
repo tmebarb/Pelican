@@ -8,6 +8,6 @@ ALTER TABLE `timeslots` CHANGE `startTime` `start_time` TIME NOT NULL;
 
 ALTER TABLE `timeslots` CHANGE `endTime` `end_time` TIME NOT NULL;
 
-ALTER TABLE `timeslots` CHANGE `stu` `student_id` INT(11) NULL DEFAULT NULL;
+ALTER TABLE `timeslots` CHANGE `advisee_id` `student_id` INT(11) NULL DEFAULT NULL;
 
 ALTER TABLE `timeslots` CHANGE `date` `day` VARCHAR(255) NULL DEFAULT NULL;
