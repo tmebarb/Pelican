@@ -30,14 +30,14 @@
 
   <!-- CORE CSS-->
   
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 
 <body>
@@ -116,7 +116,7 @@
         <div class="container">
           <div class="section">
 
-            <p class="caption">Includes predefined classes for easy layout options.</p>
+            <p class="caption">Please enter the ID of the user whose role is to be changed.</p>
 
             <div class="divider"></div>
             <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
@@ -125,7 +125,7 @@
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
-                    <h4 class="header2">Basic Form</h4>
+                    <h4 class="header2">Change User Role</h4>
                     <div class="row">
                       <form class="col s12" action="dashboard/changeRoleConfirm/" method="post">
                         <div class="row">
@@ -135,22 +135,25 @@
                             <?php echo form_input('userID', ''); ?>
                           </div>
                         </div>
+
+                        <!--
                         <div class="row">
                           <div class="input-field col s12">
                             
                             <label for="userRole">Enter Desired User Role</label>
                             <?php echo form_input('userRole', ''); ?>
+                          -->
                             
-                            <!--
+                            
                             Enter Desired User Role
-                            <select for="userRole">
-                              <option value='<?php echo form_input('userRole', ''); ?>'">Admin</option>
-                              <option value='<?php echo form_input('userRole', ''); ?>'>Staff Worker</option>
-                              <option value='<?php echo form_input('userRole', ''); ?>'>Advisor</option>
-                              <option value='<?php echo form_input('userRole', ''); ?>'>Advisee</option>
-                              <option value='<?php echo form_input('userRole', ''); ?>'>Student Worker</option>
+                            <select for="userRole" name="userRole">
+                              <option value="admin">Admin</option>
+                              <option value="Staff_member">Staff Worker</option>
+                              <option value="advisor">Advisor</option>
+                              <option value="advisee">Advisee</option>
+                              <option value="Student_worker">Student Worker</option>
                             </select>
-                            -->
+                            
                           </div>
                         </div>
                         <br></br>
