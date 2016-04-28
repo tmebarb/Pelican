@@ -35,5 +35,23 @@ class Staff_worker_model extends CI_Model
 			return $result;	
 	}
 
+	function getAllMajors() {
+		$query = $this->db->get('majors');
+		return $query->result();
+	}
+
+
+	function getAdvisorsByMajor($major) {
+		$this->db->where('major', $major);
+        $this->db->join('users', 'users.user_id = advisor.user_id');
+		$query = $this->db->get('advisor');
+		return $query->result();
+	}
+	function getAdviseeByAdvisor($advisor) {
+		//$this->db->where('major', $major);
+        //$this->db->join('advisee', '$advisor');
+		$query = $this->db->get('advisee');
+		return $query->result();
+	}
 }
 ?>

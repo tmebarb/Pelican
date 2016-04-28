@@ -11,3 +11,10 @@ ALTER TABLE `timeslots` CHANGE `endTime` `end_time` TIME NOT NULL;
 ALTER TABLE `timeslots` CHANGE `advisee_id` `student_id` INT(11) NULL DEFAULT NULL;
 
 ALTER TABLE `timeslots` CHANGE `date` `day` VARCHAR(255) NULL DEFAULT NULL;
+
+
+
+
+///
+
+ALTER TABLE `advisor` CHANGE `major` `major` VARCHAR(255) NOT NULL;
