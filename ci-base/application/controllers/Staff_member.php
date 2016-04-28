@@ -6,7 +6,8 @@ class Staff_member extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 
-		$this->load->model('Staff_worker_model');
+        $this->load->model('Staff_worker_model');
+        $this->load->model('Advisors_model');
 
 		$this->load->helper(array('form'));
 
@@ -74,6 +75,31 @@ class Staff_member extends CI_Controller {
     {
         //$data = array('advisors' =>  $this->Staff_worker_model->getAdvisorsByMajor($value));
         echo json_encode($this->Staff_worker_model->getAdvisorsByMajor($value));
+    }
+
+    function deleteAdvisor() {
+        $this->breadcrumbs->push('Staff Member', '/');
+        $this->breadcrumbs->push('Delete Advisors', 'deleteAdvisor');
+        $this->breadcrumbs->unshift('Home', '/');
+
+        //print_r($this->Staff_worker_model->getAdvisorsByMajor("computersciences"));
+        $data = array('view' => 'deleteAdvisor',
+            'majors' => $this->Staff_worker_model->getAllMajors());
+        $this->load->view('admin', $data);
+    }
+
+    function delteAdvisorProcess() {
+        $advisorID= $this->input->post('advisorID');
+        $data = array();
+        if($advisorID!=null) {
+            $this->Advisors_model->deleteAdvisor($advisorID);
+            $this->session->set_flashdata('successmsg', 'Advisor Details removed from system!');
+        } else {
+            $this->session->set_flashdata('errormsg', 'Please Select any Advisor first!');
+        }
+        $data = array('view' => 'deleteAdvisor',
+            'majors' => $this->Staff_worker_model->getAllMajors());
+        $this->load->view('admin', $data);
     }
 }
 

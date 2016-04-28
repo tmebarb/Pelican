@@ -1,249 +1,264 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Advisors_model extends CI_Model
 {
 
-	function __construct()
-	{
-		parent::__construct();
-	}
+    function __construct()
+    {
+        parent::__construct();
+    }
 
-	function change_Major($adviseeNewMajor, $advisee_id) {
-		$OB=array('major'=>$adviseeNewMajor);
-		$this->db->from('advisee')->where('student_id', $advisee_id);
-		$this->db->update('advisee', $OB); 
-		
-	}
+    function change_Major($adviseeNewMajor, $advisee_id)
+    {
+        $OB = array('major' => $adviseeNewMajor);
+        $this->db->from('advisee')->where('student_id', $advisee_id);
+        $this->db->update('advisee', $OB);
 
-	function list_Advisees($advisorID)
-	{
-		$this->db->select('u.user_fullname, u.CWID, a.classification, a.major');
-		$this->db->from('users u');
-		$this->db->join('advisee a', 'u.user_id = a.user_id', 'inner');
- 		$this->db->where('u.advised_by', $advisorID);
- 		
+    }
+
+    function list_Advisees($advisorID)
+    {
+        $this->db->select('u.user_fullname, u.CWID, a.classification, a.major');
+        $this->db->from('users u');
+        $this->db->join('advisee a', 'u.user_id = a.user_id', 'inner');
+        $this->db->where('u.advised_by', $advisorID);
+
         $query = $this->db->get();
         return $query->result();
-	}
+    }
 
-	function get_Advisee_Name($adviseeID)
-	{
-		$this->db->select('u.user_fullname');
-		$this->db->from('users u, advisee a');
-		$this->db->where('u.user_id = a.user_id');
+    function get_Advisee_Name($adviseeID)
+    {
+        $this->db->select('u.user_fullname');
+        $this->db->from('users u, advisee a');
+        $this->db->where('u.user_id = a.user_id');
 
-		$query = $this->db->get();
-		return $query->result();
-	}
+        $query = $this->db->get();
+        return $query->result();
+    }
 
-	function change_Office($office, $advisorID)
-	{
-		$newOffice=array('office_loc'=>$office);
-		$this->db->from('advisor')->where('user_id', $advisorID);
-		$this->db->update('advisor', $newOffice);
-	}
+    function change_Office($office, $advisorID)
+    {
+        $newOffice = array('office_loc' => $office);
+        $this->db->from('advisor')->where('user_id', $advisorID);
+        $this->db->update('advisor', $newOffice);
+    }
 
 
-	function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
-	{
-		$data = array(
-			'first_name' => $first_name,
-			'last_name' => $last_name,
-			'email' => $email,
-			'pic'	=> $pic,
-			'password' => $password,
-			'major' => $major,
-			'dob' => $dob
-			);
+    function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
+    {
+        $data = array(
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'email' => $email,
+            'pic' => $pic,
+            'password' => $password,
+            'major' => $major,
+            'dob' => $dob
+        );
 
-		$this->advisors->insert('advisor', $data); 
-	}
+        $this->advisors->insert('advisor', $data);
+    }
 
-	function getAll() {
-		$query = $this->db->get('advisor');
-		return $query->result();
-	}
+    function getAll()
+    {
+        $query = $this->db->get('advisor');
+        return $query->result();
+    }
 
-	function getAdvisorByUserId($user_id) {
-		$this->db->where('user_id', $user_id);
-		$query = $this->db->get('advisor');
-		if($query->num_rows() > 0)
-			return $query->row();
-		else
-			return null;
-	}
+    function getAdvisorByUserId($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get('advisor');
+        if ($query->num_rows() > 0)
+            return $query->row();
+        else
+            return null;
+    }
 
-	function startSession($startdate, $enddate, $advisor_id) {
-		$data = array('startdate' => $startdate,
-						'enddate' => $enddate,
-						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
-						'type'=>'1'  );
-		$this->db->insert('active_advising_sessions', $data);
-	}
+    function startSession($startdate, $enddate, $advisor_id)
+    {
+        $data = array('startdate' => $startdate,
+            'enddate' => $enddate,
+            'advisor_id' => $this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
+            'type' => '1');
+        $this->db->insert('active_advising_sessions', $data);
+    }
 
-	function udpateSession($session_id, $startdate, $enddate, $advisor_id) {
-		$data = array('startdate' => $startdate,
-						'enddate' => $enddate,
-						'advisor_id'=>$this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
-						'type'=>'1'  );
-		$this->db->where('session_id', $session_id);
-		$this->db->update('active_advising_sessions', $data);
-	}
+    function udpateSession($session_id, $startdate, $enddate, $advisor_id)
+    {
+        $data = array('startdate' => $startdate,
+            'enddate' => $enddate,
+            'advisor_id' => $this->Advisors_model->getAdvisorByUserId($this->session->userdata('user_id'))->advisor_id,
+            'type' => '1');
+        $this->db->where('session_id', $session_id);
+        $this->db->update('active_advising_sessions', $data);
+    }
 
-	function getActiveAdvisingSessions($advisor_id) {
-		$this->db->where('advisor_id', $advisor_id);
-		$this->db->where('type', '1');
-		$query = $this->db->get('active_advising_sessions');
-		return $query->row();
-	}
-	
+    function getActiveAdvisingSessions($advisor_id)
+    {
+        $this->db->where('advisor_id', $advisor_id);
+        $this->db->where('type', '1');
+        $query = $this->db->get('active_advising_sessions');
+        return $query->row();
+    }
 
-	function fillDatabase() {
-		$x=0;
-		$username='90';
-		$password='0291301293';
-		$user_fullname='123232323';
-		$user_type='advisee';
-		while($x<5000){
-			$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
-			$this->db->insert('users', $data); 
-			$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
+    function deleteAdvisor($advisorID)
+    {
+        $this->db->where('advisor_id', $advisorID);
+        $query = $this->db->get('advisor');
+        $ret = $query->row();
+        $this->db->delete('users', array('user_id' => $ret->user_id));
+        $this->db->delete('advisor', array('advisor_id' => $ret->advisor_id));
+    }
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
+    function fillDatabase()
+    {
+        $x = 0;
+        $username = '90';
+        $password = '0291301293';
+        $user_fullname = '123232323';
+        $user_type = 'advisee';
+        while ($x < 5000) {
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
 
-		
-		$this->db->insert('users', $data); 
-		$data = array(
-			'user_name' => $username,
-			'user_password' => $password,
-			'user_fullname' => $user_fullname,
-			'user_type'	=> $user_type
-			);
-			$this->db->insert('users', $data); 
-			$username++;
-			$password++;
-			$user_fullname++;
-			$x++;
 
-		
-		$this->db->insert('users', $data); 
-		}
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
 
-	}
+
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
+
+
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
+
+
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
+
+
+            $this->db->insert('users', $data);
+            $data = array(
+                'user_name' => $username,
+                'user_password' => $password,
+                'user_fullname' => $user_fullname,
+                'user_type' => $user_type
+            );
+            $this->db->insert('users', $data);
+            $username++;
+            $password++;
+            $user_fullname++;
+            $x++;
+
+
+            $this->db->insert('users', $data);
+        }
+
+    }
 }
