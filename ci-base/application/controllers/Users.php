@@ -23,6 +23,11 @@
 			$data = array('view' => 'changePhoneForm');
 			$this->load->view('admin', $data);
 		}
+		function initChangePassword()
+		{
+			$data = array('view' => 'changePasswordForm');
+			$this->load->view('admin', $data);
+		}
 		function changePhone()
 		{
 			$userID = $this->session->userdata('user_id');
@@ -30,6 +35,18 @@
 			$data = array('view' => 'changePhoneSuccess', 'new_phone' => $newPhone,
 							'newPhone' => $this->Users_model->change_Number($userID, $newPhone));
 			$this->load->view('admin', $data);
+		}
+		function changePassword()
+		{
+			$userID = $this->session->userdata('user_id');
+			$newPassword = $this->input->post('new_password');
+			$data = array('view' => 'changePasswordSuccess', 'new_password' => $newPassword,
+							'newPassword' => $this->Users_model->change_Password($userID, $newPassword));
+			$this->load->view('admin', $data);
+
+		   	$conPassword = $this->input->post('con_password');
+		   		
+		   	$this->Users_model->change_Password($userID, md5($newPassword));
 		}
 
 	}

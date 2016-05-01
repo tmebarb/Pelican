@@ -92,7 +92,7 @@ class Users_model extends CI_Model
 				'major'=>$major,
 				'classification' => $classification,
 				'hold'=>1,
-				'student_worker' => 1,
+				'student_worker' => 0,
 				'user_id' => $insert_id);
 			$this->db->insert('advisee', $data);
 			return true;
@@ -162,6 +162,13 @@ class Users_model extends CI_Model
 		$newPhone=array('user_phone'=>$phone);
 		$this->db->from('users')->where('user_id', $user_id);
 		$this->db->update('users', $newPhone);
+	}
+	function change_Password($user_id, $password)
+	{
+		$newPassword=array('user_password'=>$password);
+		$this->db->from('users')->where('user_id', $user_id);
+		$this->db->update('users', $newPassword);
+		unset($password);
 	}
 }
 ?>

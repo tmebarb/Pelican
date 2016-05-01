@@ -17,7 +17,7 @@
                                 <ul id="profile-dropdown" class="dropdown-content">
                                     <li><a href="<?php echo base_url() ?>Dashboard/profilePage" style="color:white"><i class="mdi-action-face-unlock"></i> Profile</a>
                                     </li>
-                                    <li><a href="#" style="color:white"><i class="mdi-action-settings"></i> Settings</a>
+                                    <li><a href="<?php echo base_url() ?>Dashboard/profilePage" style="color:white"><i class="mdi-action-settings"></i> Settings</a>
                                     </li>
                                     <li><a href="#" style="color:white"><i class="mdi-communication-live-help"></i> Help</a>
                                     </li>
@@ -47,8 +47,8 @@
                                       </li>                                    
                                       <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
                                       </li>
-                                      <!--<li><a href="css-shadow.html">????</a>
-                                      </li>--> 
+                                      <li><a href="css-shadow.html">Advisor Assignment</a>
+                                      </li> 
                                   </ul>
 
                               </div>
@@ -56,10 +56,7 @@
                           <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Staff Workers</a>
                               <div class="collapsible-body" style="">
                                   <ul>
-                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
-                                      </li>                                     
-                                      <!--<li><a href="css-icons.html">??????</a>
-                                      </li>
+                                      <!--
                                       <li><a href="css-shadow.html">?????</a>
                                       </li>-->
                                   </ul>
@@ -68,12 +65,8 @@
                           </li>
                           <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisors</a>
                               <div class="collapsible-body" style="">
-                                  <ul>
-                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
-                                      </li>                                     
+                                  <ul>                          
                                       <li><a href="css-icons.html">View Appointments</a>
-                                      </li>
-                                      <li><a href="css-shadow.html">Advisee Reassignment</a>
                                       </li>
                                   </ul>
 
@@ -81,19 +74,12 @@
                           </li>
                           <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisees</a>
                               <div class="collapsible-body" style="">
-                                  <ul>
-                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Advisees</a>
+                                  <ul> 
+                                      <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                       </li>
-                                      <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Student Workers</a>
-                                      </li>                                     
-                                      <li><a href="css-icons.html">Student Worker Status</a>
-                                      </li>
-                                       <li><a href="css-shadow.html">Add/Remove Holds</a>
-                                      </li>
-                                       <li><a href="css-shadow.html">Advisor Reassignment</a>
+                                      <li><a href="<?php echo base_url() ?>dashboard/changeHolds">Add/Remove Holds</a>
                                       </li>
                                   </ul>
-
                               </div>
                           </li>
                         </ul>
@@ -176,14 +162,44 @@
 					<?php
 						if($this->session->userdata('user_type') =="Staff_member") {
 					?>
-
-					<li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Assign Advisees</a>
-                    </li>
-                    <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i>Delete Advisor</a>
-                    </li>
+          <li class="no-padding">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
+                          <div class="collapsible-body">
+                              <ul>    
+                              <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Advisees</a>
+                              </li>
+                              <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add Advisee</a>
+                              </li>
+                              <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
+                              </li>
+                              <li><a href="css-icons.html">Student Worker Status</a>
+                              </li>
+                              <li><a href="css-shadow.html">Add/Remove Holds</a>
+                              </li>
+                        </ul>
+                  </ul>
+                </li>
+          <li class="no-padding">
+                  <ul class="collapsible collapsible-accordion">
+                      <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
+                          <div class="collapsible-body">
+                              <ul> 
+                              <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Advisors</a>
+                              </li>
+                              <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add Advisor</a>
+                              </li>
+                              <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisor</a>
+                              </li>
+                              <li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan">Assign Advisees</a>
+                              </li>
+                      </ul>
+                  </ul>
+                </li>
 					<?php } ?>	
+
 					<li class="bold"><a href="<?php echo base_url() ?>login/logout"><i class="mdi-action-settings-power"></i> Logout</a>
                     </li>
-                <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
-            </aside>
+          <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only darken-2"><i class="mdi-navigation-menu" ></i></a>
+          </aside>
             <!-- END LEFT SIDEBAR NAV-->

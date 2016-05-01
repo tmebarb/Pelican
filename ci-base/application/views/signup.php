@@ -220,8 +220,7 @@
                   'null' => 'Role in system (development option only)',
                   'advisor' => 'Advisor',
                   'advisee' => 'Advisee', 
-                  'admin' => 'Administrator', 
-                  'student_worker' => 'Student Worker', 
+                  'admin' => 'Administrator',  
                   'staff_member' => 'Staff Member'
                   );
                 $data = array(

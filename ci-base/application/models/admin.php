@@ -13,12 +13,29 @@ class admin extends CI_Model
 		return $query->result();
 	}
 
-	function assignTo($user_id, $user_type) //updates a user role based on their user ID
+	function assignRole($user_id, $user_type) //updates a user role based on their user ID
 	{
 		$OB=array('user_type'=>$user_type);
-		//$this->db->from('advisee');
+		
 		$this->db->from('users')->Where('user_id', $user_id);
 		$this->db->update('users', $OB);
+		
+	}
+
+	function assignSWStat($user_id, $student_worker) //updates a user role based on their user ID
+	{
+		$OB=array('student_worker'=>$student_worker);
+
+		$this->db->from('advisee')->Where('user_id', $user_id);
+		$this->db->update('advisee', $OB);
+	}
+
+	function setHoldStat($user_id, $hold) //updates a user role based on their user ID
+	{
+		$OB=array('hold'=>$hold);
+		
+		$this->db->from('advisee')->Where('user_id', $user_id);
+		$this->db->update('advisee', $OB);
 		
 	}
 

@@ -9,7 +9,7 @@
 		}
 		th, td 
 		{
-		  font-size: 2em;
+		  font-size: 1em;
 		  padding: 10px 15px;
 		}
 		tbody tr:nth-child(odd) {
@@ -142,9 +142,20 @@
 			</tr>
 			<?php endforeach ?>
 		</table>
-	<?php endif ?>	
-</div>
-
+	<?php endif ?>
+					<div class="container">
+			          <div class="section">
+			              <div class="row">
+			                <div class="col s12 m12 l6">
+			                	<br></br>
+                    			<tr>
+									<th><a href="<?php echo base_url() ?>Users/initChangePassword" class="cyan-text">Change Password</a> </th>
+								</tr>
+                        	  </div>
+	                      	</div>
+	                    </div>
+	                  </div>
+	    </div>
 
 
 

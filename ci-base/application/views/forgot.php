@@ -61,59 +61,25 @@
         <div class="row">
           <div class="input-field col s12 center">
             <h4>Forgot your password?</h4>
-            <p class="center">Please enter your CWID and your new password.</p>
+            <p class="center">Please enter your email.</p>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-                <label for="CWID">
-                  Enter your Campus Wide ID: 
-                </label>
-                <?php
-                
-                $data = array(
-                  'name'        => 'CWID',
-                  'id'          => 'CWID',
-                  'style'   => 'margin-top: 10px; margin-left: 30px',
-                  'value'   => set_value('CWID'),
-                  );
-                echo form_input($data);
-                ?>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-              <label for="password">
-                New Password: 
-              </label>
-              <?php
-              $data = array(
-                'name'        => 'password',
-                'type'    => 'password',
-                'id'          => 'password',
-                'style'   => 'margin-top: 10px; margin-left: 30px'
-                );
-              echo form_input($data);?>
-              <br>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-
-              <label for="conpassword">
-                Confirm New Password: 
-              </label>
-              <?php
-              $data = array(
-                'name'        => 'con_password',
-                'type'    => 'password',
-                'id'          => 'con_password',
-                'style'   => 'margin-top: 10px; margin-left: 30px'
-                );
-              echo form_input($data);?>
+              <label for="user_email">
+                  University Email:                
+                  </label>
+                  <?php
+                  echo set_value('user_email');
+                  $data = array(
+                    'name'        => 'user_email',
+                    'id'          => 'user_email',
+                    'style'   => 'margin-top: 10px; margin-left: 30px',
+                    'value'   => set_value('user_email')
+                    );
+                  echo form_input($data);
+                  ?>
               <br>
           </div>
         </div>
