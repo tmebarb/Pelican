@@ -160,7 +160,7 @@
                       </li> 
            <?php } ?>	-->				
 					<?php
-						if($this->session->userdata('user_type') =="Staff_member") {
+						if($this->session->userdata('user_type') =="staff_member") {
 					?>
           <li class="no-padding">
                   <ul class="collapsible collapsible-accordion">
