@@ -12,6 +12,8 @@ ALTER TABLE `timeslots` CHANGE `advisee_id` `student_id` INT(11) NULL DEFAULT NU
 
 ALTER TABLE `timeslots` ADD `date` DATE NOT NULL AFTER `day`;
 
+ALTER TABLE `timeslots` CHANGE `date` `day` VARCHAR(255) NULL DEFAULT NULL;
+
 
 
 
