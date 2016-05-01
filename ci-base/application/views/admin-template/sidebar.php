@@ -172,10 +172,10 @@
                                         </li>
                                         <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
                                         </li>
-                                        <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
-                                        </li>
-                                        <li><a href="css-icons.html">Student Worker Status</a>
-                                        </li>
+<!--                                        <li class="bold"><a href="--><?php //echo base_url() ?><!--staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>-->
+<!--                                        </li>-->
+<!--                                        <li><a href="css-icons.html">Student Worker Status</a>-->
+<!--                                        </li>-->
                                         <li><a href="css-shadow.html">Add/Remove Holds</a>
                                         </li>
                                     </ul>

@@ -18,7 +18,7 @@ class Advisors_model extends CI_Model
 
     function list_Advisees($advisorID)
     {
-        $this->db->select('u.user_fullname, u.CWID, a.classification, a.major');
+        $this->db->select('u.user_id, u.user_fullname, u.CWID, a.classification, a.major');
         $this->db->from('users u');
         $this->db->join('advisee a', 'u.user_id = a.user_id', 'inner');
         $this->db->where('u.advised_by', $advisorID);
@@ -57,7 +57,7 @@ class Advisors_model extends CI_Model
             'dob' => $dob
         );
 
-        $this->advisors->insert('advisor', $data);
+        $this->db->insert('advisor', $data);
     }
 
     function getAll()

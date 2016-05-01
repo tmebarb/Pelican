@@ -112,12 +112,20 @@ class Staff_member extends CI_Controller {
         $this->load->view('admin', $data);
     }
     function addStudentWorker() {
-
-
         $data = array('view' => 'addStudentWorker',
             'advisees' => $this->Staff_worker_model->getAllAdvisee());
 
         $this->load->view('admin', $data);
+    }
+    function  redeemAdvisee($id) {
+        $this->Staff_worker_model->redeemAdvisee($id);
+        $this->session->set_flashdata('successmsg', 'Student Worker converted to normal Advisee!');
+        redirect('staff_member/viewStudentWorker');
+    }
+    function  deleteStudentWorker($id) {
+        $this->Staff_worker_model->deleteAdvisee($id);
+        $this->session->set_flashdata('successmsg', 'Student deleted, even from advisee records!');
+        redirect('staff_member/viewStudentWorker');
     }
 }
 
