@@ -215,7 +215,8 @@
 		function initChangeMajor()
 		{
 
-			$data = array('view' => 'advisor/ChangeMajorForm');
+			$data = array('view' => 'advisor/ChangeMajorForm', 
+							'advisees' => $this->Advisors_model->list_Advisees($this->session->userdata('id')));
 			$this->load->view('admin', $data);
 		}
 
@@ -223,10 +224,17 @@
 		function changeMajor()
 		{
 			$newMajor= $this->input->post('adviseeNewMajor');
-			$adviseeID= $this->input->post('adviseeID');
+			$adviseeCWID= $this->input->post('adviseeCWID');
+			$adviseenArray = $this->Advisors_model->get_Advisee_Name($adviseeCWID);
+			$adviseeName = $adviseenArray[0]->user_fullname;
+			//Returns an array containing the advisee_id for the advisee whose CWID was entered
+			$adviseeArray= $this->Advisors_model->get_Advisee_ID($adviseeCWID); 
+			$adviseeID= $adviseeArray[0]->advisee_id;
+
 			$data = array('view' => 'advisor/changeMajorSuccess',
 							'adviseeNewMajor' => $newMajor,
-							'student_id' => $adviseeID
+							'student_id' => $adviseeCWID, 
+							'student_name' => $adviseeName
 							);
 			
 			$this->Advisors_model->change_Major($newMajor, $adviseeID);

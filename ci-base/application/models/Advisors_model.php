@@ -6,14 +6,14 @@ class Advisors_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('array');
     }
 
     function change_Major($adviseeNewMajor, $advisee_id)
     {
-        $OB = array('major' => $adviseeNewMajor);
-        $this->db->from('advisee')->where('student_id', $advisee_id);
-        $this->db->update('advisee', $OB);
-
+		$data = array('major' => $adviseeNewMajor);	
+		$this->db->where('advisee_id', $advisee_id);
+		$this->db->update('advisee', $data); 
     }
 
     function list_Advisees($advisorID)
@@ -29,12 +29,23 @@ class Advisors_model extends CI_Model
 
     function get_Advisee_Name($adviseeID)
     {
-        $this->db->select('u.user_fullname');
-        $this->db->from('users u, advisee a');
-        $this->db->where('u.user_id = a.user_id');
+        $this->db->select('user_fullname');
+        $this->db->from('users');
+        $this->db->where('CWID', $adviseeID);
 
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function get_Advisee_ID($adviseeCWID)
+    {
+    	$this->db->select('advisee_id');
+    	$this->db->from('advisee a, users u');
+    	$this->db->where('CWID', $adviseeCWID);
+    	$this->db->where('u.user_id = a.user_id');
+
+    	$query = $this->db->get();
+        return $query->result(); 
     }
 
     function change_Office($office, $advisorID)

@@ -141,10 +141,10 @@
                 <?php
                   $options = array(
                             'null' => 'Select Classification (Students Only)',
-                            'freshman'  => 'Freshman',
-                            'sophomore'    => 'Sophomore',
-                            'junior'    => 'Junior',
-                            'senior'    => 'Senior',
+                            'Freshman'  => 'Freshman',
+                            'Sophomore'    => 'Sophomore',
+                            'Junior'    => 'Junior',
+                            'Senior'    => 'Senior',
                           );
                 echo form_dropdown('classification', $options, 'null');
                 ?>

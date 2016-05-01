@@ -123,7 +123,7 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Card Title</span>
-                        <p> Success! Advisee with number <?php echo $student_id;?> is now a <?php echo $adviseeNewMajor;?> major!</p>
+                        <p> Success! <?php echo $student_name;?> is now a <?php echo $adviseeNewMajor;?> major!</p>
                       </div>
                       <div class="card-action">
                         <a href="<?php echo base_url() ?>Advisor/initChangeMajor" class="lime-text text-accent-1">Change another student's major</a>

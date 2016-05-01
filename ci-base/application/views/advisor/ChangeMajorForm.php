@@ -32,12 +32,16 @@
   
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+  <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 
 <body>
@@ -111,25 +115,24 @@
 
 
         <!--start container-->
-        <div class="container">
-          <div class="section">
-
             <div class="divider"></div>
             <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
             <div id="basic-form" class="section">
-            	<?php echo form_open('Advisor/changeMajor'); ?>
+              <?php echo form_open('Advisor/changeMajor'); ?>
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
                     <h4 class="header2">Change Advisee Major</h4>
                     <div class="row">
                       <form class="col s12" action="Staff_member/advisorAdviseeMatch/" method="post">
+                         <div class="col s12 m12 l12">
+                        </div>
                         <div class="row">
                           <div class="input-field col s12">
                             <?php $options =  array(
                                 'null' => 'Please Select Major',
-                                'CINS'    => 'Computer Science',
-                                'CSCI'  => 'Computer Information Systems',
+                                'CSCI'    => 'Computer Science',
+                                'CINS'  => 'Computer Information Systems',
                                 'BUSN'   => 'Business'
                               );?>
                             
@@ -139,15 +142,15 @@
                         <div class="row">
                           <div class="input-field col s12">
                            
-                            <label for="adviseeID">Enter Advisee ID</label>
-                            <?php echo form_input('adviseeID', ''); ?>
+                            <label for="adviseeCWID">Enter Advisee CWID</label>
+                            <?php echo form_input('adviseeCWID', ''); ?>
                             
                           </div>
                         </div>
-                        <div class="row">
+                          <div class="row">
                             <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right"
-                              	<?php echo form_submit('submit' , 'submit'); ?>
+                                <?php echo form_submit('submit' , 'submit'); ?>
                                 <i class="mdi-content-send right"></i>
                               </button>
                               <?php echo form_close();?>
@@ -160,7 +163,39 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+          <div class="section">
+            <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Classification</th>
+                  <th>Major</th>
+                  <th>CWID</th>          
+                </tr>
+              </thead>           
+              <tfoot>
+                <tr>
+                  <th>Name</th>
+                  <th>Classification</th>
+                  <th>Major</th>
+                  <th>CWID</th>              
+                </tr>
+              </tfoot>
+           
+              <tbody>
+                <?php foreach ($advisees as $row): ?>
+                  <tr>
+                    <td><?php echo $row->user_fullname  ?></td>
+                    <td><?php echo $row->classification ?></td>
+                    <td><?php echo $row->major ?></td>
+                    <td><?php echo $row->CWID ?></td>
+                  </tr>          
+                <?php endforeach ?>
+            </tbody>
+          </table>
     </div>
+    
                 
   <!-- END CONTENT -->
 </div>
@@ -177,17 +212,24 @@
     Scripts
     ================================================ -->
     
+ <!-- ================================================
+    Scripts
+    ================================================ -->
+    
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/materialize.js"></script>
     <!--prism-->
-    <script type="text/javascript" src="js/prism.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/prism.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- data-tables -->
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/data-tables-script.js"></script>
     <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.js"></script>   
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/plugins.js"></script>    
     

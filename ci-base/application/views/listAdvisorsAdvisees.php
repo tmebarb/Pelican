@@ -46,12 +46,12 @@
             <div class="divider"></div>
             
             <!--DataTables example-->
-            <div id="table-datatables">
+            <div id="row-grouping">
               <h4 class="header">List of all advisees</h4>
               <div class="row">
                 
                 <div class="col s12 m12 l12">
-                  <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                  <table id="data-table-row-grouping" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Name</th>
