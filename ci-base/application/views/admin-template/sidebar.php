@@ -118,7 +118,6 @@
                                             </i> Setup Timeslots (proper WIP)</a>
                                         <!--
                         </li>
-
                         <li class="bold"><a href="<?php echo base_url() ?>advisor/funTimeSlots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
                         </i> Setup Timeslots (functional)</a>
                         -->
@@ -167,9 +166,11 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisees</a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Advisees</a>
+                                        <li><a href="<?php echo base_url() ?>Advisor/listAdvisees" class="waves-effect waves-cyan">List All Advisees</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>staff_member/addStudentWorker">Add Advisee</a>
+                                        <li><a href="<?php echo base_url() ?>Advisor/listAdvisees">Add Advisee</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
                                         </li>
                                         <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
                                         </li>
