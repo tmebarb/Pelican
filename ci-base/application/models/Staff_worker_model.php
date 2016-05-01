@@ -26,13 +26,13 @@ class Staff_worker_model extends CI_Model
 
 	function showAllAdvisees() //calls database to get selected info from users table about all advisees that have currently been advised
 	{
-		$result= $this->db->query('SELECT a.user_fullname AS advisee_name, a.CWID, a.user_email, a.user_phone, c.major, c.classification, b.user_fullname AS advisor_name
-			FROM users AS a, users AS b, advisee AS c
-			WHERE a.advised_by = b.CWID
-			AND c.CWID = a.CWID');
+		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, uA.user_fullname AS advisor_name');
+		$this->db->from('users u, advisee a, users uA');
+		$this->db->where('u.user_id = a.user_id');
+		$this->db->where('uA.CWID = u.advised_by');
 
-		//if($result->num_rows()>0)
-			return $result;	
+		$query = $this->db->get();
+		return $query->result();	
 	}
 
 	function getAllMajors() {
