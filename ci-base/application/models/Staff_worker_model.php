@@ -53,5 +53,15 @@ class Staff_worker_model extends CI_Model
 		$query = $this->db->get('advisee');
 		return $query->result();
 	}
+	function  getAllAdvisee() {
+		$this->db->select('u.user_fullname, u.CWID, a.classification, a.major');
+		$this->db->from('users u');
+		$this->db->join('advisee a', 'u.user_id = a.user_id', 'inner');
+		$this->db->where('a.student_worker', 0);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 }
 ?>

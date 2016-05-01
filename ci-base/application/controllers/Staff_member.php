@@ -101,6 +101,24 @@ class Staff_member extends CI_Controller {
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
     }
+
+    function viewStudentWorker() {
+        $this->breadcrumbs->push('Staff Member', '/');
+        $this->breadcrumbs->push('Student Workers', 'viewStudentWorker');
+        $this->breadcrumbs->unshift('Home', '/');
+        $data = array('view' => 'viewStudentWorker',
+            'advisees' => $this->Staff_worker_model->getAllAdvisee());
+
+        $this->load->view('admin', $data);
+    }
+    function addStudentWorker() {
+
+
+        $data = array('view' => 'addStudentWorker',
+            'advisees' => $this->Staff_worker_model->getAllAdvisee());
+
+        $this->load->view('admin', $data);
+    }
 }
 
 
