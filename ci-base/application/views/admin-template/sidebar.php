@@ -186,7 +186,7 @@
                             <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Advisors</a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All Advisors</a>
+                                        <li><a href="<?php echo base_url() ?>staff_member/ListAdvisors" class="waves-effect waves-cyan">List All Advisors</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add Advisor</a>
                                         </li>

@@ -20,12 +20,17 @@ class Staff_member extends CI_Controller {
 
 	function ListAdvisees(){
 		$advisees=$this->Staff_worker_model->showAllAdvisees();
-            //print_r($advisees);
-            //return;
 		$data = array('view' => 'staff_member/listAllAdvisees',
 			'advisees' => $advisees);
 		$this->load->view('admin', $data);
 	}
+
+    function ListAdvisors(){
+        $advisors=$this->Staff_worker_model->showAllAdvisors();
+        $data = array('view' => 'staff_member/listAdvisors',
+            'advisors' => $advisors);
+        $this->load->view('admin', $data);
+    }
 
 	function advisorToAdvisee(){
 		$this->breadcrumbs->push('Staff Member', '/');
