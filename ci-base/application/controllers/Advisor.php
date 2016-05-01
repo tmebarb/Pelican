@@ -249,8 +249,13 @@
 				$advisorID = $this->session->userdata('id');
 				//print_r($advisorID==null);
 				// return;
-				$data = array('view' => 'listAdvisorsAdvisees',
-								'advisees' => $this->Advisors_model->list_Advisees($advisorID));
+				if($this->session->userdata('user_type') =="Staff_member") {
+					$data = array('view' => 'listAdvisorsAdvisees',
+							'advisees' => $this->Advisees_model->getAllAdviseeDetails());
+				}else {
+					$data = array('view' => 'listAdvisorsAdvisees',
+							'advisees' => $this->Advisors_model->list_Advisees($advisorID));
+				}
 				// print_r($data);
 				// return;
 
