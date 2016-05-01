@@ -108,8 +108,8 @@ class Staff_member extends CI_Controller {
         $this->breadcrumbs->push('Staff Member', '/');
         $this->breadcrumbs->push('Student Workers', 'viewStudentWorker');
         $this->breadcrumbs->unshift('Home', '/');
-        $data = array('view' => 'viewStudentWorker',
-            'advisees' => $this->Staff_worker_model->getAllAdvisee());
+        $data = array('view' => 'staff_member/listAllAdvisees',
+            'advisees' => $this->Staff_worker_model->getAllStudentWorkers());
 
         $this->load->view('admin', $data);
     }
