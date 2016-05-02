@@ -47,7 +47,7 @@
                                     </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
                                     </li>
-                                    <li><a href="css-shadow.html">Advisor Assignment</a>
+                                    <li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan">Assign Advisees</a>
                                     </li>
                                 </ul>
 
@@ -171,13 +171,17 @@
                                         <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees" class="waves-effect waves-cyan">List All Advisees</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
+                                        <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
+                                        </li>
                                         <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                         </li>
 <!--                                        <li class="bold"><a href="--><?php //echo base_url() ?><!--staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>-->
 <!--                                        </li>-->
 <!--                                        <li><a href="css-icons.html">Student Worker Status</a>-->
 <!--                                        </li>-->
-                                        <li><a href="css-shadow.html">Add/Remove Holds</a>
+                                        <li><a href="<?php echo base_url() ?>dashboard/changeHolds">Add/Remove Holds</a>
                                         </li>
                                     </ul>
                         </ul>
