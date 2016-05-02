@@ -1,22 +1,29 @@
 
 
 
-<?php 
 
-      //for bread crumb
-      $this->breadcrumbs->push('Section', '/section');
-      $this->breadcrumbs->push('Page', '/section/page');
-
-      // unshift crumb
-      $this->breadcrumbs->unshift('Home', '/');
-  $this->breadcrumbs->show();
- ?>
-
-
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Add An Advisee</h5>
+                <ol class="breadcrumb">
+                  <li><a href="index.html">Dashboard</a>
+                  </li><li><a href="<?php echo base_url() ?>staff_member/ListAdvisees">Advisees</a>
+                  </li>
+                  <li class="active">Add An Advisee</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
         <!--start container-->
         <div class="container">
           <div class="section">
-            
+            <!-- START CONTENT -->
+      
 
           <!--Form Advance-->          
           <div class="row">

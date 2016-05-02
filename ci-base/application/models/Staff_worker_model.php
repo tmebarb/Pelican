@@ -36,11 +36,7 @@ class Staff_worker_model extends CI_Model
 		$this->db->from('users u, advisee a, users uA');
 		$this->db->where('u.user_id = a.user_id');
 		$this->db->where('uA.user_id = u.advised_by');
-<<<<<<< HEAD
 
-=======
-       // $this->db->select('u.user_fullname AS advisee_name, ')
->>>>>>> e388b4cb8621b08bb6ae93e934ce86108de8956e
 		$query = $this->db->get();
 		return $query->result();
 	}
