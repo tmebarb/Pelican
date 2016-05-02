@@ -50,7 +50,7 @@ class Staff_worker_model extends CI_Model
 		$this->db->group_by("u.user_fullname"); 
 
 		$query = $this->db->get();
-		return $query->result();	
+		return $query->result();
 	}
 
 	function getAllMajors() {
