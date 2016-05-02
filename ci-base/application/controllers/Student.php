@@ -40,7 +40,7 @@ class Student extends CI_Controller
         $advisor = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($this->session->userdata('user_id'));
         $data = array('view' => 'student/addappointment',
             'advisor' => $advisor,
-            'sessionDetails' => $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id));
+            'sessionDetails' => ($advisor)? $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id):null);
         $this->load->view('admin', $data);
     }
 
