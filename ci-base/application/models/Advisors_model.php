@@ -27,7 +27,7 @@ class Advisors_model extends CI_Model
         return $query->result();
     }
 
-    function get_Advisee_Name($adviseeID)
+    function get_Name($adviseeID)
     {
         $this->db->select('user_fullname');
         $this->db->from('users');
@@ -45,6 +45,16 @@ class Advisors_model extends CI_Model
     	$this->db->where('u.user_id = a.user_id');
 
     	$query = $this->db->get();
+        return $query->result(); 
+    }
+
+    function get_User_ID($advisorCWID)
+    {
+        $this->db->select('user_id');
+        $this->db->from('users');
+        $this->db->where('CWID', $advisorCWID);
+
+        $query = $this->db->get();
         return $query->result(); 
     }
 
@@ -128,11 +138,13 @@ class Advisors_model extends CI_Model
 
     function deleteAdvisor($advisorID)
     {
-        $this->db->where('advisor_id', $advisorID);
-        $query = $this->db->get('advisor');
-        $ret = $query->row();
-        $this->db->delete('users', array('user_id' => $ret->user_id));
-        $this->db->delete('advisor', array('advisor_id' => $ret->advisor_id));
+        //$tables = array('advisor, users');
+        $this->db->where('user_id', $advisorID);
+        $this->db->delete('advisor');
+
+        $this->db->where('user_id', $advisorID);
+        $this->db->delete('users');
+
     }
 
     function fillDatabase()

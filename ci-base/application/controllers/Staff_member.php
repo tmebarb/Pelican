@@ -193,18 +193,19 @@ class Staff_member extends CI_Controller
     }
 
     function deleteAdvisor() {
-        $this->breadcrumbs->push('Staff Member', '/');
-        $this->breadcrumbs->push('Delete Advisors', 'deleteAdvisor');
-        $this->breadcrumbs->unshift('Home', '/');
-
         //print_r($this->Staff_worker_model->getAdvisorsByMajor("computersciences"));
-        $data = array('view' => 'deleteAdvisor',
+        $data = array('view' => 'Staff_member/deleteAdvisor',
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
     }
 
-    function delteAdvisorProcess() {
-        $advisorID= $this->input->post('advisorID');
+    function deleteAdvisorProcess() {
+        $advisorCWID= $this->input->post('advisorCWID');
+        $advisorIDArray = $this->Advisors_model->get_User_ID($advisorCWID);
+        $advisorID = $advisorIDArray[0]->user_id;
+        $advisorArray = $this->Advisors_model->get_Name($advisorCWID);
+        $advisorName = $advisorArray[0]->user_fullname;
+
         $data = array();
         if($advisorID!=null) {
             $this->Advisors_model->deleteAdvisor($advisorID);
@@ -212,7 +213,8 @@ class Staff_member extends CI_Controller
         } else {
             $this->session->set_flashdata('errormsg', 'Please Select any Advisor first!');
         }
-        $data = array('view' => 'deleteAdvisor',
+        $data = array('view' => 'Staff_member/deleteAdvisorSuccess',
+            'advisor_name' => $advisorName,
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
     }
