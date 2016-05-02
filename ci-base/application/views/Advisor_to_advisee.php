@@ -26,7 +26,7 @@
                  }
                  options.empty();
                  $.each(result, function(key, value) {
-                     options.append($("<option />").val(value.advisor_id).text(value.user_fullname))
+                     options.append($("<option />").val(value.user_id).text(value.user_fullname))
                      options.trigger('contentChanged');
                  });
 
@@ -66,7 +66,7 @@
                       <p for="major" class="col s3" style="margin-top: 30px">Select Major</p>
                       <div class="input-field col s9">
                         <select name="major" id="major">
-                          <?php 
+                          <?php
                           foreach ($majors as $major) {
                             echo '<option value='.$major->major_code.'>'.$major->major_name.'</option>';
                           }
@@ -103,13 +103,23 @@
                             </div>
                         </div>
                         <div class="row" id="range" style="display: none">
-                            <div class="input-field col s6">
+                            <div class="input-field col s4">
                                 <label for="adviseeIDStart">Enter Start CWID</label>
                                 <?php echo form_input('adviseeIDStart', ''); ?>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="input-field col s4">
                                 <label for="adviseeIDEnd">Enter End CWID</label>
                                 <?php echo form_input('adviseeIDEnd', ''); ?>
+                            </div>
+                            <div class="input-field col s4">
+                                <div class="switch">
+                                    Select Major only:
+                                    <label style="margin-top: 10px">
+                                        Off
+                                        <input type="checkbox" name="majorOnly" checked>
+                                        <span class="lever"></span> On
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     <div class="row">

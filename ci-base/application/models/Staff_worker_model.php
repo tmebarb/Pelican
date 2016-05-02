@@ -15,8 +15,14 @@ class Staff_worker_model extends CI_Model
 		$OB=array('advised_by'=>$advisor_id);
 		//$this->db->from('advisee');
 		$this->db->from('users')->Where('CWID', $advisee_id);
-		$this->db->update('users', $OB); 
-		
+		$this->db->update('users', $OB);
+
+	}
+
+	function assignToWithMajor($advisor_id, $advisee_id, $major) //matches an advisor to an advisee based on their ID
+	{
+        $sql = "UPDATE users u join advisee a on u.user_id = a.user_id SET `u`.`advised_by` = '".$advisor_id."' WHERE `u`.`CWID` = '".$advisee_id."' AND `a`.`major` = '".$major."'";
+        $this->db->query($sql);
 	}
 
 	function getAll() {
@@ -30,9 +36,13 @@ class Staff_worker_model extends CI_Model
 		$this->db->from('users u, advisee a, users uA');
 		$this->db->where('u.user_id = a.user_id');
 		$this->db->where('uA.user_id = u.advised_by');
+<<<<<<< HEAD
 
+=======
+       // $this->db->select('u.user_fullname AS advisee_name, ')
+>>>>>>> e388b4cb8621b08bb6ae93e934ce86108de8956e
 		$query = $this->db->get();
-		return $query->result();	
+		return $query->result();
 	}
 
 	function showAllAdvisors() //calls database to get selected info from users table about all advisors

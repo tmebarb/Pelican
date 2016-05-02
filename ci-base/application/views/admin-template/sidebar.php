@@ -168,7 +168,11 @@
                                     <ul>
                                         <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees" class="waves-effect waves-cyan">List All Advisees</a>
                                         </li>
+<<<<<<< HEAD
                                         <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
+=======
+                                        <li><a href="<?php echo base_url() ?>staff_member/addAdvisee">Add Advisee</a>
+>>>>>>> e388b4cb8621b08bb6ae93e934ce86108de8956e
                                         </li>
                                         <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
                                         </li>
