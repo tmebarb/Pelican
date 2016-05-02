@@ -133,6 +133,8 @@
 
                 <li class="bold"><a href="<?php echo base_url()?>My_calendar" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> My Calendar</a>
                 </li>
+                <li class="bold"><a href="<?php echo base_url()?>student/addappointment" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i>Add appointment</a>
+                </li>
             <?php } ?>
 
                 <?php
