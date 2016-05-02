@@ -25,11 +25,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">List advisees</h5>
+                <h5 class="breadcrumbs-title">List Users</h5>
                 <ol class="breadcrumb">
                     <li><a href="dashboard">Dashboard</a></li>
                     
-                    <li class="active">List advisees</li>
+                    <li class="active">List Users</li>
                 </ol>
               </div>
             </div>
@@ -47,7 +47,7 @@
             
             <!--DataTables example-->
             <div id="row-grouping">
-              <h4 class="header">List of All Advisees</h4>
+              <h4 class="header">List of All Users</h4>
               <div class="row">
                 
                 <div class="col s12 m12 l12">
