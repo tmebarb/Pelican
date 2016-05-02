@@ -29,7 +29,7 @@ class Staff_worker_model extends CI_Model
 		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, uA.user_fullname AS advisor_name');
 		$this->db->from('users u, advisee a, users uA');
 		$this->db->where('u.user_id = a.user_id');
-		$this->db->where('uA.CWID = u.advised_by');
+		$this->db->where('uA.user_id = u.advised_by');
 
 		$query = $this->db->get();
 		return $query->result();	
@@ -40,7 +40,7 @@ class Staff_worker_model extends CI_Model
 		$this->db->select('u.user_fullname, u.CWID, u.user_email, u.user_phone, a.major, a.office_loc, COUNT(uA.advised_by) AS numOfAdvisees');
 		$this->db->from('users u, advisor a, users uA');
 		$this->db->where('u.user_id = a.user_id');
-		$this->db->where('u.CWID = uA.advised_by');
+		$this->db->where('u.user_id = uA.advised_by');
 		$this->db->group_by("u.user_fullname"); 
 
 		$query = $this->db->get();
