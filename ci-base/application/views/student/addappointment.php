@@ -19,7 +19,8 @@
 
             $("#date").datepicker({
                 minDate: 0,
-                dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                maxDate: "<?php echo $sessionDetails->endDate ?>"
             });
             $("#date").change(function() {
                 var date = $(this).datepicker('getDate');
