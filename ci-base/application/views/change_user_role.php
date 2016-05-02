@@ -135,25 +135,15 @@
                             <?php echo form_input('userID', ''); ?>
                           </div>
                         </div>
-
-                        <!--
-                        <div class="row">
-                          <div class="input-field col s12">
+                            <?php $options =  array(
+                                'null' => 'Please Select A Roll',
+                                'admin' => 'Administrator',
+                                'advisor'    => 'Advisor',
+                                'advisee'  => 'Advisee',
+                                'Staff_member'   => 'Staff Member'
+                              );?>
                             
-                            <label for="userRole">Enter Desired User Role</label>
-                            <?php echo form_input('userRole', ''); ?>
-                          -->
-                            
-                            
-                            Enter Desired User Role
-                            <select for="userRole" name="userRole">
-                              <option value="admin">Admin</option>
-                              <option value="Staff_member">Staff Worker</option>
-                              <option value="advisor">Advisor</option>
-                              <option value="advisee">Advisee</option>
-                              <option value="Student_worker">Student Worker</option>
-                            </select>
-                            
+                            <?php echo form_dropdown('newRole', $options, 'null'); ?>
                           </div>
                         </div>
                         <br></br>

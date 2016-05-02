@@ -113,7 +113,9 @@ class Users_model extends CI_Model
 	}
 
 	function getallusers () { 
+		$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, user_type');
 		$this->db->from('users');
+
 		$query = $this->db->get();
 		return $query->result();
 	}

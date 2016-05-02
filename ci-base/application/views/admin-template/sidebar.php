@@ -43,7 +43,7 @@
                                 <ul>
                                     <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
                                     </li>
-                                    <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
+                                    <li><a href="<?php echo base_url() ?>Users/listAll" class="waves-effect waves-cyan">List All</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
                                     </li>

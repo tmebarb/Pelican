@@ -95,13 +95,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Cards</h5>
+                <h5 class="breadcrumbs-title">Change User's Role</h5>
                 <ol class="breadcrumb">
                   <li><a href="dashboard">Dashboard</a>
                   </li>
-                  <li><a href="#">Admin</a>
-                  </li>
-                  <li class="active">Success</li>
+                  <li class="active">Change User's Role</li>
                 </ol>
               </div>
             </div>
@@ -123,10 +121,10 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Success!</span>
-                        <p> The user with the ID <?php echo $user_id;?> was assigned the new role of <?php echo $user_type;?> .</p>
+                        <p> T<?php echo $user_name;?> was assigned the new role of <?php echo $user_type;?> .</p>
                       </div>
                       <div class="card-action">
-                        <a href="changeUserRole" class="lime-text text-accent-1">Back to Change User Role Page</a>
+                        <a href="?php echo base_url() Dashboard/changeUserRole" class="lime-text text-accent-1">Change Another User's Role</a>
                         <a href="dashboard" class="lime-text text-accent-1">Home</a>
                       </div>
                     </div>
@@ -135,12 +133,7 @@
                   
                  
             </div>
-          </div>
-
-         
-               
-              
-          
+          </div> 
 </div>
         </div>
         <!--end container-->

@@ -142,10 +142,13 @@
 		function changeRoleConfirm(){
 		//if($this->session->userdata->user)
 				$userID= $this->input->post('userID');
-				$userRole= $this->input->post('userRole');
+				$userRole= $this->input->post('newRole');
+				$userNameArr= $this->Advisors_model->get_Name($userID);
+				$userName = $userNameArr[0]->user_fullname;
+
 				$data = array('view' => 'change_role_confirm',
-								'user_id' => $userID,
-								'user_type' => $userRole
+								'user_name' => $userName,
+								'user_type' => $newRole
 								);
 				
 				$this->admin->assignRole($userID, $userRole);

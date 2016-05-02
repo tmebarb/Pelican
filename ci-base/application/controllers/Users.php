@@ -49,6 +49,14 @@
 		   	$this->Users_model->change_Password($userID, md5($newPassword));
 		}
 
+		function listAll()
+		{
+			$data = array('view' => 'listAllUsers', 
+							'users' => $this->Users_model->getallusers());
+
+			$this->load->view('admin', $data);
+		}
+
 	}
 
 ?>
