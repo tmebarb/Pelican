@@ -187,7 +187,7 @@
                                     <ul>
                                         <li><a href="<?php echo base_url() ?>staff_member/ListAdvisors" class="waves-effect waves-cyan">List All Advisors</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add Advisor</a>
+                                        <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
                                         </li>
                                         <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisor</a>
                                         </li>

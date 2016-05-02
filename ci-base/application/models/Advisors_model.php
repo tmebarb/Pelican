@@ -56,19 +56,31 @@ class Advisors_model extends CI_Model
     }
 
 
-    function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
+    function saveAdvisor($user_fullname, $user_name, $email, $CWID, $password, $phone, $officeLoc, $major)
     {
-        $data = array(
-            'first_name' => $first_name,
-            'last_name' => $last_name,
-            'email' => $email,
-            'pic' => $pic,
-            'password' => $password,
-            'major' => $major,
-            'dob' => $dob
+        //An array of information to be inserted into the users table
+        $user_data = array(
+            'user_fullname' => $user_fullname,
+            'user_name' => $user_name,
+            'user_email' => $email,
+            'CWID' => $CWID,
+            'user_password' => $password,
+            'user_phone' => $phone,
+            'user_type' => 'advisor'
         );
 
-        $this->db->insert('advisor', $data);
+        $this->db->insert('users', $user_data);
+
+        //Gets the user id that was created alongside the insert into the users table
+        $advisor_userid = $this->db->insert_id();
+
+        //An array of information for the same user that will be inserted into the advisor table
+        $advisor_data = array(
+            'office_loc' => $officeLoc,
+            'major' => $major,
+            'user_id' => $advisor_userid
+            );
+        $this->db->insert('advisor', $advisor_data);
     }
 
     function getAll()
