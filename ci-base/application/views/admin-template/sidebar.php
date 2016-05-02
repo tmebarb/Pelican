@@ -168,8 +168,7 @@
                                     <ul>
                                         <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees" class="waves-effect waves-cyan">List All Advisees</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>staff_member/addAdvisee">Add Advisee</a>
-                                        </li>
+                                        <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
                                         <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
                                         </li>
 <!--                                        <li class="bold"><a href="--><?php //echo base_url() ?><!--staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>-->

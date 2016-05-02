@@ -20,6 +20,34 @@ class Advisees_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	//Function that inserts the user fullname, user name, email, cwid, password, phone number, classification, and major for an advisee into the user and advisee table
+	function saveAdvisee($user_fullname, $user_name, $email, $CWID, $password, $phone, $classification, $major)
+    {
+    	//An array of information to be inserted into the users table
+        $user_data = array(
+            'user_fullname' => $user_fullname,
+            'user_name' => $user_name,
+            'user_email' => $email,
+            'CWID' => $CWID,
+            'user_password' => $password,
+            'user_phone' => $phone,
+            'user_type' => 'advisee'
+        );
+
+        $this->db->insert('users', $user_data);
+
+        //Gets the user id that was created alongside the insert into the users table
+        $advisee_userid = $this->db->insert_id();
+
+        //An array of information for the same user that will be inserted into the advisee table
+        $advisee_data = array(
+        	'classification' => $classification,
+        	'major' => $major,
+        	'user_id' => $advisee_userid
+        	);
+        $this->db->insert('advisee', $advisee_data);
+
 	function getAdvisorDetailsByAdviseeUserID($user_id) {
 		$this->db->select('u.advised_by as advisor_id, u2.user_fullname as advisor_name');
 		$this->db->from('users u, users u2');
