@@ -123,10 +123,10 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Success!</span>
-                        <p> The registration hold for the student with ID <?php echo $user_id;?> has been successfully added/removed.</p>
+                        <p> <?php echo $advisee_name ?>'s registration hold <?php echo $msg ?>!</p>
                       </div>
                       <div class="card-action">
-                        <a href="changeHolds" class="lime-text text-accent-1">Back to Add/Remove Holds Page</a>
+                        <a href="<?php echo base_url() ?>Staff_member/changeHolds" class="lime-text text-accent-1">Back to Add/Remove Holds Page</a>
                         <a href="dashboard" class="lime-text text-accent-1">Home</a>
                       </div>
                     </div>

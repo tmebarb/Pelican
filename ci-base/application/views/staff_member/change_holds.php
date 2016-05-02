@@ -30,14 +30,18 @@
 
   <!-- CORE CSS-->
   
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+  <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 
 <body>
@@ -57,7 +61,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
+                   
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -97,13 +101,13 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Forms</h5>
+                <h5 class="breadcrumbs-title">Lift/Place Registration Hold</h5>
                 <ol class="breadcrumb">
                   <li><a href="index.html">Dashboard</a>
                   </li>
-                  <li><a href="#">Forms</a>
+                  <li><a href="?php echo base_url() ?>staff_member/ListAdvisees">Advisees</a>
                   </li>
-                  <li class="active">Forms Layouts</li>
+                  <li class="active">Lift/Place Registration Hold</li>
                 </ol>
               </div>
             </div>
@@ -113,58 +117,98 @@
 
 
         <!--start container-->
-        <div class="container">
-          <div class="section">
-
-            <p class="caption">Please enter the ID of the student whose registration hold is to be added or removed.</p>
-
             <div class="divider"></div>
             <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
             <div id="basic-form" class="section">
-            	<?php echo form_open('dashboard/changeHoldsConfirm'); ?>
+              <?php echo form_open('Staff_member/changeHoldsConfirm'); ?>
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
-                    <h4 class="header2">Add/Remove Holds</h4>
+                    <h4 class="header2">Lift/Place Advisee Hold</h4>
                     <div class="row">
-                      <form class="col s12" action="dashboard/changeHoldsConfirm/" method="post">
+                      <form class="col s12" action="Staff_member/changeHoldsConfirm" method="post">
+                         <div class="col s12 m12 l12">
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">                          
+                            <label for="adviseeCWID">Enter Advisor CWID</label>
+                            <?php echo form_input('adviseeCWID', ''); ?>
+                            
+                          </div>
+                        </div>
                         <div class="row">
                           <div class="input-field col s12">
+                            <?php $options =  array(
+                                '1'    => 'Add Hold',
+                                '0'  => 'Lift Hold',
+                              );?>
                             
-                            <label for="userID">Enter Target User ID</label>
-                            <?php echo form_input('userID', ''); ?>
+                            <?php echo form_dropdown('hold', $options, '0'); ?>
                           </div>
                         </div>
-                            
-                            
-                            Select Action
-                            <select for="stuHold" name="stuHold">
-                              <option value="0">Remove Hold</option>
-                              <option value="1">Add Hold</option>
-                            </select>
-                            
-                          </div>
-                        </div>
-                        <br></br>
-                        <div class="row">
+                          <div class="row">
                             <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right"
-                              	<?php echo form_submit('submit' , 'submit'); ?>
+                                <?php echo form_submit('submit' , 'submit'); ?>
                                 <i class="mdi-content-send right"></i>
                               </button>
-                              <?php echo form_close();?>
                             </div>
                           </div>
                         </div>
-                        <br></br>
-                      </form>
+                      <?php echo form_close();?>
+
+
                     </div>
                   </div>
                 </div>
             </div>
         </div>
-    </div>
-                
+        <div class="container">
+     
+           <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                          <th>Student Name</th>
+                          <th>CWID</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Major</th>
+                          <th>Classification</th>
+                          <th>Hold</th>
+                          <th>Advisor</th>
+                        </tr>
+                    </thead>
+                 
+                    <tfoot>
+                        <tr>
+                          <th>Student Name</th>
+                          <th>CWID</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Major</th>
+                          <th>Classification</th>
+                          <th>Hold</th>
+                          <th>Advisor</th>            
+                        </tr>
+                    </tfoot>
+                 
+                    <tbody>
+                      <?php foreach ($advisees as $row): ?>
+                      <tr>
+                        <td><?php echo $row->advisee_name  ?></td>
+                        <td><?php echo $row->CWID ?></td>
+                        <td><?php echo $row->user_email ?></td>
+                        <td><?php echo $row->user_phone ?></td>
+                        <td><?php echo $row->major ?></td>
+                        <td><?php echo $row->classification ?></td>
+                        <td><?php echo $row->hold ?></td>
+                        <td><?php echo $row->advisor_name ?></td>
+                      </tr>
+                        
+                      <?php endforeach ?>
+                  </tbody>
+                </table>
+                      
   <!-- END CONTENT -->
 </div>
   <!-- END WRAPPER -->
@@ -180,17 +224,24 @@
     Scripts
     ================================================ -->
     
+ <!-- ================================================
+    Scripts
+    ================================================ -->
+    
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/materialize.js"></script>
     <!--prism-->
-    <script type="text/javascript" src="js/prism.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/prism.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- data-tables -->
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/data-tables-script.js"></script>
     <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.js"></script>   
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/plugins.js"></script>    
     

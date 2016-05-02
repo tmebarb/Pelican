@@ -77,7 +77,7 @@
                                 <ul>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                     </li>
-                                    <li><a href="<?php echo base_url() ?>dashboard/changeHolds">Add/Remove Holds</a>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
                                     </li>
                                 </ul>
                             </div>
@@ -177,7 +177,7 @@
 <!--                                        </li>-->
 <!--                                        <li><a href="css-icons.html">Student Worker Status</a>-->
 <!--                                        </li>-->
-                                        <li><a href="css-shadow.html">Add/Remove Holds</a>
+                                        <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
                                         </li>
                                     </ul>
                         </ul>

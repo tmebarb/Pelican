@@ -41,6 +41,17 @@ class Staff_worker_model extends CI_Model
 		return $query->result();
 	}
 
+	function showAllAdviseesWithHolds() //calls database to get selected info from users table about all advisees that have currently been advised
+	{
+		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, a.hold, uA.user_fullname AS advisor_name');
+		$this->db->from('users u, advisee a, users uA');
+		$this->db->where('u.user_id = a.user_id');
+		$this->db->where('uA.user_id = u.advised_by');
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function showAllAdvisors() //calls database to get selected info from users table about all advisors
 	{
 		$this->db->select('u.user_fullname, u.CWID, u.user_email, u.user_phone, a.major, a.office_loc, COUNT(uA.advised_by) AS numOfAdvisees');
@@ -89,6 +100,30 @@ class Staff_worker_model extends CI_Model
     function deleteAdvisee($id) {
         $this->db->delete('advisee', array('user_id' => $id));
         $this->db->delete('users', array('user_id' => $id));
+    }
+
+    function getHoldStatus($adviseeID)
+    {
+    	$this->db->select('hold');
+    	$this->db->from('advisee');
+    	$this->db->where('advisee_id', $adviseeID);
+
+    	$query = $this->db->get();
+    	return $query->result();
+    }
+    
+    function lift_hold($adviseeID, $holdStat)
+    {
+    	$data = array('hold'=>0);
+    	$this->db->where('advisee_id', $adviseeID);
+    	$this->db->update('advisee', $data);
+    }
+
+    function put_hold($adviseeID, $holdStat)
+    {
+    	$data = array('hold'=>1);
+    	$this->db->where('advisee_id', $adviseeID);
+    	$this->db->update('advisee', $data);
     }
 }
 ?>

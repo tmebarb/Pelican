@@ -235,6 +235,49 @@ class Staff_member extends CI_Controller
         $this->session->set_flashdata('successmsg', 'Student deleted, even from advisee records!');
         redirect('staff_member/viewStudentWorker');
     }
+
+    function changeHolds()
+    {
+        $data = array('view' => 'staff_member/change_holds', 
+                        'advisees' => $this->Staff_worker_model->showAllAdviseesWithHolds());
+        $this->load->view('admin', $data);
+    }
+
+    function changeHoldsConfirm()
+    {
+        $adviseeCWID = $this->input->post('adviseeCWID');
+        $holdStat = $this->input->post('hold');
+        $adviseeArray = $this->Advisors_model->get_Name($adviseeCWID);
+        $adviseeName = $adviseeArray[0]->user_fullname;
+        $adviseeIDArr = $this->Advisors_model->get_Advisee_ID($adviseeCWID);
+        $adviseeID = $adviseeIDArr[0]->advisee_id;
+       // $holdArr = $this->Staff_worker_model->getHoldStatus($adviseeID);
+        //$holdStat = $holdArr[0]->hold;
+
+        if ($holdStat == 0)
+        {
+            $data = array('view' => 'Staff_member/change_holds_confirm', 
+                                'advisee_name' => $adviseeName,
+                                'hold' => $holdStat, 
+                                'msg' => 'has been lifted');
+            $this->Staff_worker_model->lift_hold($adviseeID, $holdStat);
+            $this->load->view('admin', $data);
+        }
+
+        else
+        {
+            $data = array('view' => 'Staff_member/change_holds_confirm', 
+                                'advisee_name' => $adviseeName,
+                                'hold' => $holdStat, 
+                                'msg' => 'has been set');
+            $this->Staff_worker_model->lift_hold($adviseeID, $holdStat);
+            $this->load->view('admin', $data);
+        }
+
+
+    }
+
+
 }
 
 
