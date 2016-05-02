@@ -35,10 +35,10 @@ class Staff_worker_model extends CI_Model
 		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, uA.user_fullname AS advisor_name');
 		$this->db->from('users u, advisee a, users uA');
 		$this->db->where('u.user_id = a.user_id');
-		$this->db->where('uA.CWID = u.advised_by');
-
+		$this->db->where('uA.user_id = u.advised_by');
+       // $this->db->select('u.user_fullname AS advisee_name, ')
 		$query = $this->db->get();
-		return $query->result();	
+		return $query->result();
 	}
 
 	function showAllAdvisors() //calls database to get selected info from users table about all advisors
