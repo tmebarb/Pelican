@@ -15,8 +15,14 @@ class Staff_worker_model extends CI_Model
 		$OB=array('advised_by'=>$advisor_id);
 		//$this->db->from('advisee');
 		$this->db->from('users')->Where('CWID', $advisee_id);
-		$this->db->update('users', $OB); 
-		
+		$this->db->update('users', $OB);
+
+	}
+
+	function assignToWithMajor($advisor_id, $advisee_id, $major) //matches an advisor to an advisee based on their ID
+	{
+        $sql = "UPDATE users u join advisee a on u.user_id = a.user_id SET `u`.`advised_by` = '".$advisor_id."' WHERE `u`.`CWID` = '".$advisee_id."' AND `a`.`major` = '".$major."'";
+        $this->db->query($sql);
 	}
 
 	function getAll() {

@@ -51,20 +51,28 @@ class Staff_member extends CI_Controller {
 
 	function advisorAdviseeMatch(){
 //if($this->session->userdata->user)
-		$advisorID= $this->input->post('advisorID');
+        $advisorID= $this->input->post('advisorID');
+        $major= $this->input->post('major');
         $adviseeID= $this->input->post('adviseeID');
         $adviseeIDStart= $this->input->post('adviseeIDStart');
         $adviseeIDEnd= $this->input->post('adviseeIDEnd');
         $rangeOrIndividual= $this->input->post('rangeOrIndividual');
+        $majorOnly = $this->input->post('majorOnly');
+        //echo ($majorOnly);
+        //return;
         if($rangeOrIndividual == "Range of CWID for Advisee") {
             $initial = $adviseeIDStart;
             while($initial <= $adviseeIDEnd ) {
-               // echo $initial++;
+                // echo $initial++;
                 $data = array('view' => 'advisor_Advisee_Match',
-                    'advisor_id' => $advisorID,
-                    'student_id' => $initial
-                );
-                $this->Staff_worker_model->assignTo($advisorID, $initial);
+                        'advisor_id' => $advisorID,
+                        'student_id' => $initial
+                    );
+                if($majorOnly) {
+                    $this->Staff_worker_model->assignToWithMajor($advisorID, $initial, $major);
+                } else {
+                    $this->Staff_worker_model->assignTo($advisorID, $initial);
+                }
                 $initial++;
             }
 
@@ -118,12 +126,6 @@ class Staff_member extends CI_Controller {
 
         $this->load->view('admin', $data);
     }
-    function addStudentWorker() {
-        $data = array('view' => 'addStudentWorker',
-            'advisees' => $this->Staff_worker_model->getAllAdvisee());
-
-        $this->load->view('admin', $data);
-    }
     function  redeemAdvisee($id) {
         $this->Staff_worker_model->redeemAdvisee($id);
         $this->session->set_flashdata('successmsg', 'Student Worker converted to normal Advisee!');
@@ -133,6 +135,13 @@ class Staff_member extends CI_Controller {
         $this->Staff_worker_model->deleteAdvisee($id);
         $this->session->set_flashdata('successmsg', 'Student deleted, even from advisee records!');
         redirect('staff_member/viewStudentWorker');
+    }
+    function addAdvisee() {
+        $this->breadcrumbs->push('Staff Member', '/');
+        $this->breadcrumbs->push('Add Advisee', 'addAdvisee');
+        $this->breadcrumbs->unshift('Home', '/');
+        $data = array('view'=>'addAdvisee');
+        $this->load->view('admin', $data);
     }
 }
 
