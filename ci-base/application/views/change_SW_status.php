@@ -146,7 +146,7 @@
                             
                             
                             Select Student Worker Status
-                            <select for="stuRole" name="stuRole">
+                            <select for="SWStatus" name="SWStatus">
                               <option value="1">Add Student Worker Status</option>
                               <option value="0">Remove Student Worker Status</option>
                             </select>

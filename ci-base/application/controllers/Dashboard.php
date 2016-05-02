@@ -148,7 +148,29 @@
 								'user_type' => $userRole
 								);
 				
-				$this->admin->assignTo($userID, $userRole);
+				$this->admin->assignRole($userID, $userRole);
+				$this->load->view('admin', $data);
+
+			}
+
+		function changeSWStatus(){
+			
+			$data = array('view' => 'change_SW_status');
+			$this->load->view('admin', $data);
+			
+
+		}
+
+		function changeSWConfirm(){
+		//if($this->session->userdata->user)
+				$userID= $this->input->post('userID');
+				$SWStatus= $this->input->post('SWStatus');
+				$data = array('view' => 'change_SW_confirm',
+								'user_id' => $userID,
+								'student_worker' => $SWStatus
+								);
+				
+				$this->admin->assignSWStat($userID, $SWStatus);
 				$this->load->view('admin', $data);
 
 			}
