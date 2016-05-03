@@ -62,7 +62,7 @@ class Student extends CI_Controller
         if(!$slot_id)
             $this->Slots_model->addtimeslot2($startTime, $endTime, $advisor->advisor_id, $user_id, $date);
 
-        redirect("My_Calender");
+        redirect("My_calender");
     }
 
     function getAdvisorSlotsByDayNDate($date, $day, $advisor_id) {
