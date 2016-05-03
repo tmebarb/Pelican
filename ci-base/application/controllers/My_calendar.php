@@ -47,7 +47,7 @@ function __construct() {
 	function showcal ($year = null, $month = null){
 		//print_r($this->session->userdata('advisor_id'));
 		//return;
-		$this->load->helper('url');
+		$this->load->helper('url'); 
 		$this->load->model('calendar_model');
 		$prefs['template'] = '
 {table_open}<table cellpadding="1" cellspacing="2">{/table_open}
