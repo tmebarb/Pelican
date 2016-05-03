@@ -137,6 +137,7 @@
                           <th>Phone</th>
                           <th>Major</th>
                           <th>Classification</th>
+                          <th>Student Worker</th>
                           <th>Advisor</th>
                         </tr>
                     </thead>
@@ -149,6 +150,7 @@
                           <th>Phone</th>
                           <th>Major</th>
                           <th>Classification</th>
+                          <th>Student Worker</th>
                           <th>Advisor</th>
                         </tr>
                     </tfoot>
@@ -162,6 +164,7 @@
                         <td><?php echo $row->user_phone ?></td>
                         <td><?php echo $row->major ?></td>
                         <td><?php echo $row->classification ?></td>
+                        <td><?php echo $row->student_worker ?></td>
                         <td><?php $re = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($row->user_id); echo ($re)? $re->advisor_name: "not assigned yet"; ?></td>
                       </tr>
                         
