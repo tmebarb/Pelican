@@ -23,11 +23,8 @@
 			$data = array('view' => 'changePhoneForm');
 			$this->load->view('admin', $data);
 		}
-		function initChangePassword()
-		{
-			$data = array('view' => 'changePasswordForm');
-			$this->load->view('admin', $data);
-		}
+		
+
 		function changePhone()
 		{
 			$userID = $this->session->userdata('user_id');
@@ -36,17 +33,52 @@
 							'newPhone' => $this->Users_model->change_Number($userID, $newPhone));
 			$this->load->view('admin', $data);
 		}
+
+		function initChangePassword()
+		{
+			$data = array('view' => 'oldPasswordForm');
+			$this->load->view('admin', $data);
+		}
+		function checkPassword()
+		{
+			$password = $this->session->userdata('password');
+			$oldpassword = $this->input->post('oldpassword');
+
+			if($password == $oldpassword)
+			{
+				$data = array('view' => 'changePasswordForm');
+				$this->load->view('admin', $data);
+		   	}
+		   	else
+		   	{
+		   		$data = array('view' => 'changePasswordFailure',
+		   			'msg' => 'The password was wrong!', 
+		   			'breadcrumb' => 'Users/checkPassword');
+		   		$this->load->view('admin', $data);
+		   	}
+		}
 		function changePassword()
 		{
 			$userID = $this->session->userdata('user_id');
 			$newPassword = $this->input->post('new_password');
-			$data = array('view' => 'changePasswordSuccess', 'new_password' => $newPassword,
-							'newPassword' => $this->Users_model->change_Password($userID, $newPassword));
-			$this->load->view('admin', $data);
+			$rePassword = $this->input->post('repassword');
 
-		   	$conPassword = $this->input->post('con_password');
-		   		
-		   	$this->Users_model->change_Password($userID, md5($newPassword));
+			if($newPassword == $rePassword)
+			{
+				$this->Users_model->change_Password($userID, md5($newPassword));	
+				$this->session->set_userdata('password', $newPassword);
+				$data = array('view' => 'changePasswordSuccess');
+				$this->load->view('admin', $data);   	 		
+			}
+			else
+		   	{
+		   		$data = array('view' => 'changePasswordFailure',
+		   			'msg' => 'The passwords did not match!', 
+		   			'breadcrumb' => 'Users/changePassword');
+		   		$this->load->view('admin', $data);
+		   	}
+
+
 		}
 
 		function listAll()
