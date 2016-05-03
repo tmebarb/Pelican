@@ -68,5 +68,16 @@ class Slots_model extends CI_Model
         return $query->row();
 	}
 
+    function  getSlotByAdvisorNdTime($advisor_id, $time, $date) {
+		$this->db->where('advisor_id', $advisor_id);
+		$this->db->where('start_time', $time);
+		$this->db->where('date', $date);
+		$this->db->from('timeslots');
+//		var_dump($this->db->_compile_select());
+		$query = $this->db->get();
+		//echo $this->db->last_query();
+		return $query->row();
+    }
+
 
 }
