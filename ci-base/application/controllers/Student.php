@@ -39,9 +39,12 @@ class Student extends CI_Controller
         $this->breadcrumbs->unshift('Home', '/');
 //			print_r($this->session->userdata('user_id'));
         $advisor = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($this->session->userdata('user_id'));
+       // print_r($this->Slots_model->getTimeSlotByAdviseeID($this->session->userdata('user_id')));
+        //return;
         $data = array('view' => 'student/addappointment',
             'advisor' => $advisor,
-            'sessionDetails' => ($advisor)? $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id):null);
+            'sessionDetails' => ($advisor)? $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id):null,
+            'slotDetails' => $this->Slots_model->getTimeSlotByAdviseeID($this->session->userdata('user_id')) );
         $this->load->view('admin', $data);
     }
 

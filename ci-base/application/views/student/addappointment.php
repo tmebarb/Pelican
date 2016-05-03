@@ -110,6 +110,7 @@
         <div id="basic-form" class="section">
             <form action="<?php echo base_url() ?>student/saveappointment" method="post">
                 <div class="card-panel">
+
                     <img src="<?php echo base_url() ?>asserts/images/hex-loader2.gif" alt="" id="loadingDiv"
                          style="margin: auto 0px; text-align: center; padding-left: 31%;">
 
@@ -123,9 +124,12 @@
                             ?>
                         Advisor not assigned
                         <?php
-                        } ?>
+                        }
+                        ?>
                     </div>
-
+                    <?php
+                    if(!$slotDetails) {
+                        ?>
                     <div class="row">
                         <div class="input-field col s2">
                             <p for="date" data-error="wrong" data-success="right" class="right">Pick Date</p>
@@ -165,6 +169,27 @@
                             </button>
                         </div>
                     </div>
+                    <?php
+                        } else {
+                            ?>
+                        You Already have an Appointment with
+                        <?php
+                        if($advisor) { ?>
+                            <strong><?php
+                                echo $advisor->advisor_name;
+                                ?></strong>
+                        <?php }
+
+                        $timestamp = strtotime($slotDetails->date);
+                        $day = date('D', $timestamp);
+
+                        echo " on ".$day ." (" . $slotDetails->date . ")";
+
+                        ?>
+
+                    <?php
+                        }
+                    ?>
                 </div>
             </form>
         </div>

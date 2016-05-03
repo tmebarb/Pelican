@@ -42,7 +42,7 @@ class Slots_model extends CI_Model
 			'start_time' => $start,
 			'end_time' => $end,
 			'advisor_id'	=> $advisor_id,
-			'student_id' => $student_id,
+			'advisee_id' => $student_id,
 			'day' => $day,
 			'is_repeating' => $is_repeating,
 			'open' => $open
@@ -59,6 +59,13 @@ class Slots_model extends CI_Model
 	function removeTimeSlot($slot_id) {
 		$this->db->where('slot_id', $slot_id);
 		$this->db->delete('timeslots');
+	}
+
+	function getTimeSlotByAdviseeID($advisee_id) {
+        $this->db->where('advisee_id', $advisee_id);
+        $this->db->from('timeslots');
+        $query = $this->db->get();
+        return $query->row();
 	}
 
 
