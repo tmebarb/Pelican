@@ -32,10 +32,9 @@ class Staff_worker_model extends CI_Model
 
 	function showAllAdvisees() //calls database to get selected info from users table about all advisees that have currently been advised
 	{
-		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, uA.user_fullname AS advisor_name');
-		$this->db->from('users u, advisee a, users uA');
+		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification');
+		$this->db->from('users u, advisee a');
 		$this->db->where('u.user_id = a.user_id');
-		$this->db->where('uA.user_id = u.advised_by');
 
 		$query = $this->db->get();
 		return $query->result();
@@ -43,10 +42,9 @@ class Staff_worker_model extends CI_Model
 
 	function showAllAdviseesWithHolds() //calls database to get selected info from users table about all advisees that have currently been advised
 	{
-		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, a.hold, uA.user_fullname AS advisor_name');
-		$this->db->from('users u, advisee a, users uA');
+		$this->db->select('u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification, a.hold');
+		$this->db->from('users u, advisee a');
 		$this->db->where('u.user_id = a.user_id');
-		$this->db->where('uA.user_id = u.advised_by');
 
 		$query = $this->db->get();
 		return $query->result();
