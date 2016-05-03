@@ -30,9 +30,7 @@ class Calendar_model extends CI_Model
 		where('advisor_id', $this->session->userdata('advisor_id'))-> get();
 // =======
 	}
-		
-
-		 if($this->session->userdata('user_type') == "advisee") {
+		else if($this->session->userdata('user_type') == "advisee") {
 			$query = $this->db->select('date, event')->from ('timeslots')->like('date', "$year-$month") -> 
 		where('advisee_id', $this->session->userdata('advisee_id'))-> get();
 	}
