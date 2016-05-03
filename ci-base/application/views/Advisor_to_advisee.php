@@ -1,4 +1,31 @@
-      <script>
+<style>
+    label {
+        width: 100%;
+    }
+</style>
+<script>
+    $.validator.setDefaults({
+        errorClass: 'invalid',
+        validClass: "valid",
+        errorPlacement: function (error, element) {
+            $(element)
+                .closest("form")
+                .find("label[for='" + element.attr("id") + "']")
+                .attr('data-error', error.text());
+        }
+    });
+    $().ready(function () {
+        $("#form").validate({
+            rules: {
+                advisorID: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
+
+<script>
         $(document).ready(function(){
             var $loading = $('#loadingDiv').hide();
             $(document)
@@ -54,18 +81,19 @@
 
           <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
           <div id="basic-form" class="section">
-           <?php echo form_open('Staff_member/advisorAdviseeMatch'); ?>
+              <?php $attributes = array('id' => 'form');?>
+
+              <?php echo form_open('Staff_member/advisorAdviseeMatch', $attributes); ?>
            <div class="row">
             <div class="col s12 m12 l8">
               <div class="card-panel">
                 <h4 class="header2">Assign Advisee</h4>
                 <div class="container">
                     <img src="<?php echo base_url() ?>asserts/images/hex-loader2.gif" alt="" id="loadingDiv" style="margin: auto 0px; text-align: center; padding-left: 20%;">
-                    <form class="col s12" action="Staff_member/advisorAdviseeMatch/" method="post">
                     <div class="row">
                       <p for="major" class="col s3" style="margin-top: 30px">Select Major</p>
                       <div class="input-field col s9">
-                        <select name="major" id="major">
+                        <select name="major" id="major" required>
                           <?php
                           foreach ($majors as $major) {
                             echo '<option value='.$major->major_code.'>'.$major->major_name.'</option>';
@@ -79,8 +107,8 @@
                             <p for="advisorID" class="input-field col s3">Select Advisor</p>
                             <div class="input-field col s9">
 
-                                <select id="advisorID" name="advisorID">
-                                    <option value="notSelected" disabled selected>Select Advisor</option>
+                                <select id="advisorID" name="advisorID" required>
+                                    <option value="" disabled selected>Select Advisor</option>
                                 </select>
                             </div>
                         </div>
@@ -132,7 +160,6 @@
                     </div>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>

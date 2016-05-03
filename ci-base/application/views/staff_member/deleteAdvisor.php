@@ -119,7 +119,7 @@ Author URL: http://www.themeforest.net/user/geekslabs
     $("#form").validate({
         messages: {
             advisorCWID: {
-                required: "Advisee ID Required!",
+                required: "Advisor ID Required!",
                 number: "Number Only allowed"
             }
         }
