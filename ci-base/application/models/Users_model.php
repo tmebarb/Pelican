@@ -166,6 +166,7 @@ class Users_model extends CI_Model
 		$this->db->from('users')->where('user_id', $user_id);
 		$this->db->update('users', $newPhone);
 	}
+
 	function change_Password($user_id, $password)
 	{
 		$newPassword=array('user_password'=>$password);

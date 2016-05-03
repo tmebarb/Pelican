@@ -63,6 +63,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisors</a>
                             <div class="collapsible-body" style="">
                                 <ul>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisors">List Advisors</a>
+                                    </li>
                                     <li><a href="css-icons.html">View Appointments</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
@@ -74,6 +76,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisees</a>
                             <div class="collapsible-body" style="">
                                 <ul>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees">List Advisees</a>
+                                    </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
@@ -112,16 +116,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Scheduling</a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li class="bold"><a href="<?php echo base_url() ?>advisor/calender"><i class="mdi-action-view-headline"></i> Make Schedule</a>
-                                    </li>
-
                                     <li class="bold"><a href="<?php echo base_url() ?>advisor/timeslots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
-                                            </i> Setup Timeslots (proper WIP)</a>
-                                        <!--
-                        </li>
-                        <li class="bold"><a href="<?php echo base_url() ?>advisor/funTimeSlots" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on">
-                        </i> Setup Timeslots (functional)</a>
-                        -->
+                                    </i> Setup Timeslots (proper WIP)</a>
                                     </li>
                                 </ul>
                     </ul>
@@ -135,6 +131,8 @@
                 <li class="bold"><a href="<?php echo base_url()?>My_calendar" class="waves-effect waves-cyan"><i class="mdi-action-view-headline"></i> My Calendar</a>
                 </li>
                 <li class="bold"><a href="<?php echo base_url()?>student/addappointment" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i>Add appointment</a>
+                </li>
+                <li class="bold"><a href="<?php echo base_url()?>student/getAdvisorProfile" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i>View Advisor</a>
                 </li>
             <?php } ?>
 

@@ -16,7 +16,7 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
   <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-  <title>Forms Layouts | Pelican</title>
+  <title>Change Office | Pelican</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -32,16 +32,12 @@
   
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-  <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 
 <body>
@@ -53,6 +49,7 @@
   </div>
   <!-- End Page Loading -->
 
+  
   <!-- START MAIN -->
   <div id="main">
     <!-- START WRAPPER -->
@@ -68,13 +65,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Delete Advisor</h5>
+                <h5 class="breadcrumbs-title">Change Password</h5>
                 <ol class="breadcrumb">
                   <li><a href="index.html">Dashboard</a>
                   </li>
-                  <li><a href="?php echo base_url() ?>staff_member/ListAdvisors">Advisors</a>
-                  </li>
-                  <li class="active">Delete Advisor</li>
+                  <li class="active">Change Password</li>
                 </ol>
               </div>
             </div>
@@ -84,34 +79,34 @@
 
 
         <!--start container-->
+        <div class="container">
+          <div class="section">
+
             <div class="divider"></div>
-            <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
+            <!--Basic Form, accepts the user's new phone number-->
             <div id="basic-form" class="section">
-              <?php echo form_open('Staff_member/deleteAdvisorProcess'); ?>
+            	<?php echo form_open('Users/checkPassword'); ?>
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
-                    <h4 class="header2">Delete An Advisor</h4>
+                    <h4 class="header2">Change Your Password</h4>
                     <div class="row">
-                      <form class="col s12" action="Staff_member/deleteAdvisorProcess/" method="post">
-                         <div class="col s12 m12 l12">
-                        </div>
+                      <form class="col s12" action="Users_model/checkPassword" method="post">
                         <div class="row">
-                          <div class="input-field col s12">                          
-                            <label for="advisorCWID">Enter Advisor CWID</label>
-                            <?php echo form_input('advisorCWID', ''); ?>
+                          <div class="input-field col s12">
                             
+                            <label for="oldpassword">Enter Your Current Password</label>
+                            <?php echo form_password('oldpassword'); ?>
                           </div>
-                        </div>
-                          <div class="row">
+                        <div class="row">
                             <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right"
-                                <?php echo form_submit('submit' , 'submit'); ?>
+                              	<?php echo form_submit('submit' , 'submit'); ?>
                                 <i class="mdi-content-send right"></i>
                               </button>
                               <?php echo form_close();?>
                             </div>
-                          </div>
+                        </div>
                         </div>
                       </form>
                     </div>
@@ -119,10 +114,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-          <div class="section">
     </div>
-    
                 
   <!-- END CONTENT -->
 </div>
@@ -139,24 +131,17 @@
     Scripts
     ================================================ -->
     
- <!-- ================================================
-    Scripts
-    ================================================ -->
-    
     <!-- jQuery Library -->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/materialize.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
     <!--prism-->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/prism.js"></script>
+    <script type="text/javascript" src="js/prism.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <!-- data-tables -->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/data-tables-script.js"></script>
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <!-- chartist -->
-    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.js"></script>   
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="<?php echo base_url();?>js/plugins.js"></script>    
+    <script type="text/javascript" src="js/plugins.js"></script>
     
