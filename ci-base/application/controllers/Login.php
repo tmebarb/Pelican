@@ -1,4 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/*
+	This controller is for the login process.
+*/
 
 	class Login extends CI_Controller { 
 
@@ -11,6 +14,7 @@
 			$this->load->helper('array');
 		}
 
+		//This function displays the home page for which ever role a person logs in as.
 		function index() {
 			if($this->session->userdata('id'))
 	   			redirect('dashboard');
