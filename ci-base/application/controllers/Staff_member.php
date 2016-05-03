@@ -243,12 +243,10 @@ class Staff_member extends CI_Controller
     }
 
     function deleteAdvisor() {
-        $this->breadcrumbs->push('Staff Member', '/');
-        $this->breadcrumbs->push('Delete Advisors', 'deleteAdvisor');
-        $this->breadcrumbs->unshift('Home', '/');
-
+        
         //print_r($this->Staff_worker_model->getAdvisorsByMajor("computersciences"));
-        $data = array('view' => 'Staff_member/deleteAdvisor',
+        $data = array('view' => 'staff_member/deleteAdvisor',
+            'advisors' => $this->Staff_worker_model->showAllAdvisors(),
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
     }
@@ -269,6 +267,35 @@ class Staff_member extends CI_Controller
         }
         $data = array('view' => 'Staff_member/deleteAdvisorSuccess',
             'advisor_name' => $advisorName,
+            'majors' => $this->Staff_worker_model->getAllMajors());
+        $this->load->view('admin', $data);
+    }
+
+    function deleteAdvisee() {
+        
+        //print_r($this->Staff_worker_model->getAdvisorsByMajor("computersciences"));
+        $data = array('view' => 'staff_member/deleteAdvisee',
+            'advisees' => $this->Staff_worker_model->showAllAdvisees(),
+            'majors' => $this->Staff_worker_model->getAllMajors());
+        $this->load->view('admin', $data);
+    }
+
+    function deleteAdviseeProcess() {
+        $adviseeCWID= $this->input->post('adviseeCWID');
+        $adviseeIDArray = $this->Advisors_model->get_User_ID($advisorCWID);
+        $adviseeuID = $adviseeIDArray[0]->user_id;
+        $adviseeArray = $this->Advisors_model->get_Name($adviseeCWID);
+        $adviseeName = $adviseeArray[0]->user_fullname;
+
+        $data = array();
+        if($adviseeID!=null) {
+            $this->Staff_worker_model->deleteAdvisor($adviseeuID);
+            $this->session->set_flashdata('successmsg', 'Advisee Details removed from system!');
+        } else {
+            $this->session->set_flashdata('errormsg', 'Please Select an Advisee first!');
+        }
+        $data = array('view' => 'Staff_member/deleteAdvisorSuccess',
+            'advisee_name' => $adviseeName,
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
     }

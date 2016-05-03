@@ -82,21 +82,21 @@ Author URL: http://www.themeforest.net/user/geekslabs
           </div>
           <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
           <div id="basic-form" class="section">
-            <?php echo form_open('Staff_member/deleteAdvisorProcess'); ?>
+            <?php echo form_open('Staff_member/deleteAdviseeProcess'); ?>
             <div class="row">
               <div class="col s12 m12 l6">
                 <div class="card-panel">
-                  <h4 class="header2">Delete An Advisor
+                  <h4 class="header2">Delete An Advisee
                   </h4>
                   <div class="row">
-                    <form class="col s12" action="Staff_member/deleteAdvisorProcess/" method="post">
+                    <form class="col s12" action="Staff_member/deleteAdviseeProcess/" method="post">
                       <div class="col s12 m12 l12">
                       </div>
                       <div class="row">
                         <div class="input-field col s12">                          
-                          <label for="advisorCWID">Enter Advisor CWID
+                          <label for="adviseeCWID">Enter Advisee CWID
                           </label>
-                          <?php echo form_input('advisorCWID', ''); ?>
+                          <?php echo form_input('adviseeCWID', ''); ?>
                         </div>
                       </div>
                       <div class="row">
@@ -120,38 +120,38 @@ Author URL: http://www.themeforest.net/user/geekslabs
                   <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
-                          <th>Advisor Name</th>
+                          <th>Student Name</th>
                           <th>CWID</th>
                           <th>Email</th>
                           <th>Phone</th>
                           <th>Major</th>
-                          <th>Office Location </th>
-                          <th>Number of Advisees</th>
+                          <th>Classification</th>
+                          <th>Advisor</th>
                         </tr>
                     </thead>
                  
                     <tfoot>
                         <tr>
-                          <th>Advisor Name</th>
+                          <th>Student Name</th>
                           <th>CWID</th>
                           <th>Email</th>
                           <th>Phone</th>
                           <th>Major</th>
-                          <th>Office Location </th>
-                          <th>Number of Advisees</th>            
+                          <th>Classification</th>
+                          <th>Advisor</th>
                         </tr>
                     </tfoot>
                  
                     <tbody>
-                      <?php foreach ($advisors as $row): ?>
+                      <?php foreach ($advisees as $row): ?>
                       <tr>
-                        <td><?php echo $row->user_fullname  ?></td>
+                        <td><?php echo $row->advisee_name  ?></td>
                         <td><?php echo $row->CWID ?></td>
                         <td><?php echo $row->user_email ?></td>
                         <td><?php echo $row->user_phone ?></td>
                         <td><?php echo $row->major ?></td>
-                        <td><?php echo $row->office_loc ?></td>
-                        <td><?php echo $row->numOfAdvisees ?></td>
+                        <td><?php echo $row->classification ?></td>
+                        <td><?php $re = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($row->user_id); echo ($re)? $re->advisor_name: "not assigned yet"; ?></td>
                       </tr>
                         
                       <?php endforeach ?>
