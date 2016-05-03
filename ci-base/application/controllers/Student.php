@@ -58,6 +58,21 @@ class Student extends CI_Controller
         echo json_encode($res);
     }
 
+    function getAdvisorProfile()
+    {
+        $userid = $this->session->userdata('user_id');
+        $advisorArr = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($userid);
+
+        $advisor_uid = $advisorArr->advisor_id;
+
+        $data = array('view' => 'student/viewAdvisorInfo', 
+                    'usertype' => 'advisor',
+                    'user_info' => $this->Users_model->profileInfo($advisor_uid, 'advisor'));
+
+
+        $this->load->view('admin', $data);
+    }
+
 }
 
 ?>

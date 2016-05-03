@@ -140,6 +140,8 @@
                 </li>
                 <li class="bold"><a href="<?php echo base_url()?>student/addappointment" class="waves-effect waves-cyan"><i class="mdi-action-alarm-on"></i>Add appointment</a>
                 </li>
+                <li class="bold"><a href="<?php echo base_url()?>student/getAdvisorProfile" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i>View Advisor</a>
+                </li>
             <?php } ?>
 
                 <?php
