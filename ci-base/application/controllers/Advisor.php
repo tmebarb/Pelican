@@ -369,7 +369,7 @@
 		function listAdvisees()
 		{
 
-				$advisorID = $this->session->userdata('id');
+				$advisorID = $this->session->userdata('user_id');
 				//print_r($advisorID==null);
 				// return;
 				if($this->session->userdata('user_type') =="Staff_member") {
