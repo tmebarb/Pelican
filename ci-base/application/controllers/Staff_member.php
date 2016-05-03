@@ -282,19 +282,19 @@ class Staff_member extends CI_Controller
 
     function deleteAdviseeProcess() {
         $adviseeCWID= $this->input->post('adviseeCWID');
-        $adviseeIDArray = $this->Advisors_model->get_User_ID($advisorCWID);
+        $adviseeIDArray = $this->Advisors_model->get_User_ID($adviseeCWID);
         $adviseeuID = $adviseeIDArray[0]->user_id;
         $adviseeArray = $this->Advisors_model->get_Name($adviseeCWID);
         $adviseeName = $adviseeArray[0]->user_fullname;
 
         $data = array();
-        if($adviseeID!=null) {
-            $this->Staff_worker_model->deleteAdvisor($adviseeuID);
+        if($adviseeuID!=null) {
+            $this->Staff_worker_model->deleteAdvisee($adviseeuID);
             $this->session->set_flashdata('successmsg', 'Advisee Details removed from system!');
         } else {
             $this->session->set_flashdata('errormsg', 'Please Select an Advisee first!');
         }
-        $data = array('view' => 'Staff_member/deleteAdvisorSuccess',
+        $data = array('view' => 'Staff_member/deleteAdviseeSuccess',
             'advisee_name' => $adviseeName,
             'majors' => $this->Staff_worker_model->getAllMajors());
         $this->load->view('admin', $data);
