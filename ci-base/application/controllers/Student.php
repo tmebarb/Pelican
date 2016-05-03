@@ -65,6 +65,17 @@ class Student extends CI_Controller
         redirect("dashboard");
     }
 
+    function undoSelect()
+    {
+        $OB=array('advisee_id'=>0);
+
+        $user_id = $this->session->userdata('user_id');
+        $this->db->from('timeslots')->Where('advisee_id', $user_id);
+        $this->db->update('timeslots', $OB);
+
+        redirect('student/addappointment');
+    }
+
     function getAdvisorSlotsByDayNDate($date, $day, $advisor_id) {
 
         //echo $day;
