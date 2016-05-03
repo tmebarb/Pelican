@@ -87,7 +87,7 @@
                         <td><?php echo $row->user_phone ?></td>
                         <td><?php echo $row->major ?></td>
                         <td><?php echo $row->classification ?></td>
-                        <td><?php $re = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($row->user_id); echo ($re)? $re->advisor_name: "no assigned yet"; ?></td>
+                        <td><?php $re = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($row->user_id); echo ($re)? $re->advisor_name: "not assigned yet"; ?></td>
                       </tr>
                         
                       <?php endforeach ?>

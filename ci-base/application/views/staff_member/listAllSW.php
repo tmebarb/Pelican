@@ -1,5 +1,7 @@
 
-
+<?php
+$this->load->model("Advisees_model");
+?>
   <!-- CORE CSS-->
   
   <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -85,7 +87,7 @@
                         <td><?php echo $row->user_phone ?></td>
                         <td><?php echo $row->major ?></td>
                         <td><?php echo $row->classification ?></td>
-                        <td><?php echo $row->advisor_name ?></td>
+                        <td><?php $re = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($row->user_id); echo ($re)? $re->advisor_name: "not assigned yet"; ?></td>
                       </tr>
                         
                       <?php endforeach ?>

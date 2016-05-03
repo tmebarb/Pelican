@@ -90,6 +90,15 @@ class Staff_worker_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	function  getAllStudentWorkersWithoutAdvisor() {
+		$this->db->select('u.user_id, u.user_fullname AS advisee_name, u.CWID, u.user_email, u.user_phone, a.major, a.classification');
+		$this->db->from('users u, advisee a');
+		$this->db->where('u.user_id = a.user_id');
+		$this->db->where('a.student_worker', 1);
+
+		$query = $this->db->get();
+		return $query->result();
+	}
     function  redeemAdvisee($id) {
         $data = array('student_worker'=>0);
         $this->db->where('user_id', $id);

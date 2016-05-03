@@ -275,7 +275,7 @@ class Staff_member extends CI_Controller
 
     function viewStudentWorker() {
         $data = array('view' => 'staff_member/listAllSW',
-            'advisees' => $this->Staff_worker_model->getAllStudentWorkers());
+            'advisees' => $this->Staff_worker_model->getAllStudentWorkersWithoutAdvisor());
 
         $this->load->view('admin', $data);
     }
