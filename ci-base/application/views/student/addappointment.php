@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
         $(function () {
+            var $startTime = [];
+            var $endTime = [];
             var $loading = $('#loadingDiv').hide();
             $(document)
                 .ajaxStart(function () {
@@ -48,7 +50,7 @@
                 else if (day == 5)
                     dayName = "friday";
                 else
-                    dayName = "s"
+                    dayName = "weekend"
                 $.ajax({
                     url: "<?php echo base_url(); ?>/student/getAdvisorSlotsByDayNDate/" + $("#date").val() + "/" + dayName + "/<?php if($advisor) {
                         echo $advisor->advisor_id;
@@ -59,12 +61,18 @@
                         var msg = $("#msg");
                         if (result.length == 0) {
                             msg.empty();
+                            $startTime  = [];
+                            $endTime  = [];
                             msg.append("<span style='color: red;'>No time Slot on " + dayName + " (" + $("#date").val() + ")</span>");
 
                         } else {
                             msg.empty();
+                            $startTime  = [];
+                            $endTime  = [];
                             $.each(result, function (key, value) {
                                 msg.append("<div style='float:right'>")
+                                $startTime.push( value.start_time)
+                                $endTime.push( value.end_time)
                                 msg.append("Available times: <span style='color: #12b29a'>" + value.start_time + " to " + value.end_time + "</span><br/>")
                                 msg.append("</div>")
                             });
@@ -73,35 +81,34 @@
                 });
             });
 
-//            $("#date").change(function(){
-//                $.ajax({url: "<?php //echo base_url(); ?>//staff_member/getAdvisorsByMajor/" + $("#major").val(),
-//                    success: function(data){
-//                        result = jQuery.parseJSON(data);
-//                        //alert(data);
-//                        var options = $("#advisorID");
-//                        if(result.length==0) {
-//                            $("#dropdownforAdvisor").hide();
-//                            $("#advisorNOTfound").show();
-//                        } else {
-//                            $("#dropdownforAdvisor").show();
-//                            $("#advisorNOTfound").hide();
-//                        }
-//                        options.empty();
-//                        $.each(result, function(key, value) {
-//                            options.append($("<option />").val(value.user_id).text(value.user_fullname))
-//                            options.trigger('contentChanged');
-//                        });
-//
-//                    },
-//
-//                });
-//            });
+            $('#time').timepicker({ timeFormat: 'H:i:s'});
 
+            $('#time').change(function() {
+                if($startTime.length) {
+                    okStart = false;
+                    okEnd = false;
+                    for(i=0; i<$startTime.length; i++) {
+                        if($startTime[i] <= $('#time').val())
+                            okStart = true;
+                    }
+                    for(i=0; i<$endTime.length; i++) {
+                        if($endTime[i] >= $('#time').val())
+                            okEnd = true;
+                    }
+                    if(!okStart || !okEnd){
+                        alert("Please select a valid time")
+                        ("#time")
+                    }
+                } else {
+                    alert("No time Slot on selected date");
+                    $('#time').val("");
+                }
+            });
         });
     </script>
     <div class="section">
         <div id="basic-form" class="section">
-            <form action="">
+            <form action="<?php echo base_url() ?>student/saveappointment" method="post">
                 <div class="card-panel">
                     <img src="<?php echo base_url() ?>asserts/images/hex-loader2.gif" alt="" id="loadingDiv"
                          style="margin: auto 0px; text-align: center; padding-left: 31%;">
@@ -143,12 +150,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12" id="msg">
+                        <div class="input-field col s6">
+                            <label for="time">Start Time</label>
+                            <input type="text" id="time" name="time">
+                        </div>
+                        <div class="col s6" id="msg" style="padding-top: 10px;">
+
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12">
-
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" style="z-index: 0">Save
+                                <i class="mdi-content-send right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

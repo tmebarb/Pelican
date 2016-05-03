@@ -185,13 +185,13 @@ class Staff_member extends CI_Controller
         $this->session->set_flashdata('successmsg', 'Student deleted, even from advisee records!');
         redirect('staff_member/viewStudentWorker');
     }
-    function addAdvisee() {
-        $this->breadcrumbs->push('Staff Member', '/');
-        $this->breadcrumbs->push('Add Advisee', 'addAdvisee');
-        $this->breadcrumbs->unshift('Home', '/');
-        $data = array('view'=>'addAdvisee');
-        $this->load->view('admin', $data);
-    }
+//    function addAdvisee() {
+//        $this->breadcrumbs->push('Staff Member', '/');
+//        $this->breadcrumbs->push('Add Advisee', 'addAdvisee');
+//        $this->breadcrumbs->unshift('Home', '/');
+//        $data = array('view'=>'addAdvisee');
+//        $this->load->view('admin', $data);
+//    }
 }
 
 
