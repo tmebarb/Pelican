@@ -41,8 +41,6 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>All Users</a>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
-                                    </li>
                                     <li><a href="<?php echo base_url() ?>Users/listAll" class="waves-effect waves-cyan">List All</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
@@ -56,9 +54,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Staff Workers</a>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <!--
-                                    <li><a href="css-shadow.html">?????</a>
-                                    </li>-->
+                                    <li><a href="<?php echo base_url() ?>Staff_member/viewStudentWorker">List All Student Workers</a>
+                                    </li>
                                 </ul>
 
                             </div>
@@ -68,6 +65,8 @@
                                 <ul>
                                     <li><a href="css-icons.html">View Appointments</a>
                                     </li>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
+                                    </li>
                                 </ul>
 
                             </div>
@@ -76,6 +75,8 @@
                             <div class="collapsible-body" style="">
                                 <ul>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
+                                    </li>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
                                     </li>

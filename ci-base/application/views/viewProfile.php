@@ -114,6 +114,10 @@
 				<th>Classification: </th>
 				<td><?php echo $row->classification ?></td>
 			</tr>
+			<tr>
+				<th>Advisor: </th>
+				<td><?php echo $row->advisee_name ?></td>
+			</tr>
 			<?php endforeach ?>
 		</table>
 <!--Provides view for all other user types-->

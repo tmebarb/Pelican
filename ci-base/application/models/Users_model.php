@@ -137,10 +137,11 @@ class Users_model extends CI_Model
 
 		if($user_type == 'advisee')
 		{
-			$this->db->select('user_fullname, CWID, user_name, user_email, user_phone, major, classification');
-			$this->db->from('users, advisee');
-			$this->db->where('users.user_id', $user_id);
-			$this->db->where('users.user_id = advisee.user_id');
+			$this->db->select('u.user_fullname, u.CWID, u.user_name, u.user_email, u.user_phone, major, classification, ua.user_fullname AS advisee_name');
+			$this->db->from('users u, users ua, advisee');
+			$this->db->where('u.user_id', $user_id);
+			$this->db->where('u.user_id = advisee.user_id');
+			$this->db->where('ua.user_id = u.advised_by');
 
 			$query = $this->db->get();
 			return $query->result();
