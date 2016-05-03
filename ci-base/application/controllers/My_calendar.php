@@ -1,5 +1,7 @@
 
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+
 	//class My_calendar extends CI_Controller {
 
 	//	function index($year = null, $month = null){
@@ -15,6 +17,10 @@
 			
 	//	}
 //	}
+
+/*
+	This controller uses calendar_model.php
+*/
 class My_calendar extends CI_Controller
 {
 function __construct() {
