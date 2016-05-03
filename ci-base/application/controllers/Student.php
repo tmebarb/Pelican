@@ -50,7 +50,7 @@ class Student extends CI_Controller
 
     function saveappointment()
     {
-        return;
+        //return;
         $date = $this->input->post('date');
         $startTime = $this->input->post('time');
         $slot_id = $this->input->post('slot_id');
