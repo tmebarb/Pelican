@@ -188,7 +188,7 @@
                                     <?
                                 } else {
                                     ?>
-                                    <p style="color: red;">Ops! Your advisor haven't set advising details yet!</p>
+                                    <!--<p style="color: red;">Ops! Your advisor haven't set advising details yet!</p>-->
                                     <?php
                                 }
                                 ?>
@@ -232,12 +232,20 @@
                         echo " on " . $day . " (" . $slotDetails->date . ")";
 
                         ?>
-
                         <?php
                     }
                     ?>
                 </div>
             </form>
+            <div>
+            <?php
+            if ($slotDetails) {
+            ?>
+            <form action="<?php echo base_url()?>student/undoSelect" method="POST">
+                    <button type="submit" class="btn waves-effect waves-light red darken-4 remove_field" style="maring-top: 30px;">Remove</button>
+            </form>
+            <?php }?>
+            </div>
         </div>
     </div>
 </div>

@@ -173,7 +173,7 @@
                                         </li>
                                         <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
                                         </li>
-                                        <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
+                                        <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisee"><class="waves-effect waves-cyan">Delete Advisee</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
                                         </li>
