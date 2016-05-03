@@ -4,6 +4,7 @@
 
 		function __construct() {
 			parent::__construct();
+
 			$this->load->model('Users_model');
 			$this->load->model('Advisees_model');
 			$this->load->model('Advisors_model');
@@ -11,12 +12,44 @@
 			$this->load->helper(array('form'));
 			$this->load->library('form_validation');
 			$this->load->helper('url');
+			$this->load->helper('array');
 			$this->load->library('breadcrumbs');
 			if(!$this->session->userdata('id')) {
 				$this->session->set_flashdata('error_msg', 'I can\'t remember u, Please login again! <br/><br/>');
 				redirect('login');
 			}
 		}
+
+		function initMarkAdvised()
+		{
+			$data = array('view' => 'ListAdviseesStatus', 
+							'advisees' => $this->Advisors_model->list_Advisees_status($this->session->userdata('user_id')));
+			$this->load->view('admin', $data);
+
+		}
+
+		function markAdvised()
+    {
+
+    		$status= $this->input->post('advisedStatus');
+			$CWID= $this->input->post('adviseesCWID');
+			
+			$adviseeName = 'Ozarka';//change to actual name
+			//Returns an array containing the advisee_id for the advisee whose CWID was entered
+			
+			
+
+			/*$data = array('view' => 'markAdvisedSuccess',
+							'adviseeNewMajor' => $newMajor,
+							'student_id' => $adviseeCWID, 
+							'student_name' => $adviseeName,
+							'status'=>$status
+							);*/
+			
+			$this->Advisors_model->advised($status, $CWID);
+			//$this->load->view('admin', $data);
+
+    }
 
 
 		function timeslots() {
@@ -48,7 +81,7 @@
 
 			$fridayStartSlots = array();
 			$fridayEndSlots = array();
-			$firdayUpdateID = array();
+			$fridayUpdateID = array();
 
 			foreach ($allSlots as $slot) {
 				if ($slot->day == 'monday') {
@@ -70,7 +103,7 @@
 				} else if ($slot->day == 'friday') {
 					array_push($fridayStartSlots, $slot->start_time);
 					array_push($fridayEndSlots, $slot->end_time);
-					array_push($firdayUpdateID, $slot->slot_id);
+					array_push($fridayUpdateID, $slot->slot_id);
 				}
 			}
 			
@@ -96,7 +129,7 @@
 							'thrdayUpdateID' => $thrdayUpdateID,
 							'fridayStartSlots' => $fridayStartSlots,
 							'fridayEndSlots' => $fridayEndSlots,
-							'firdayUpdateID' => $firdayUpdateID
+							'fridayUpdateID' => $fridayUpdateID
 							);
 			
 
@@ -114,12 +147,117 @@
 			$tuesdayUpdateID = $this->input->post('tuesdayUpdateID');
 			$WednesdayUpdateID = $this->input->post("WednesdayUpdateID");
 			$thrdayUpdateID = $this->input->post('thrdayUpdateID');
-			$firdayUpdateID = $this->input->post('firdayUpdateID');
+			$FridayUpdateID = $this->input->post('firdayUpdateID');
 			$mondaystart = $this->input->post('mondaystart');
 			$mondayend = $this->input->post('mondayend');
+			$tuestart = $this->input->post('tuestart');
+			$tueend = $this->input->post('tueend');
+			$wedstart = $this->input->post('wedstart');
+				$wedend = $this->input->post('wedend');
+				$thrstart = $this->input->post('thrstart');
+				$thrend = $this->input->post('thrend');
+				$fristart = $this->input->post('fristart');
+			$friend = $this->input->post('friend');
 			$allSlots = $this->Slots_model->getslotsbyadvisor($advisor->advisor_id);
-
+			//echo "start date is ".strtotime($startdate)."end date is ".strtotime($enddate);
+			//echo "<br> day of the week is ".date( "w", strtotime($startdate));
+			$currentDate=strtotime($startdate);
+			
+			$prior=$currentDate;
+			
 			foreach ($allSlots as $slot) {
+				if ((($mondayUpdateID) ? !in_array($slot->slot_id, $mondayUpdateID) : true)  && (($tuesdayUpdateID) ? !in_array($slot->slot_id, $tuesdayUpdateID) : true) && (($WednesdayUpdateID) ? !in_array($slot->slot_id, $WednesdayUpdateID) : true)   && (($thrdayUpdateID) ? !in_array($slot->slot_id, $thrdayUpdateID) : true)  &&  (($FridayUpdateID) ? !in_array($slot->slot_id, $firdayUpdateID) : true)      ) {
+					$this->Slots_model->removeTimeSlot($slot->slot_id);
+				} 
+			}	
+
+			//echo "monday start= ".$mondaystart;
+			//echo "The current date is: ".$currentDate. "<br> The next day would be: ".strtotime('+1 day',$currentDate);
+			while($currentDate != strtotime($enddate)){
+				$prior=$currentDate;
+				if(date( "w", $currentDate)==1){
+					
+					//echo "here";
+
+					foreach ($mondaystart as $index => $slot) {
+						if ((!$mondayUpdateID) ? false : array_key_exists($index, $mondayUpdateID)) {
+								$this->Slots_model->updatetimeslot($slot,$mondaystart[$index], $mondayend[$index], $advisor_id, 'monday', date("Y-m-d", $currentDate),  1, 1);
+						} else {
+							if ($slot && $mondayend[$index]) {
+								$this->Slots_model->addtimeslot($mondaystart[$index], $mondayend[$index], $advisor_id, 'monday', date("Y-m-d", $currentDate),  1, 1);
+								
+							}
+						}
+						}
+
+						$currentDate=strtotime('+1 day', $currentDate);
+				}
+
+				else if(date( "w", $currentDate)==2){
+
+					foreach ($tuestart as $index => $slot) {
+					if ((!$tuesdayUpdateID) ? false : array_key_exists($index, $tuesdayUpdateID)) {
+						$this->Slots_model->updatetimeslot($slot,$tuestart[$index], $tueend[$index], $advisor_id, 'tuesday', date("Y-m-d", $currentDate),  1, 1);
+					} else {
+					if ($slot && $tueend[$index]) {
+						$this->Slots_model->addtimeslot($tuestart[$index], $tueend[$index], $advisor_id,'tuesday' ,date("Y-m-d", $currentDate), 1, 1);
+						
+					}
+				}
+
+			}$currentDate=strtotime('+1 day', $currentDate);
+				}
+
+			else if(date( "w", $currentDate)==3){
+				
+				foreach ($wedstart as $index => $slot) {
+					if ((!$WednesdayUpdateID) ? false : array_key_exists($index, $WednesdayUpdateID)) {
+						$this->Slots_model->updatetimeslot($slot,$wedstart[$index], $wedend[$index], $advisor_id, 'wednesday', date("Y-m-d", $currentDate),  1, 1);
+					} else {
+					if ($slot && $wedend[$index]) {
+						$this->Slots_model->addtimeslot($wedstart[$index], $wedend[$index], $advisor_id,'wednesday' ,date("Y-m-d", $currentDate), 1, 1);
+					}
+				}
+			}$currentDate=strtotime('+1 day', $currentDate);
+			}
+
+			else if(date("w", $currentDate)==4){
+				
+				foreach ($thrstart as $index => $slot) {
+					if ((!$thrdayUpdateID) ? false : array_key_exists($index, $thrdayUpdateID)) {
+								$this->Slots_model->updatetimeslot($slot,$thrstart[$index], $thrend[$index], $advisor_id, 'thursday', date("Y-m-d", $currentDate),  1, 1);
+						} else {
+							if ($slot && $thrend[$index]) {
+								$this->Slots_model->addtimeslot($thrstart[$index], $thrend[$index], $advisor_id, 'thursday', date("Y-m-d", $currentDate),  1, 1);
+						}
+				}
+
+			}$currentDate=strtotime('+1 day', $currentDate);
+		}
+
+		else if(date("w", $currentDate)==5){
+			
+			foreach ($fristart as $index => $slot) {
+				if ((!$FridayUpdateID) ? false : array_key_exists($index, $FridayUpdateID)) {
+								$this->Slots_model->updatetimeslot($slot,$fristart[$index], $friend[$index], $advisor_id, 'Friday', date("Y-m-d", $currentDate),  1, 1);
+						} else {
+							if ($slot && $friend[$index]) {
+								$this->Slots_model->addtimeslot($fristart[$index], $friend[$index], $advisor_id, 'Friday', date("Y-m-d", $currentDate),  1, 1);
+					}
+				}
+			}
+			$currentDate=strtotime('+1 day', $currentDate);strtotime('+3 day', $currentDate);
+} 
+		else if ($currentDate=$prior)
+			$currentDate=strtotime('+1 day', $currentDate);
+
+}$this->session->set_flashdata('success_msg', 'Timeslot details have been updated!<br/><br/>');
+		  	redirect('Advisor/timeslots');
+
+}
+		
+			
+		/*	foreach ($allSlots as $slot) {
 				if ((($mondayUpdateID) ? !in_array($slot->slot_id, $mondayUpdateID) : true)  && (($tuesdayUpdateID) ? !in_array($slot->slot_id, $tuesdayUpdateID) : true) && (($WednesdayUpdateID) ? !in_array($slot->slot_id, $WednesdayUpdateID) : true)   && (($thrdayUpdateID) ? !in_array($slot->slot_id, $thrdayUpdateID) : true)  &&  (($firdayUpdateID) ? !in_array($slot->slot_id, $firdayUpdateID) : true)      ) {
 					$this->Slots_model->removeTimeSlot($slot->slot_id);
 				} 
@@ -191,32 +329,17 @@
 				$this->Advisors_model->udpateSession($session_id, $startdate, $enddate, $advisor);
 
 			$this->session->set_flashdata('success_msg', 'Timeslot details have been updated!<br/><br/>');
-		  	redirect('advisor/timeslots');
-		}
+		  	redirect('advisor/timeslots');*/
+		
 
-		function funTimeSlots()
-		{
-				$date= $this->input->post('date');
-			$adviseeID= $this->input->post('adviseeID');
-			$data = array('view' => 'fun_Time_Slots',
-							'date' => $date,
-							'student_id' => $adviseeID
-							);
-			
-			$this->Staff_worker_model->assignTo($advisorID, $adviseeID);
-			$this->load->view('admin', $data);
-		}
-
-		function profilePage(){
-			
-		}
+		
 
 		//Opens the form for an Advisor to change a student's major
 		function initChangeMajor()
 		{
 
 			$data = array('view' => 'advisor/ChangeMajorForm', 
-							'advisees' => $this->Advisors_model->list_Advisees($this->session->userdata('user_id')));
+							'advisees' => $this->Advisors_model->list_Advisees($this->session->userdata('id')));
 			$this->load->view('admin', $data);
 		}
 
@@ -225,7 +348,7 @@
 		{
 			$newMajor= $this->input->post('adviseeNewMajor');
 			$adviseeCWID= $this->input->post('adviseeCWID');
-			$adviseenArray = $this->Advisors_model->get_Name($adviseeCWID);
+			$adviseenArray = $this->Advisors_model->get_Advisee_Name($adviseeCWID);
 			$adviseeName = $adviseenArray[0]->user_fullname;
 			//Returns an array containing the advisee_id for the advisee whose CWID was entered
 			$adviseeArray= $this->Advisors_model->get_Advisee_ID($adviseeCWID); 
@@ -246,12 +369,12 @@
 		function listAdvisees()
 		{
 
-				$advisorID = $this->session->userdata('user_id');
+				$advisorID = $this->session->userdata('id');
 				//print_r($advisorID==null);
 				// return;
 				if($this->session->userdata('user_type') =="Staff_member") {
 					$data = array('view' => 'listAdvisorsAdvisees',
-							'advisees' => $this->Staff_member->ListAdvisees());
+							'advisees' => $this->Advisees_model->getAllAdviseeDetails());
 				}else {
 					$data = array('view' => 'listAdvisorsAdvisees',
 							'advisees' => $this->Advisors_model->list_Advisees($advisorID));
