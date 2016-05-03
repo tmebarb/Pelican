@@ -17,39 +17,29 @@
                     <!--card widgets start-->
                     <div id="card-widgets">
                         <div class="row">
-
+                            <?php if($this->session->userdata("user_type") == "advisor") { ?>
                             <div class="col s12 m12 l4">
                                 <ul id="task-card" class="collection with-header">
                                     <li class="collection-header grey">
-                                        <h4 class="task-card-title">My Task</h4>
-                                        <p class="task-card-date">March 26, 2015</p>
+                                        <h4 class="task-card-title">Today's Advisee to Advise</h4>
+                                        <p class="task-card-date"><?php echo date('Y-m-d') ?></p>
                                     </li>
-                                    <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task1" checked="checked" />
-                                        <label for="task1">Advise Student 1 <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
-                                        </label>
-                                        <span class="task-cat teal">Sophomore - CSCI</span>
-                                    </li>
-                                    <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task2" checked="checked" />
-                                        <label for="task2">Advise Student 2<a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
-                                        </label>
-                                        <span class="task-cat purple">Freshman - CSCI</span>
-                                    </li>
-                                    <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task3" />
-                                        <label for="task3">Advise Student 3<a href="#" class="secondary-content"><span class="ultra-small">Wednesday</span></a>
-                                        </label>
-                                        <span class="task-cat pink">Freshman - CSCI</span>
-                                    </li>
-                                    <li class="collection-item dismissable">
-                                        <input type="checkbox" id="task4" />
-                                        <label for="task4">Advise Student 4</label>
-                                        <span class="task-cat cyan">Senior - CSCI</span>
-                                    </li>
+                                    <?php
+                                        foreach($advisees as $advisee) {
+                                            ?>
+
+                                            <li class="collection-item dismissable">
+                                                <p><?php echo $advisee->user_fullname ?></p>
+                                                <span class="task-cat teal">email:<?php echo $advisee->user_email ?></span>
+                                            </li>
+                                    <?
+                                        }
+                                    ?>
+
+
                                 </ul>
                             </div>
-
+                            <?php } ?>
                             <div class="col s12 m6 l4">
                                 <div id="flight-card" class="card">
                                     <div class="card-header amber darken-2">
