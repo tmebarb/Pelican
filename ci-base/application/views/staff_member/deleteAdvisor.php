@@ -18,7 +18,7 @@
     $("#form").validate({
         messages: {
             advisorCWID: {
-                required: "Advisee ID Required!",
+                required: "Advisor ID Required!",
                 number: "Number Only allowed"
             }
         }
