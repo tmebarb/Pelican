@@ -63,6 +63,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisors</a>
                             <div class="collapsible-body" style="">
                                 <ul>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisors">List Advisors</a>
+                                    </li>
                                     <li><a href="css-icons.html">View Appointments</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
@@ -74,6 +76,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Advisees</a>
                             <div class="collapsible-body" style="">
                                 <ul>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees">List Advisees</a>
+                                    </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>

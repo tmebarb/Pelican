@@ -117,24 +117,19 @@
             <div class="divider"></div>
             <!--Basic Form, accepts the user's new phone number-->
             <div id="basic-form" class="section">
-            	<?php echo form_open('Users/changePassword'); ?>
+            	<?php echo form_open('Users/checkPassword'); ?>
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card-panel">
                     <h4 class="header2">Change Your Password</h4>
                     <div class="row">
-                      <form class="col s12" action="Users_model/changePassword" method="post">
+                      <form class="col s12" action="Users_model/checkPassword" method="post">
                         <div class="row">
-                          <div class="input-field col s12">                           
-                            <label for="new_password">Enter New Password</label>
-                            <?php echo form_password('new_password'); ?>
-                          </div>
                           <div class="input-field col s12">
                             
-                            <label for="repassword">Enter Confirm Password</label>
-                            <?php echo form_password('repassword'); ?>
+                            <label for="oldpassword">Enter Your Current Password</label>
+                            <?php echo form_password('oldpassword'); ?>
                           </div>
-                        </div>
                         <div class="row">
                             <div class="input-field col s12">
                               <button class="btn cyan waves-effect waves-light right"
@@ -143,7 +138,7 @@
                               </button>
                               <?php echo form_close();?>
                             </div>
-                          </div>
+                        </div>
                         </div>
                       </form>
                     </div>
