@@ -176,7 +176,7 @@ class Staff_member extends CI_Controller
 
     function ListStaff()
     {
-        $staffmembers = $this->Staff_worker_model->getAlStaffMembers();
+        $staffmembers = $this->Staff_worker_model->getAllStaffMembers();
         $data = array('view' => 'staff_member/listAllStaff', 
                         'staffmembers' => $staffmembers);
         $this->load->view('admin', $data);

@@ -128,9 +128,12 @@ class Staff_worker_model extends CI_Model
 
     function getAllStaffMembers()
     {
-    	$this->db->select('*');
+    	$this->db->select('user_fullname, user_name, CWID, user_email, user_phone');
     	$this->db->from('users');
-    	$this->db->where('user_type = Staff_member');
+    	$this->db->where('user_type', 'Staff_member');
+
+    	$query = $this->db->get();
+    	return $query->result();
     }
 
     function saveStaffMember($user_fullname, $user_name, $email, $CWID, $password, $phone)
