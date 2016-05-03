@@ -1,5 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+
+/*
+	This controller displays the "home page" for the system.  This controller uses User_model.php.
+*/	
+
 	class Dashboard extends CI_Controller {
 
 		function __construct() {
@@ -25,6 +30,7 @@
 			$this->load->view('admin', $data);
 		}
 
+		//This function shows the advisor the list of all the of advisees that are assign to them.
 		function db() {
 			$this->breadcrumbs->push('Advisees', '/advisees');
 			$this->breadcrumbs->push('List Advisees', 'adviseelist');
@@ -35,6 +41,7 @@
 
 		}
 
+		//This function shows all of the advisors 
 		function advisors() {
 			$this->breadcrumbs->push('Advisors', '/advisors');
 			$this->breadcrumbs->push('List Advisors', 'advisorlist');
@@ -45,6 +52,7 @@
 
 		}
 
+		//This function shows all of the staffworkers
 		function staffWorkers() {
 			$this->breadcrumbs->push('Staff Workers', '/staffWorkers');
 			$this->breadcrumbs->push('List Staff Workers', 'staffWorkerlist');
@@ -55,6 +63,7 @@
 
 		}
 
+		//This function shows the list of all advisees
 		function advisees() {
 			$this->breadcrumbs->push('Advisees', '/advisees');
 			$this->breadcrumbs->push('List Advisees', 'adviseelist');
@@ -65,6 +74,7 @@
 
 		}
 
+		//This function allows to add an advisor
 		function addadvisor() {
 	   	$this->breadcrumbs->push('Advisors', '/advisors');
 		$this->breadcrumbs->push('Add Advisors', 'addadvisor');
@@ -77,6 +87,7 @@
 			$this->load->view('admin', $data);
 		}
 
+		//This function shows a form to save an advisor to the database
 		function saveadvisor() {
 		    $this->form_validation->set_rules('first_name', '<b>First Name</b>', 'trim|required');
 		    $this->form_validation->set_rules('last_name', '<b>Last Name</b>', 'trim|required');
@@ -108,6 +119,7 @@
 		   	}
 		}
 
+		//this function displays the calendar
 		function calender() {
 			$user_type = $this->session->userdata('user_type');
 			$data = array('view'=> 'calender');
@@ -115,6 +127,7 @@
 			$this->load->view('admin', $data);
 		}
 
+		//This advisor shows which advisees are assigned to advisors.
 		function advisorToAdvisee(){ //pretty rough and doesn't follow standards, but allows linking of advisors to advisees
 			
 			$this->load->view('Advisor_to_advisee');
@@ -142,13 +155,38 @@
 		function changeRoleConfirm(){
 		//if($this->session->userdata->user)
 				$userID= $this->input->post('userID');
-				$userRole= $this->input->post('userRole');
+				$userRole= $this->input->post('newRole');
+				$userNameArr= $this->Advisors_model->get_Name($userID);
+				$userName = $userNameArr[0]->user_fullname;
+
 				$data = array('view' => 'change_role_confirm',
-								'user_id' => $userID,
-								'user_type' => $userRole
+								'user_name' => $userName,
+								'user_type' => $newRole
 								);
 				
-				$this->admin->assignTo($userID, $userRole);
+				$this->admin->assignRole($userID, $userRole);
+				$this->load->view('admin', $data);
+
+			}
+
+		function changeSWStatus(){
+			
+			$data = array('view' => 'change_SW_status');
+			$this->load->view('admin', $data);
+			
+
+		}
+
+		function changeSWConfirm(){
+		//if($this->session->userdata->user)
+				$userID= $this->input->post('userID');
+				$SWStatus= $this->input->post('SWStatus');
+				$data = array('view' => 'change_SW_confirm',
+								'user_id' => $userID,
+								'student_worker' => $SWStatus
+								);
+				
+				$this->admin->assignSWStat($userID, $SWStatus);
 				$this->load->view('admin', $data);
 
 			}

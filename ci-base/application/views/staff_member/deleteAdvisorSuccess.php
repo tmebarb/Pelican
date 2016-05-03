@@ -29,14 +29,14 @@
 
   <!-- CORE CSS-->
   
-  <link href="<?php echo base_url();?>asserts//materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
 
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-  <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 
 <body>
@@ -56,7 +56,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Pelican</span></h1>
+                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1>
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -95,11 +95,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Cards</h5>
+                <h5 class="breadcrumbs-title">Delete Advisor</h5>
                 <ol class="breadcrumb">
                   <li><a href="dashboard">Dashboard</a>
                   </li>
-                  <li><a href="#">Admin</a>
+                  <li><a href="?php echo base_url() ?>staff_member/ListAdvisors">Advisor</a>
                   </li>
                   <li class="active">Success</li>
                 </ol>
@@ -122,12 +122,12 @@
                   <div class="col s12 m8 l9">
                     <div class="card  light-blue">
                       <div class="card-content white-text">
-                        <span class="card-title">Success!</span>
-                        <p> The registration hold for the student with ID <?php echo $user_id;?> has been successfully added/removed.</p>
+                        <span class="card-title">Card Title</span>
+                        <p> Success! <?php echo $advisor_name;?> has been deleted!</p>
                       </div>
                       <div class="card-action">
-                        <a href="changeHolds" class="lime-text text-accent-1">Back to Add/Remove Holds Page</a>
-                        <a href="dashboard" class="lime-text text-accent-1">Home</a>
+                        <a href="<?php echo base_url() ?>Staff_member/deleteAdvisor" class="lime-text text-accent-1">Delete Another Advisor</a>
+                        <a href="<?php echo base_url() ?>dashboard" class="lime-text text-accent-1">Return Home</a>
                       </div>
                     </div>
                   </div>
@@ -154,27 +154,6 @@
 
   </div>
   <!-- END MAIN -->
-
-
-
-
-    <!-- ================================================
-    Scripts
-    ================================================ -->
-    
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>    
-    <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <!--prism-->
-    <script type="text/javascript" src="js/prism.js"></script>
-    <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
-    
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
     
 </body>
 

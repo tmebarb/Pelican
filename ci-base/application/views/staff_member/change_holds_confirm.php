@@ -95,11 +95,13 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Change User's Role</h5>
+                <h5 class="breadcrumbs-title">Cards</h5>
                 <ol class="breadcrumb">
                   <li><a href="dashboard">Dashboard</a>
                   </li>
-                  <li class="active">Change User's Role</li>
+                  <li><a href="#">Admin</a>
+                  </li>
+                  <li class="active">Success</li>
                 </ol>
               </div>
             </div>
@@ -121,10 +123,10 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Success!</span>
-                        <p> T<?php echo $user_name;?> was assigned the new role of <?php echo $user_type;?> .</p>
+                        <p> <?php echo $advisee_name ?>'s registration hold <?php echo $msg ?>!</p>
                       </div>
                       <div class="card-action">
-                        <a href="?php echo base_url() Dashboard/changeUserRole" class="lime-text text-accent-1">Change Another User's Role</a>
+                        <a href="<?php echo base_url() ?>Staff_member/changeHolds" class="lime-text text-accent-1">Back to Add/Remove Holds Page</a>
                         <a href="dashboard" class="lime-text text-accent-1">Home</a>
                       </div>
                     </div>
@@ -133,7 +135,12 @@
                   
                  
             </div>
-          </div> 
+          </div>
+
+         
+               
+              
+          
 </div>
         </div>
         <!--end container-->

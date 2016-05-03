@@ -41,13 +41,11 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>All Users</a>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add New</a>
-                                    </li>
-                                    <li><a href="<?php echo base_url() ?>dashboard/advisors" class="waves-effect waves-cyan">List All</a>
+                                    <li><a href="<?php echo base_url() ?>Users/listAll" class="waves-effect waves-cyan">List All</a>
                                     </li>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeUserRole">Change User Role</a>
                                     </li>
-                                    <li><a href="css-shadow.html">Advisor Assignment</a>
+                                    <li class="bold"><a href="<?php echo base_url() ?>staff_member/advisorToAdvisee"><class="waves-effect waves-cyan">Assign Advisees</a>
                                     </li>
                                 </ul>
 
@@ -56,9 +54,8 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Staff Workers</a>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <!--
-                                    <li><a href="css-shadow.html">?????</a>
-                                    </li>-->
+                                    <li><a href="<?php echo base_url() ?>Staff_member/viewStudentWorker">List All Student Workers</a>
+                                    </li>
                                 </ul>
 
                             </div>
@@ -67,6 +64,8 @@
                             <div class="collapsible-body" style="">
                                 <ul>
                                     <li><a href="css-icons.html">View Appointments</a>
+                                    </li>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
                                     </li>
                                 </ul>
 
@@ -77,7 +76,9 @@
                                 <ul>
                                     <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
                                     </li>
-                                    <li><a href="<?php echo base_url() ?>dashboard/changeHolds">Add/Remove Holds</a>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
+                                    </li>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
                                     </li>
                                 </ul>
                             </div>
@@ -171,14 +172,23 @@
                                         <li><a href="<?php echo base_url() ?>Staff_member/ListAdvisees" class="waves-effect waves-cyan">List All Advisees</a>
                                         </li>
                                         <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisee">Add Advisee</a>
+                                        </li>
+                                        <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>
+                                        </li>
+                                        <li><a href="<?php echo base_url() ?>Staff_member/changeHolds">Add/Remove Holds</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <ul>
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-module"></i> Student Workers</a>
+                                <div class="collapsible-body">
+                                    <ul>
                                         <li><a href="<?php echo base_url() ?>staff_member/viewStudentWorker" class="waves-effect waves-cyan">List All Student Worker</a>
                                         </li>
-<!--                                        <li class="bold"><a href="--><?php //echo base_url() ?><!--staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisee</a>-->
-<!--                                        </li>-->
-<!--                                        <li><a href="css-icons.html">Student Worker Status</a>-->
-<!--                                        </li>-->
-                                        <li><a href="css-shadow.html">Add/Remove Holds</a>
-                                        </li>
+                                        <li><a href="<?php echo base_url() ?>dashboard/changeSWStatus">Student Worker Status</a>
+                                        </li>                                     
                                     </ul>
                         </ul>
                     </li>
@@ -189,7 +199,7 @@
                                     <ul>
                                         <li><a href="<?php echo base_url() ?>staff_member/ListAdvisors" class="waves-effect waves-cyan">List All Advisors</a>
                                         </li>
-                                        <li><a href="<?php echo base_url() ?>dashboard/addadvisor">Add Advisor</a>
+                                        <li><a href="<?php echo base_url() ?>Staff_member/initAddAdvisor">Add Advisor</a>
                                         </li>
                                         <li class="bold"><a href="<?php echo base_url() ?>staff_member/deleteAdvisor"><class="waves-effect waves-cyan">Delete Advisor</a>
                                         </li>

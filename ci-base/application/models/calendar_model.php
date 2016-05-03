@@ -61,12 +61,12 @@ class Calendar_model extends CI_Model
 
 
 	
-			$query = $this->db->get_where('calendar', array('date'=>$date));
+			$query = $this->db->get_where('timeslots', array('date'=>$date));
 			if($query->num_rows() > 0){
 				$this->db->where('date',$date);
-				$this->db->update('calendar',array('event'=>$event));
+				$this->db->update('timeslots',array('event'=>$event));
 			}else {
-				$this->db->insert('calendar', array('date' => $date, 'event' => $event));
+				$this->db->insert('timeslots', array('date' => $date, 'event' => $event));
 					}
 						}
 }

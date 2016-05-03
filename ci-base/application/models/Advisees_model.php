@@ -51,6 +51,7 @@ class Advisees_model extends CI_Model
         );
         $this->db->insert('advisee', $advisee_data);
     }
+
     function getAdvisorDetailsByAdviseeUserID($user_id)
     {
         $this->db->select('u.advised_by as advisor_id, u2.user_fullname as advisor_name');

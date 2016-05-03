@@ -27,7 +27,7 @@ class Advisors_model extends CI_Model
         return $query->result();
     }
 
-    function get_Advisee_Name($adviseeID)
+    function get_Name($adviseeID)
     {
         $this->db->select('user_fullname');
         $this->db->from('users');
@@ -48,6 +48,16 @@ class Advisors_model extends CI_Model
         return $query->result(); 
     }
 
+    function get_User_ID($advisorCWID)
+    {
+        $this->db->select('user_id');
+        $this->db->from('users');
+        $this->db->where('CWID', $advisorCWID);
+
+        $query = $this->db->get();
+        return $query->result(); 
+    }
+
     function change_Office($office, $advisorID)
     {
         $newOffice = array('office_loc' => $office);
@@ -56,19 +66,31 @@ class Advisors_model extends CI_Model
     }
 
 
-    function saveAdvisor($first_name, $last_name, $email, $pic, $password, $major, $dob)
+    function saveAdvisor($user_fullname, $user_name, $email, $CWID, $password, $phone, $officeLoc, $major)
     {
-        $data = array(
-            'first_name' => $first_name,
-            'last_name' => $last_name,
-            'email' => $email,
-            'pic' => $pic,
-            'password' => $password,
-            'major' => $major,
-            'dob' => $dob
+        //An array of information to be inserted into the users table
+        $user_data = array(
+            'user_fullname' => $user_fullname,
+            'user_name' => $user_name,
+            'user_email' => $email,
+            'CWID' => $CWID,
+            'user_password' => $password,
+            'user_phone' => $phone,
+            'user_type' => 'advisor'
         );
 
-        $this->db->insert('advisor', $data);
+        $this->db->insert('users', $user_data);
+
+        //Gets the user id that was created alongside the insert into the users table
+        $advisor_userid = $this->db->insert_id();
+
+        //An array of information for the same user that will be inserted into the advisor table
+        $advisor_data = array(
+            'office_loc' => $officeLoc,
+            'major' => $major,
+            'user_id' => $advisor_userid
+            );
+        $this->db->insert('advisor', $advisor_data);
     }
 
     function getAll()
@@ -116,11 +138,13 @@ class Advisors_model extends CI_Model
 
     function deleteAdvisor($advisorID)
     {
-        $this->db->where('advisor_id', $advisorID);
-        $query = $this->db->get('advisor');
-        $ret = $query->row();
-        $this->db->delete('users', array('user_id' => $ret->user_id));
-        $this->db->delete('advisor', array('advisor_id' => $ret->advisor_id));
+        //$tables = array('advisor, users');
+        $this->db->where('user_id', $advisorID);
+        $this->db->delete('advisor');
+
+        $this->db->where('user_id', $advisorID);
+        $this->db->delete('users');
+
     }
 
     function fillDatabase()

@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <!--================================================================================
-	Item Name: Materialize - Material Design Admin Template
-	Version: 1.0
-	Author: GeeksLabs
-	Author URL: http://www.themeforest.net/user/geekslabs
+  Item Name: Materialize - Material Design Admin Template
+  Version: 1.0
+  Author: GeeksLabs
+  Author URL: http://www.themeforest.net/user/geekslabs
 ================================================================================ -->
 
 <head>
@@ -15,7 +16,7 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
   <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-  <title>Cards | Pelican</title>
+  <title>Forms Layouts | Pelican</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -29,14 +30,18 @@
 
   <!-- CORE CSS-->
   
-  <link href="<?php echo base_url();?>asserts//materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-
+  <link href="http://cdn.datatables.net/1.10.6/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url();?>asserts/js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
 </head>
 
 <body>
@@ -56,7 +61,7 @@
         <div class="navbar-fixed">
             <nav class="cyan">
                 <div class="nav-wrapper">
-                    <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/Pelican Logo.png" alt="materialize logo"></a> <span class="logo-text">Pelican</span></h1>
+                   
                     <ul class="right hide-on-med-and-down">
                         <li class="search-out">
                             <input type="text" class="search-out-text">
@@ -86,7 +91,8 @@
     <!-- START WRAPPER -->
     <div class="wrapper">
 
-    
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
       <!-- START CONTENT -->
       <section id="content">
 
@@ -95,11 +101,13 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">Change User's Role</h5>
+                <h5 class="breadcrumbs-title">Delete Advisor</h5>
                 <ol class="breadcrumb">
-                  <li><a href="dashboard">Dashboard</a>
+                  <li><a href="index.html">Dashboard</a>
                   </li>
-                  <li class="active">Change User's Role</li>
+                  <li><a href="?php echo base_url() ?>staff_member/ListAdvisors">Advisors</a>
+                  </li>
+                  <li class="active">Delete Advisor</li>
                 </ol>
               </div>
             </div>
@@ -109,65 +117,79 @@
 
 
         <!--start container-->
-        <div class="container">
-         
-          <div class="divider"></div>
-          <!--Basic Card-->
-          <div id="basic-card" class="section">
-          
-              <div class="col s12 m8 l9">
-                <div class="row">
-                  <div class="col s12 m8 l9">
-                    <div class="card  light-blue">
-                      <div class="card-content white-text">
-                        <span class="card-title">Success!</span>
-                        <p> T<?php echo $user_name;?> was assigned the new role of <?php echo $user_type;?> .</p>
-                      </div>
-                      <div class="card-action">
-                        <a href="?php echo base_url() Dashboard/changeUserRole" class="lime-text text-accent-1">Change Another User's Role</a>
-                        <a href="dashboard" class="lime-text text-accent-1">Home</a>
-                      </div>
+            <div class="divider"></div>
+            <!--Basic Form, accepts advisor and advisee ID and updates the correct tables in the database, signifying the advisor advises the advisee-->
+            <div id="basic-form" class="section">
+              <?php echo form_open('Staff_member/deleteAdvisorProcess'); ?>
+              <div class="row">
+                <div class="col s12 m12 l6">
+                  <div class="card-panel">
+                    <h4 class="header2">Delete An Advisor</h4>
+                    <div class="row">
+                      <form class="col s12" action="Staff_member/deleteAdvisorProcess/" method="post">
+                         <div class="col s12 m12 l12">
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12">                          
+                            <label for="advisorCWID">Enter Advisor CWID</label>
+                            <?php echo form_input('advisorCWID', ''); ?>
+                            
+                          </div>
+                        </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <button class="btn cyan waves-effect waves-light right"
+                                <?php echo form_submit('submit' , 'submit'); ?>
+                                <i class="mdi-content-send right"></i>
+                              </button>
+                              <?php echo form_close();?>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
-                
-                  
-                 
+                </div>
             </div>
-          </div> 
-</div>
         </div>
-        <!--end container-->
-
-      </section>
-      <!-- END CONTENT -->
-
-      
+        <div class="container">
+          <div class="section">
     </div>
-    <!-- END WRAPPER -->
+    
+                
+  <!-- END CONTENT -->
+</div>
+  <!-- END WRAPPER -->
 
   </div>
   <!-- END MAIN -->
 
 
 
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
 
     <!-- ================================================
     Scripts
     ================================================ -->
     
+ <!-- ================================================
+    Scripts
+    ================================================ -->
+    
     <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>    
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/jquery-1.11.2.min.js"></script>    
     <!--materialize js-->
-    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/materialize.js"></script>
     <!--prism-->
-    <script type="text/javascript" src="js/prism.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/prism.js"></script>
     <!--scrollbar-->
-    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- data-tables -->
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/data-tables/data-tables-script.js"></script>
     <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    <script type="text/javascript" src="<?php echo base_url();?>asserts/js/plugins/chartist-js/chartist.min.js"></script>   
     
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/plugins.js"></script>    
     
-</body>
-

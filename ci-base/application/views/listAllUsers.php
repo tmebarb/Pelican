@@ -25,11 +25,11 @@
           <div class="container">
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="breadcrumbs-title">List advisees</h5>
+                <h5 class="breadcrumbs-title">List Users</h5>
                 <ol class="breadcrumb">
                     <li><a href="dashboard">Dashboard</a></li>
                     
-                    <li class="active">List advisees</li>
+                    <li class="active">List Users</li>
                 </ol>
               </div>
             </div>
@@ -47,47 +47,43 @@
             
             <!--DataTables example-->
             <div id="row-grouping">
-              <h4 class="header">List of All Advisees</h4>
+              <h4 class="header">List of All Users</h4>
               <div class="row">
                 
                 <div class="col s12 m12 l12">
                   <table id="data-table-simple" class="responsive-table display" cellspacing="0">
                     <thead>
                         <tr>
-                          <th>Student Name</th>
-                          <th>CWID</th>
-                          <th>Email</th>
-                          <th>Phone</th>
-                          <th>Major</th>
-                          <th>Classification</th>
-                          <th>Advisor</th>
+                            <th>Name</th>
+                            <th>CWID</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Type</th>                          
                         </tr>
                     </thead>
                  
                     <tfoot>
                         <tr>
-                          <th>Student Name</th>
-                          <th>CWID</th>
-                          <th>Email</th>
-                          <th>Phone</th>
-                          <th>Major</th>
-                          <th>Classification</th>
-                          <th>Advisor</th>            
+                            <th>Name</th>
+                            <th>CWID</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Type</th>                             
                         </tr>
                     </tfoot>
                  
                     <tbody>
-                      <?php foreach ($advisees as $row): ?>
+                        <?php foreach ($users as $row): ?>
                       <tr>
-                        <td><?php echo $row->advisee_name  ?></td>
+                        <td><?php echo $row->user_fullname  ?></td>
                         <td><?php echo $row->CWID ?></td>
+                        <td><?php echo $row->user_name ?></td>
                         <td><?php echo $row->user_email ?></td>
                         <td><?php echo $row->user_phone ?></td>
-                        <td><?php echo $row->major ?></td>
-                        <td><?php echo $row->classification ?></td>
-                        <td><?php echo $row->advisor_name ?></td>
-                      </tr>
-                        
+                        <td><?php echo $row->user_type ?></td>
+                      </tr>                      
                       <?php endforeach ?>
                   </tbody>
                 </table>
