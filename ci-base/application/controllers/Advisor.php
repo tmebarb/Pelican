@@ -339,7 +339,7 @@
 		{
 
 			$data = array('view' => 'advisor/ChangeMajorForm', 
-							'advisees' => $this->Advisors_model->list_Advisees($this->session->userdata('id')));
+							'advisees' => $this->Advisors_model->list_Advisees($this->session->userdata('user_id')));
 			$this->load->view('admin', $data);
 		}
 
@@ -348,7 +348,7 @@
 		{
 			$newMajor= $this->input->post('adviseeNewMajor');
 			$adviseeCWID= $this->input->post('adviseeCWID');
-			$adviseenArray = $this->Advisors_model->get_Advisee_Name($adviseeCWID);
+			$adviseenArray = $this->Advisors_model->get_Name($adviseeCWID);
 			$adviseeName = $adviseenArray[0]->user_fullname;
 			//Returns an array containing the advisee_id for the advisee whose CWID was entered
 			$adviseeArray= $this->Advisors_model->get_Advisee_ID($adviseeCWID); 
