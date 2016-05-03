@@ -60,7 +60,6 @@
                           <th>Phone</th>
                           <th>Major</th>
                           <th>Classification</th>
-                          <th>Advisor</th>
                         </tr>
                     </thead>
                  
@@ -72,7 +71,6 @@
                           <th>Phone</th>
                           <th>Major</th>
                           <th>Classification</th>
-                          <th>Advisor</th>            
                         </tr>
                     </tfoot>
                  
@@ -85,7 +83,6 @@
                         <td><?php echo $row->user_phone ?></td>
                         <td><?php echo $row->major ?></td>
                         <td><?php echo $row->classification ?></td>
-                        <td><?php echo $row->advisor_name ?></td>
                       </tr>
                         
                       <?php endforeach ?>
