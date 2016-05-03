@@ -123,5 +123,27 @@ class Staff_worker_model extends CI_Model
     	$this->db->where('advisee_id', $adviseeID);
     	$this->db->update('advisee', $data);
     }
+
+    function getAllStaffMembers()
+    {
+    	$this->db->select('*');
+    	$this->db->from('users');
+    	$this->db->where('user_type = Staff_member');
+    }
+
+    function saveStaffMember($user_fullname, $user_name, $email, $CWID, $password, $phone)
+    {
+    	$user_data = array(
+            'user_fullname' => $user_fullname,
+            'user_name' => $user_name,
+            'user_email' => $email,
+            'CWID' => $CWID,
+            'user_password' => $password,
+            'user_phone' => $phone,
+            'user_type' => 'Staff_member'
+        );
+
+        $this->db->insert('users', $user_data);
+    }
 }
 ?>

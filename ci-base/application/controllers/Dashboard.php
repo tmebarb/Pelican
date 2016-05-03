@@ -195,13 +195,9 @@
 		function profilePage()
 		{
 			$user_id = $this->session->userdata('user_id');
-			//print_r($CWID);
-			//return;
 			$userType = $this->session->userdata('user_type');
 			$data = array('view' => 'viewProfile', 'userID' => $user_id, 'usertype' => $userType, 'user_info' => $this->Users_model->profileInfo($user_id, $userType));
 
-			//print_r($data['user_info']);
-			//return;
 			$this->load->view('admin', $data);
 		}
 

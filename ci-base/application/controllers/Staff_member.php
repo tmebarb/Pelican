@@ -66,7 +66,7 @@ class Staff_member extends CI_Controller
             }
 
             $this->Advisees_model->saveAdvisee($user_fullname, $user_name, $email, $CWID, $password, $phone, $classification, $major);
-            $this->session->set_flashdata('success_msg', 'Advisor details saved!<br/><br/>');
+            $this->session->set_flashdata('success_msg', 'Advisee details saved!<br/><br/>');
             redirect('Staff_member/addAdvisee');
         }
     } 
@@ -118,6 +118,48 @@ class Staff_member extends CI_Controller
         }
     }
 
+     function initAddStaffMember()
+    {
+        $data = array('view' => 'staff_member/add-staffmember');
+        $this->load->view('admin', $data);
+    }
+
+    function addStaffMember()
+    {
+        $this->form_validation->set_rules('user_fullname', '<b>Full Name</b>', 'trim|required');
+        $this->form_validation->set_rules('user_name', '<b>User Name</b>', 'trim|required');
+        $this->form_validation->set_rules('CWID', '<b>CWID</b>', 'trim|required');
+        $this->form_validation->set_rules('email5', '<b>Email</b>', 'trim|required|valid_email');
+        $this->form_validation->set_rules('phone', '<b>Phone Number</b>', 'trim');
+        $this->form_validation->set_rules('password', '<b>Password</b>', 'trim|required|matches[repassword]|md5');
+        $this->form_validation->set_rules('repassword', '<b>Confirm Password</b>', 'trim|required');
+        if($this->form_validation->run() == FALSE) 
+        {
+            $data = array('view'=> 'Staff_member/add-staffmember');
+            $this->load->view('admin', $data);
+        } 
+        else 
+        {
+            $user_fullname = $this->input->post('user_fullname');
+            $user_name = $this->input->post('user_name');
+            $email = $this->input->post('email5');
+            $CWID = $this->input->post('CWID');
+            $password = $this->input->post('password');
+            $repassword = $this->input->post('repassword');
+            $phone = $this->input->post('phone');
+                
+            if ($this->Users_model->checkemail($email)) 
+            {
+                $this->session->set_flashdata('error_msg', 'Email Already Exists! <br/><br/>');
+                redirect('Staff_member/addStaffMember');
+            }
+
+            $this->Staff_worker_model->saveStaffMember($user_fullname, $user_name, $email, $CWID, $password, $phone);
+            $this->session->set_flashdata('success_msg', 'Staff Member details saved!<br/><br/>');
+            redirect('Staff_member/addStaffMember');
+        }
+    } 
+
 	function ListAdvisees(){
 		$advisees=$this->Staff_worker_model->showAllAdvisees();
 		$data = array('view' => 'staff_member/listAllAdvisees',
@@ -129,6 +171,14 @@ class Staff_member extends CI_Controller
         $advisors=$this->Staff_worker_model->showAllAdvisors();
         $data = array('view' => 'staff_member/listAdvisors',
             'advisors' => $advisors);
+        $this->load->view('admin', $data);
+    }
+
+    function ListStaff()
+    {
+        $staffmembers = $this->Staff_worker_model->getAlStaffMembers();
+        $data = array('view' => 'staff_member/listAllStaff', 
+                        'staffmembers' => $staffmembers);
         $this->load->view('admin', $data);
     }
 
