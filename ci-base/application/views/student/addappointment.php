@@ -1,6 +1,25 @@
+<script>
+    $.validator.setDefaults({
+        errorClass: 'invalid',
+        validClass: "valid",
+        errorPlacement: function (error, element) {
+            $(element)
+                .closest("form")
+                .find("label[for='" + element.attr("id") + "']")
+                .attr('data-error', error.text());
+        }
+    });
+    $().ready(function () {
+        $("#form").validate({
+            rules: {
+                time: "required"
+            }
+        });
+    });
+</script>
 <div class="container">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!--    <script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
@@ -61,18 +80,18 @@
                         var msg = $("#msg");
                         if (result.length == 0) {
                             msg.empty();
-                            $startTime  = [];
-                            $endTime  = [];
+                            $startTime = [];
+                            $endTime = [];
                             msg.append("<span style='color: red;'>No time Slot on " + dayName + " (" + $("#date").val() + ")</span>");
 
                         } else {
                             msg.empty();
-                            $startTime  = [];
-                            $endTime  = [];
+                            $startTime = [];
+                            $endTime = [];
                             $.each(result, function (key, value) {
                                 msg.append("<div style='float:right'>")
-                                $startTime.push( value.start_time)
-                                $endTime.push( value.end_time)
+                                $startTime.push(value.start_time)
+                                $endTime.push(value.end_time)
                                 msg.append("Available times: <span style='color: #12b29a'>" + value.start_time + " to " + value.end_time + "</span><br/>")
                                 msg.append("</div>")
                             });
@@ -81,21 +100,21 @@
                 });
             });
 
-            $('#time').timepicker({ timeFormat: 'H:i:s'});
+            $('#time').timepicker({timeFormat: 'H:i:s'});
 
-            $('#time').change(function() {
-                if($startTime.length) {
+            $('#time').change(function () {
+                if ($startTime.length) {
                     okStart = false;
                     okEnd = false;
-                    for(i=0; i<$startTime.length; i++) {
-                        if($startTime[i] <= $('#time').val())
+                    for (i = 0; i < $startTime.length; i++) {
+                        if ($startTime[i] <= $('#time').val())
                             okStart = true;
                     }
-                    for(i=0; i<$endTime.length; i++) {
-                        if($endTime[i] >= $('#time').val())
+                    for (i = 0; i < $endTime.length; i++) {
+                        if ($endTime[i] >= $('#time').val())
                             okEnd = true;
                     }
-                    if(!okStart || !okEnd){
+                    if (!okStart || !okEnd) {
                         alert("Please select a valid time")
                         ("#time")
                     }
@@ -108,7 +127,8 @@
     </script>
     <div class="section">
         <div id="basic-form" class="section">
-            <form action="<?php echo base_url() ?>student/saveappointment" method="post">
+
+            <form action="<?php echo base_url() ?>student/saveappointment" method="post" id="form" novalidate="novalidate">
                 <div class="card-panel">
 
                     <img src="<?php echo base_url() ?>asserts/images/hex-loader2.gif" alt="" id="loadingDiv"
@@ -116,65 +136,67 @@
 
                     <div class="right">
                         <?php
-                        if($advisor) { ?>
-                        Your Advisor: <strong><?php
-                            echo $advisor->advisor_name;
-                            ?></strong>
+                        if ($advisor) { ?>
+                            Your Advisor: <strong><?php
+                                echo $advisor->advisor_name;
+                                ?></strong>
                         <?php } else {
                             ?>
-                        Advisor not assigned
-                        <?php
+                            Advisor not assigned
+                            <?php
                         }
                         ?>
                     </div>
                     <?php
-                    if(!$slotDetails) {
+                    if (!$slotDetails) {
                         ?>
-                    <div class="row">
-                        <div class="input-field col s2">
-                            <p for="date" data-error="wrong" data-success="right" class="right">Pick Date</p>
-                        </div>
-                        <div class="input-field col s4">
-                            <input id="date" name="date" type="text" required="" aria-required="true">
-                        </div>
-                        <div class="col s6">
-                            <?php
-                            if ($sessionDetails) {
-                                ?>
-                                <p>Note: Your advisor is only available from '<span
-                                        style="color: #78cf54"><?php echo $sessionDetails->startDate ?></span>' to
-                                    '<span style="color: #78cf54"><?php echo $sessionDetails->endDate ?></span>'</p>
-                                <?
-                            } else {
-                                ?>
-                                <p style="color: red;">Ops! Your advisor haven't set advising details yet!</p>
+                        <div class="row">
+                            <div class="input-field col s2">
+                                <p for="date" data-error="wrong" data-success="right" class="right">Pick Date</p>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="date" name="date" type="text" required>
+                            </div>
+                            <div class="col s6">
                                 <?php
-                            }
-                            ?>
+                                if ($sessionDetails) {
+                                    ?>
+                                    <p>Note: Your advisor is only available from '<span
+                                            style="color: #78cf54"><?php echo $sessionDetails->startDate ?></span>' to
+                                        '<span style="color: #78cf54"><?php echo $sessionDetails->endDate ?></span>'</p>
+                                    <?
+                                } else {
+                                    ?>
+                                    <p style="color: red;">Ops! Your advisor haven't set advising details yet!</p>
+                                    <?php
+                                }
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label for="time">Start Time</label>
-                            <input type="text" id="time" name="time">
-                        </div>
-                        <div class="col s6" id="msg" style="padding-top: 10px;">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <label for="time">Start Time</label>
+                                <input type="text" id="time" name="time" class="required">
+                            </div>
+<!--                            <input name="test" id="time">-->
+                            <div class="col s6" id="msg" style="padding-top: 10px;">
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <button class="btn cyan waves-effect waves-light right" type="submit" style="z-index: 0">Save
-                                <i class="mdi-content-send right"></i>
-                            </button>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn cyan waves-effect waves-light right" type="submit"
+                                        style="z-index: 0">Save
+                                    <i class="mdi-content-send right"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <?php
-                        } else {
-                            ?>
+                        <?php
+                    } else {
+                        ?>
                         You Already have an Appointment with
                         <?php
-                        if($advisor) { ?>
+                        if ($advisor) { ?>
                             <strong><?php
                                 echo $advisor->advisor_name;
                                 ?></strong>
@@ -183,12 +205,12 @@
                         $timestamp = strtotime($slotDetails->date);
                         $day = date('D', $timestamp);
 
-                        echo " on ".$day ." (" . $slotDetails->date . ")";
+                        echo " on " . $day . " (" . $slotDetails->date . ")";
 
                         ?>
 
-                    <?php
-                        }
+                        <?php
+                    }
                     ?>
                 </div>
             </form>

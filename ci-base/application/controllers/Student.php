@@ -50,6 +50,7 @@ class Student extends CI_Controller
 
     function saveappointment()
     {
+        return;
         $date = $this->input->post('date');
         $startTime = $this->input->post('time');
         $slot_id = $this->input->post('slot_id');
@@ -72,6 +73,10 @@ class Student extends CI_Controller
             $res = "";
         echo json_encode($res);
     }
+    function test() {
+        $data = array('view' => 'student/test');
+        $this->load->view('admin', $data);
+    }
 
     function getAdvisorProfile()
     {
@@ -80,7 +85,7 @@ class Student extends CI_Controller
 
         $advisor_uid = $advisorArr->advisor_id;
 
-        $data = array('view' => 'student/viewAdvisorInfo', 
+        $data = array('view' => 'student/viewAdvisorInfo',
                     'usertype' => 'advisor',
                     'user_info' => $this->Users_model->profileInfo($advisor_uid, 'advisor'));
 
