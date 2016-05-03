@@ -24,16 +24,12 @@ class Calendar_model extends CI_Model
 	function get_events($year, $month){
 		$events = array();
 		
-		if($this->session->userdata('user_type') == "advisor") {
+		
 //		print_r($this->session->userdata('advisor_id'));
 		$query = $this->db->select('date, event')->from ('timeslots')->like('date', "$year-$month") -> 
 		where('advisor_id', $this->session->userdata('advisor_id'))-> get();
 // =======
-	}
-		else if($this->session->userdata('user_type') == "advisee") {
-			$query = $this->db->select('date, event')->from ('timeslots')->like('date', "$year-$month") -> 
-		where('advisee_id', $this->session->userdata('advisee_id'))-> get();
-	}
+	
 // 		$query = $this->db->select('date,event')->from ('calendar')-> like('date',"$year-$month")-> where('advisor_id', $this->session->userdata('advisor_id'))-> get();
 // >>>>>>> origin/master
 		$query=$query->result();
