@@ -116,7 +116,8 @@
                     }
                     if (!okStart || !okEnd) {
                         alert("Please select a valid time")
-                        ("#time")
+
+                        $("#submitButton").prop("disabled",true);
                     } else {
                         $.ajax({
                             url: "<?php echo base_url(); ?>/student/isTimeSlotTaken/" + $("#time").val() + "/" + $("#date").val(),
