@@ -142,6 +142,7 @@
                     }
                 } else {
                     alert("No time Slot on selected date");
+                    $("#submitButton").prop("disabled",true);
                     $('#time').val("");
                 }
             });
