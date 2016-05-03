@@ -83,6 +83,7 @@
                             $startTime = [];
                             $endTime = [];
                             msg.append("<span style='color: red;'>No time Slot on " + dayName + " (" + $("#date").val() + ")</span>");
+                            $("#submitButton").prop("disabled",true);
 
                         } else {
                             msg.empty();
