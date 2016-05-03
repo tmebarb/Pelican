@@ -75,7 +75,7 @@
                     <tbody>
                       <?php foreach ($staffmembers as $row): ?>
                       <tr>
-                        <td><?php echo $row->advisee_name  ?></td>
+                        <td><?php echo $row->user_fullname  ?></td>
                         <td><?php echo $row->user_name ?></td>
                         <td><?php echo $row->CWID ?></td>
                         <td><?php echo $row->user_email ?></td>
