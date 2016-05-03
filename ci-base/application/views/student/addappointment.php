@@ -83,6 +83,7 @@
                             $startTime = [];
                             $endTime = [];
                             msg.append("<span style='color: red;'>No time Slot on " + dayName + " (" + $("#date").val() + ")</span>");
+                            $("#submitButton").prop("disabled",true);
 
                         } else {
                             msg.empty();
@@ -92,7 +93,7 @@
                                 msg.append("<div style='float:right'>")
                                 $startTime.push(value.start_time)
                                 $endTime.push(value.end_time)
-                                msg.append("Available times: <span style='color: #12b29a'>" + value.start_time + " to " + value.end_time + "</span><br/>")
+                                msg.append("Tentive Schedule Available on this day: <span style='color: #12b29a'>" + value.start_time + " to " + value.end_time + "</span><br/>")
                                 msg.append("</div>")
                             });
                         }
@@ -116,10 +117,33 @@
                     }
                     if (!okStart || !okEnd) {
                         alert("Please select a valid time")
-                        ("#time")
+
+                        $("#submitButton").prop("disabled",true);
+                    } else {
+                        $.ajax({
+                            url: "<?php echo base_url(); ?>/student/isTimeSlotTaken/" + $("#time").val() + "/" + $("#date").val(),
+                            success: function (data) {
+                                result = jQuery.parseJSON(data);
+                                //alert(data);
+                                var msg = $("#msg2");
+                                if (result.length == 0) {
+                                    msg.empty();
+
+                                } else {
+                                    msg.empty();
+                                    msg.append(((result.msg)? "This time slot is already taken, check any other possibility from given slots": " "));
+                                    if((result.msg)) {
+                                        $("#submitButton").prop("disabled",true);
+                                    } else {
+                                        $("#submitButton").prop("disabled",false);
+                                    }
+                                }
+                            },
+                        });
                     }
                 } else {
                     alert("No time Slot on selected date");
+                    $("#submitButton").prop("disabled",true);
                     $('#time').val("");
                 }
             });
@@ -183,9 +207,12 @@
 
                             </div>
                         </div>
+                        <div class="col s6" id="msg2" style="padding-top: 10px;">
+
+                        </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <button class="btn cyan waves-effect waves-light right" type="submit"
+                                <button class="btn cyan waves-effect waves-light right" type="submit" id="submitButton"
                                         style="z-index: 0">Save
                                     <i class="mdi-content-send right"></i>
                                 </button>

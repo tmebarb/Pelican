@@ -103,7 +103,15 @@ class Student extends CI_Controller
 
         $this->load->view('admin', $data);
     }
-
+    function isTimeSlotTaken($time, $date) {
+        $userid = $this->session->userdata('user_id');
+        $advisorArr = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($userid);
+        $advisor_uid = $advisorArr->advisor_id;
+        $advisor = $this->Advisors_model->getAdvisorByUserId($advisor_uid);
+        $slot = $this->Slots_model->getSlotByAdvisorNdTime($advisor->advisor_id, $time, $date);
+        //print_r($slot);
+        echo json_encode(array('msg' => $slot));
+    }
 }
 
 ?>

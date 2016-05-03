@@ -36,7 +36,58 @@
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="<?php echo base_url();?>asserts/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="<?php echo base_url();?>asserts/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="<?php echo base_url() ?>asserts/js/jquery-1.11.2.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+
+
+    <style>
+        label {
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        $.validator.setDefaults({
+            errorClass: 'invalid',
+            validClass: "valid",
+            errorPlacement: function (error, element) {
+                $(element)
+                    .closest("form")
+                    .find("label[for='" + element.attr("id") + "']")
+                    .attr('data-error', error.text());
+            }
+        });
+        $().ready(function () {
+            $("#form").validate({
+                rules: {
+                    password: {
+                        required: true,
+
+                    } ,
+
+                    con_password: {
+                        equalTo: "#password",
+                    },
+                    major: {
+                        required: {
+                            depends: function(element) {
+                                return $("#major").val() == 'null';
+                            }
+                        }
+                    }
+                },
+                messages:{
+                    password: {
+                        required:"the password is required"
+                    },
+                }
+
+            });
+        });
+    </script>
 </head>
 
 <body class="cyan">
@@ -52,12 +103,13 @@
 
   <div id="login-page" class="row">
     <?php echo validation_errors(); ?>
-    <?php echo form_open('login/savesignup'); ?>
+      <?php $attributes = array('id' => 'form');?>
+      <?php echo form_open('login/savesignup', $attributes); ?>
 
     <?php echo $this->session->flashdata('error_msg') ?>
     <?php echo $this->session->flashdata('success_msg') ?>
     <div class="col s12 z-depth-4 card-panel">
-      <form class="login-form">
+        <form class="login-form" id="form">
         <div class="row">
           <div class="input-field col s12 center">
             <h4>New Pelican Advising User</h4>
@@ -77,6 +129,7 @@
                   'id'          => 'fullname',
                   'style'   => 'margin-left: 30px',
                   'value'   => set_value('fullname'),
+                    'required' => 'required'
                   );
                 echo form_input($data);
                 ?>
@@ -96,6 +149,7 @@
                   'id'          => 'username',
                   'style'   => 'margin-top: 10px; margin-left: 30px',
                   'value'   => set_value('username'),
+                    'required' => 'required'
                   );
                 echo form_input($data);
                 ?>
@@ -115,7 +169,7 @@
                   'name'        => 'CWID',
                   'id'          => 'CWID',
                   'style'   => 'margin-top: 10px; margin-left: 30px',
-                  'value'   => set_value('CWID'),
+                  'value'   => set_value('CWID')
                   );
                 echo form_input($data);
                 ?>
@@ -131,7 +185,7 @@
                             'CSCI'  => 'Computer Information Systems',
                             'BUSN'   => 'Business'
                           );
-                echo form_dropdown('major', $options, 'null');
+                echo form_dropdown('major', $options, '', 'id="major"');
                 ?>
           </div>
         </div>
@@ -146,7 +200,7 @@
                             'Junior'    => 'Junior',
                             'Senior'    => 'Senior',
                           );
-                echo form_dropdown('classification', $options, 'null');
+                echo form_dropdown('classification', $options, '');
                 ?>
           </div>
         </div>
@@ -201,7 +255,8 @@
                     'name'        => 'user_email',
                     'id'          => 'user_email',
                     'style'   => 'margin-top: 10px; margin-left: 30px',
-                    'value'   => set_value('user_email')
+                    'value'   => set_value('user_email'),
+                      'required' => 'required'
                     );
                   echo form_input($data);
                   ?>
@@ -258,7 +313,6 @@
     ================================================ -->
 
   <!-- jQuery Library -->
-  <script type="text/javascript" src="<?php echo base_url();?>asserts/js/jquery-1.11.2.min.js"></script>
   <!--materialize js-->
   <script type="text/javascript" src="<?php echo base_url();?>asserts/js/materialize.js"></script>
   <!--prism-->
