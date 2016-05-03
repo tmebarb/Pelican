@@ -176,7 +176,8 @@
 
 		function changeSWStatus(){
 			
-			$data = array('view' => 'change_SW_status');
+			$data = array('view' => 'change_SW_status',
+				'advisees' => $this->Staff_worker_model->showAllAdvisees());
 			$this->load->view('admin', $data);
 			
 
@@ -184,10 +185,15 @@
 
 		function changeSWConfirm(){
 		//if($this->session->userdata->user)
-				$userID= $this->input->post('userID');
+				$userCWID= $this->input->post('userCWID');
+				$adviseeArr = $this->Advisors_model->get_User_ID($userCWID);
+				$userID = $adviseeArr[0]->user_id;
+				$adviseeArray = $this->Advisors_model->get_Name($userCWID);
+       		    $adviseeName = $adviseeArray[0]->user_fullname;
+
 				$SWStatus= $this->input->post('SWStatus');
 				$data = array('view' => 'change_SW_confirm',
-								'user_id' => $userID,
+								'user_name' => $adviseeName,
 								'student_worker' => $SWStatus
 								);
 				

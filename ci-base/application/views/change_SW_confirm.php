@@ -123,7 +123,7 @@
                     <div class="card  light-blue">
                       <div class="card-content white-text">
                         <span class="card-title">Success!</span>
-                        <p> The student with ID <?php echo $user_id;?> has had their student worker status successfully updated.</p>
+                        <p><?php echo $user_name;?> has had their student worker status successfully updated.</p>
                       </div>
                       <div class="card-action">
                         <a href="changeSWStatus" class="lime-text text-accent-1">Back to Student Worker Status Page</a>
