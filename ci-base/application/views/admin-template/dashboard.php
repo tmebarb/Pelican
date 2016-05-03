@@ -29,7 +29,7 @@
                                             ?>
 
                                             <li class="collection-item dismissable">
-                                                <p><?php echo $advisee->user_fullname ?></p>
+                                                <p><?php echo $advisee->user_fullname." (".$advisee->start_time." - ".$advisee->end_time. ")"  ?></p>
                                                 <span class="task-cat teal">email:<?php echo $advisee->user_email ?></span>
                                             </li>
                                     <?
