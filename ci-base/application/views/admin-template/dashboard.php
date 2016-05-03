@@ -17,7 +17,7 @@
                     <!--card widgets start-->
                     <div id="card-widgets">
                         <div class="row">
-                            <?php if($this->session->userdata("user_type") == "advisor") { ?>
+                       <!--     <?php //if($this->session->userdata("user_type") == "advisor") { ?>
                             <div class="col s12 m12 l4">
                                 <ul id="task-card" class="collection with-header">
                                     <li class="collection-header grey">
@@ -39,7 +39,7 @@
 
                                 </ul>
                             </div>
-                            <?php } ?>
+                            <?php } ?> -->
                             <div class="col s12 m6 l4">
                                 <div id="flight-card" class="card">
                                     <div class="card-header amber darken-2">
