@@ -99,6 +99,18 @@ class Advisors_model extends CI_Model
         return $query->result();
     }
 
+    function getAdvisees($date, $id) {
+        $this->db->select('u.user_fullname, u.user_email, t.start_time, t.end_time');
+        $this->db->where('t.date', $date);
+        $this->db->where('t.advisor_id', $id);
+        $this->db->order_by("t.start_time", "asc");
+        $this->db->from('timeslots t ');
+        $this->db->join('users u', 'u.user_id = t.advisee_id', 'inner');
+        $query = $this->db->get();
+        //echo $this->db->last_query();
+        return $query->result();
+    }
+
     function getAdvisorByUserId($user_id)
     {
         $this->db->where('user_id', $user_id);

@@ -26,7 +26,12 @@
 
 		function index() {
 			$data = array('allusers' => $this->Users_model->getallusers(), 'view'=> 'admin-template/dashboard');
-
+			$user_id = $this->session->userdata('user_id');
+			if($this->session->userdata('user_type') == "advisor") {
+				$advisor = $this->Advisors_model->getAdvisorByUserId($user_id);
+				$data['advisees'] = $this->Advisors_model->getAdvisees(date('Y-m-d'), $advisor->advisor_id);
+			}
+			//print_r($data);
 			$this->load->view('admin', $data);
 		}
 
