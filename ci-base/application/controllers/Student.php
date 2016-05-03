@@ -9,6 +9,7 @@ class Student extends CI_Controller
         $this->load->model('Users_model');
         $this->load->model('Advisees_model');
         $this->load->model('Advisors_model');
+        $this->load->model('Slots_model');
         $this->load->helper(array('form'));
         $this->load->library('form_validation');
         $this->load->helper('url');
@@ -38,15 +39,30 @@ class Student extends CI_Controller
         $this->breadcrumbs->unshift('Home', '/');
 //			print_r($this->session->userdata('user_id'));
         $advisor = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($this->session->userdata('user_id'));
+       // print_r($this->Slots_model->getTimeSlotByAdviseeID($this->session->userdata('user_id')));
+        //return;
         $data = array('view' => 'student/addappointment',
             'advisor' => $advisor,
-            'sessionDetails' => ($advisor)? $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id):null);
+            'sessionDetails' => ($advisor)? $this->Advisees_model->getAdvisingSessionDetailsbyAdvisorUserID($advisor->advisor_id):null,
+            'slotDetails' => $this->Slots_model->getTimeSlotByAdviseeID($this->session->userdata('user_id')) );
         $this->load->view('admin', $data);
     }
 
-    function saveappointment($title, $start, $end, $advisor_id, $student_id)
+    function saveappointment()
     {
+        //return;
+        $date = $this->input->post('date');
+        $startTime = $this->input->post('time');
+        $slot_id = $this->input->post('slot_id');
+        $time = strtotime($startTime);
+        $endTime =date("H:i", strtotime('+30 minutes', $time));
+        $user_id = $this->session->userdata('user_id');
+        $advisor = $this->Advisees_model->getAdvisorDetailsByAdviseeUserID($user_id);
 
+        if(!$slot_id)
+            $this->Slots_model->addtimeslot2($startTime, $endTime, $advisor->advisor_id, $user_id, $date);
+
+        redirect("My_calender");
     }
 
     function getAdvisorSlotsByDayNDate($date, $day, $advisor_id) {
@@ -57,6 +73,10 @@ class Student extends CI_Controller
             $res = "";
         echo json_encode($res);
     }
+    function test() {
+        $data = array('view' => 'student/test');
+        $this->load->view('admin', $data);
+    }
 
     function getAdvisorProfile()
     {
@@ -65,7 +85,7 @@ class Student extends CI_Controller
 
         $advisor_uid = $advisorArr->advisor_id;
 
-        $data = array('view' => 'student/viewAdvisorInfo', 
+        $data = array('view' => 'student/viewAdvisorInfo',
                     'usertype' => 'advisor',
                     'user_info' => $this->Users_model->profileInfo($advisor_uid, 'advisor'));
 

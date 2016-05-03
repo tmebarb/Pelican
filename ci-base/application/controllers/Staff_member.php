@@ -88,12 +88,12 @@ class Staff_member extends CI_Controller
         $this->form_validation->set_rules('password', '<b>Password</b>', 'trim|required|matches[repassword]|md5');
         $this->form_validation->set_rules('repassword', '<b>Confirm Password</b>', 'trim|required');
         $this->form_validation->set_rules('major', '<b>Major</b>', 'trim|required');
-        if($this->form_validation->run() == FALSE) 
+        if($this->form_validation->run() == FALSE)
         {
             $data = array('view'=> 'Staff_member/add-advisor');
             $this->load->view('admin', $data);
-        } 
-        else 
+        }
+        else
         {
             $user_fullname = $this->input->post('user_fullname');
             $user_name = $this->input->post('user_name');
@@ -105,8 +105,8 @@ class Staff_member extends CI_Controller
 
             $classification = $this->input->post('office');
             $major = $this->input->post('major');
-                
-            if ($this->Users_model->checkemail($email)) 
+
+            if ($this->Users_model->checkemail($email))
             {
                 $this->session->set_flashdata('error_msg', 'Email Already Exists! <br/><br/>');
                 redirect('Staff_member/addAdvisor');
@@ -116,7 +116,7 @@ class Staff_member extends CI_Controller
             $this->session->set_flashdata('success_msg', 'Advisor details saved!<br/><br/>');
             redirect('Staff_member/addAdvisor');
         }
-    } 
+    }
 
      function initAddStaffMember()
     {
@@ -243,6 +243,10 @@ class Staff_member extends CI_Controller
     }
 
     function deleteAdvisor() {
+        $this->breadcrumbs->push('Staff Member', '/');
+        $this->breadcrumbs->push('Delete Advisors', 'deleteAdvisor');
+        $this->breadcrumbs->unshift('Home', '/');
+
         //print_r($this->Staff_worker_model->getAdvisorsByMajor("computersciences"));
         $data = array('view' => 'Staff_member/deleteAdvisor',
             'majors' => $this->Staff_worker_model->getAllMajors());
@@ -288,7 +292,7 @@ class Staff_member extends CI_Controller
 
     function changeHolds()
     {
-        $data = array('view' => 'staff_member/change_holds', 
+        $data = array('view' => 'staff_member/change_holds',
                         'advisees' => $this->Staff_worker_model->showAllAdviseesWithHolds());
         $this->load->view('admin', $data);
     }
@@ -306,9 +310,9 @@ class Staff_member extends CI_Controller
 
         if ($holdStat == 0)
         {
-            $data = array('view' => 'Staff_member/change_holds_confirm', 
+            $data = array('view' => 'Staff_member/change_holds_confirm',
                                 'advisee_name' => $adviseeName,
-                                'hold' => $holdStat, 
+                                'hold' => $holdStat,
                                 'msg' => 'has been lifted');
             $this->Staff_worker_model->lift_hold($adviseeID, $holdStat);
             $this->load->view('admin', $data);
@@ -316,9 +320,9 @@ class Staff_member extends CI_Controller
 
         else
         {
-            $data = array('view' => 'Staff_member/change_holds_confirm', 
+            $data = array('view' => 'Staff_member/change_holds_confirm',
                                 'advisee_name' => $adviseeName,
-                                'hold' => $holdStat, 
+                                'hold' => $holdStat,
                                 'msg' => 'has been set');
             $this->Staff_worker_model->lift_hold($adviseeID, $holdStat);
             $this->load->view('admin', $data);

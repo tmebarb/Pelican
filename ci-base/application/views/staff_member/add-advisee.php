@@ -1,4 +1,48 @@
+<style>
+  label {
+    width: 100%;
+  }
+  /*.input-field label {*/
+    /*font-size: 0.8rem;*/
+    /*-webkit-transform: translateY(-140%);*/
+    /*-moz-transform: translateY(-140%);*/
+    /*-ms-transform: translateY(-140%);*/
+    /*-o-transform: translateY(-140%);*/
+    /*transform: translateY(-140%);*/
+  /*}*/
+</style>
+<script>
+  $.validator.setDefaults({
+    errorClass: 'invalid',
+    validClass: "valid",
+    errorPlacement: function (error, element) {
+      $(element)
+          .closest("form")
+          .find("label[for='" + element.attr("id") + "']")
+          .attr('data-error', error.text());
+    }
+  });
+  $().ready(function () {
+    $("#form").validate({
+      rules: {
+        password: {
+          required: true,
 
+        } ,
+
+        repassword: {
+          equalTo: "#password6",
+        }
+      },
+      messages:{
+        password: {
+          required:"the password is required"
+        },
+      }
+
+    });
+  });
+</script>
 
 
 
@@ -37,7 +81,8 @@
                 
                 <div class="row">
                   <!--<form class="col s12" method="post" action="<?php echo base_url() ?>Staff_member/addAdvisee">-->
-                  <?php echo form_open('Staff_member/addAdvisee');?>
+                  <?php $attributes = array('id' => 'form');?>
+                  <?php echo form_open('Staff_member/addAdvisee', $attributes);?>
                     <div class="row">
                       <div class="input-field col s6">
                         <input id="user_fullname" name="user_fullname" type="text" required="" aria-required="true">
