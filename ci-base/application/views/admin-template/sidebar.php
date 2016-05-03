@@ -54,7 +54,9 @@
                         <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-account-child"></i>Staff Workers</a>
                             <div class="collapsible-body" style="">
                                 <ul>
-                                    <li><a href="<?php echo base_url() ?>Staff_member/viewStudentWorker">List All Student Workers</a>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/listStaff">List All Staff Workers</a>
+                                    </li>
+                                    <li><a href="<?php echo base_url() ?>Staff_member/initAddStaffMember">Add A Staff Worker</a>
                                     </li>
                                 </ul>
 
